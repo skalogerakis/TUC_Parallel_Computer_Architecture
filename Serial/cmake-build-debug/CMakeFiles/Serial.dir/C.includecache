@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/d/TUC_PROJECT/TUC_Parallel_Computer_Architecture/Serial/main.c
+stdio.h
+-
+sys/time.h
+-
+stdlib.h
+-
+memory.h
+-
+
