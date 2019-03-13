@@ -14,14 +14,23 @@ double gettime(void)
 //char* Q, D;
 int *similarity, *backtracking;
 
-int UPCODE = 1;
-int LEFTCODE = 2;
-int DIAGCODE = 3;
+//int UPCODE = 1;
+//int LEFTCODE = 2;
+//int DIAGCODE = 3;
+
+static char const UPCODE = 'U';
+static char const LEFTCODE = 'L';
+static char const DIAGCODE = 'D';
+static char const ZEROCODE = 'Z';
+
 
 int MAX_SIMILARITY=0;
 
 char TestQ[] = "abc";
 char TestD[] = "xxxabxcxxxaabbcc";
+
+//char TestQ[] = "GGTTGACTA";
+//char TestD[] = "TGTTACGG";
 
 int Q_len, D_len;
 
@@ -134,9 +143,19 @@ int main() {
     }
     printf("Memory Allocated successfully for ScoreTable matrix.\n");
 
-    int *TraceTable[Q_len+1];
+    //DONOT DELETE YET. INITIAL APPROACH WITH INT
+//    int *TraceTable[Q_len+1];
+//    for(int i = 0; i< Q_len+1; i++){
+//        TraceTable[i] = (int *)malloc((D_len+1)* sizeof(int));
+//        if(TraceTable[i] == NULL){
+//            printf("Could not allocate memory for matrix TraceTable.Terminating");
+//            exit(-2);
+//        }
+//    }
+
+    char *TraceTable[Q_len+1];
     for(int i = 0; i< Q_len+1; i++){
-        TraceTable[i] = (int *)malloc((D_len+1)* sizeof(int));
+        TraceTable[i] = (char *)malloc((D_len+1)* sizeof(char));
         if(TraceTable[i] == NULL){
             printf("Could not allocate memory for matrix TraceTable.Terminating");
             exit(-2);
@@ -145,36 +164,26 @@ int main() {
 
     printf("Memory Allocated successfully for TraceTable matrix.\n");
     //Initialize 2D array (We have one additional column and row)
-//    int QDArray[D_len+1][Q_len+1];
-//    int Tr_QDArray[D_len+1][Q_len+1];
-//
-//    //Initialize first line and column to zero
-//    for(int i=0; i < D_len + 1; i++){
-//        QDArray[i][0] = 0;
-//        Tr_QDArray[i][0] = 0;
-//    }
 
     for(int i=0; i < Q_len + 1; i++){
         ScoreTable[i][0] = 0;
-        TraceTable[i][0] = 0;
+        //TraceTable[i][0] = 0;
+        TraceTable[i][0] = 'Z';
         printf("Init check row %d\n",i);
     }
 
-    printf("check 1\n");
+    printf("check done\n");
 
-//    for(int i=0; i < D_len + 1; i++){
-//        QDArray[0][i] = 0;
-//        Tr_QDArray[0][i] = 0;
-//    }
 
     for(int i=0; i < D_len + 1; i++){
         ScoreTable[0][i] = 0;
-        TraceTable[0][i] = 0;
+        //TraceTable[0][i] = 0;
+        TraceTable[0][i] = 'Z';
         printf("Init check column %d\n",i);
     }
 
 
-    printf("check 2\n");
+    printf("START SIMILARITY MATRIX\n");
 
     for(int i = 1; i < Q_len + 1; i++){
         for(int j = 1; j < D_len + 1; j++){
@@ -187,17 +196,20 @@ int main() {
             //for diagonal check if we have match or mismatch
             uint tempDiag;
 
-            //TODO FIX THAT. THATS OUR MAIN ISSUE
-            tempDiag = (TestD[i - 1] == TestQ[i - 1]) ? MATCH : MISMATCH;
+            //printf("Compare %c, %c\n",TestD[j - 1], TestQ[i - 1]);
+
+            tempDiag = (TestD[j - 1] == TestQ[i - 1]) ? MATCH : MISMATCH;
 
             diag = ScoreTable[i - 1][j - 1] + tempDiag;
 
-            printf("up %d, left %d, diag %d \n", up, left, diag);
+            //printf("up %d, left %d, diag %d \n", up, left, diag);
 
             uint tempMax = 0;
 
+            //TODO find smarter way
             if( up <= 0 && left <= 0 && diag <= 0 ){    //case we have max as negative value
                 tempMax = 0;
+                TraceTable[i][j] = ZEROCODE;
             }else{
                 if( up > left && up >= diag){
                     tempMax = up;
@@ -220,7 +232,7 @@ int main() {
         }
     }
 
-    printf("check %d \n", MAX_SIMILARITY);
+    printf("SIMILARITY MAX%d \n", MAX_SIMILARITY);
 
     for (int i = 0; i < Q_len + 1; i++){
         printf("\n");
@@ -229,32 +241,17 @@ int main() {
         }
 
     }
-    //TODO check if needs that checks after malloc
-//    similarity = (int *)malloc( Q_len * D_len * sizeof(int));
-//    if(similarity == NULL){
-//        fprintf(stderr, "Fatal: failed to allocate %zu bytes.\n", Q_len * D_len * sizeof(int));
-//        abort();
-//    }
-//
-//    backtracking = malloc( Q_len * D_len * sizeof(int));
-//    if(backtracking == NULL){
-//        fprintf(stderr, "Fatal: failed to allocate %zu bytes.\n", Q_len * D_len * sizeof(int));
-//        abort();
-//    }
 
+        printf("\n\n\n");
+    for (int i = 0; i < Q_len + 1; i++){
+        printf("\n");
+        for (int j = 0; j < D_len + 1; j++){
+            printf("%c\t",TraceTable[i][j]);
+        }
 
+    }
 
-    //printf("check %d\n", sizeof(similarity));
-
-    //FILL SIMILARITY MATRIX
-
-//    for(int i = 0; i < D_len + 1; i++){
-//        for(int j = 0; j < Q_len + 1; j++){
-//            current_index++;
-//            similarityCalc(current_index, i,j);
-//        }
-//    }
-
+    //while
 
     //TODO add calc time in the end
 
