@@ -2,6 +2,7 @@
 #include <sys/time.h>
 #include <stdlib.h>
 #include <memory.h>
+#include <stdbool.h>
 //#include <w32api/rpcndr.h>
 
 double gettime(void)
@@ -36,93 +37,73 @@ int Q_len, D_len;
 
 char Q[];
 char D[];
-int MATCH = 3;
-int MISMATCH = -1;
-int GAP = -1;
+int MATCH;
+int MISMATCH;
+int GAP;
+bool nameBool, inputBool, matchBool, misBool, gapBool = false;
 
+/*
+ * Add more input variables if you wish and update commandChecker function
+ */
+const char* inVariable[] = {"-name", "-input", "-match", "-mismatch", "-gap" };
 
-//void initializeMatrixes(int row_index, int column_index){
-//
-//    for(int i = 0; i < row_index +1 ; i++){
-//        for(int j = 0; j < column_index + 1; j++){
-//
-//        }
-//    }
-//
-//
-//}
-//
-//void similarityCalc(int curr_index, int row_index, int column_index){
-//
-//    //for initialization purposes only. We know that first column and row are filled with zero
-//    if(row_index == 0 || column_index == 0){
-//        similarity[curr_index] = 0;
-//        backtracking[curr_index] = 0;
-//        return;
-//    }
-//
+/*
+ * This function is responsible to check parameters from command line.
+ * In case, the demanded criteria are not met then the program terminates.
+ * NOTE: This function takes into consideration only the flags and takes as
+ * their value next argv value. It does not check that this value is correct
+ */
+void commandChecker(int argc, char * argv[]){
+    //printf("Argument count=%d\n",argc);
 
-//}
-
-//void TableCalc(int ScoreTable[D_len][Q_len] ,int TraceTable[D_len][Q_len],int rowIndex, int columnIndex){
-//        printf("DIDI\n");
-//        int up, left, diag;
-//
-//        up = ScoreTable[rowIndex-1][columnIndex] + GAP;  //we want same column and one row up
-//        left = ScoreTable[rowIndex][columnIndex-1] + GAP; //we want same row and one column left
-//
-//        //for diagonal check if we have match or mismatch
-//        uint tempDiag;
-//
-//        tempDiag = (TestD[rowIndex - 1] == TestQ[columnIndex - 1]) ? MATCH : MISMATCH;
-//
-//        diag = ScoreTable[rowIndex - 1][columnIndex - 1] + tempDiag;
-//
-//        uint tempMax = 0;
-//
-//        if( up <= 0 && left <= 0 && diag <= 0 ){    //case we have max as negative value
-//            tempMax = 0;
-//        }else{
-//            if( up > left && up >= diag){
-//                tempMax = up;
-//                TraceTable[rowIndex][columnIndex] = UPCODE;
-//            }else if (left >= up && left >= diag){
-//                tempMax = left;
-//                TraceTable[rowIndex][columnIndex] = LEFTCODE;
-//            }else{
-//                tempMax = diag;
-//                TraceTable[rowIndex][columnIndex] = DIAGCODE;
-//            }
-//        }
-//
-//        ScoreTable[rowIndex][columnIndex] = tempMax;
-//
-//        if(tempMax > MAX_SIMILARITY){
-//            MAX_SIMILARITY = tempMax;
-//        }
-//
-//        return;
-//
-//
-//
-//}
-
-int main() {
-
-    /*TODO remove static values and append dynamically
-     * Input variables:
-     * -match
-     * -mismatch
-     * -gap
+    /*
+     * If you wish to add new case for command line do it here.
      */
+    for (int i = 0; i < argc; i++) {
+        //printf("Argument %s\n",argv[i]);
+        if(strcmp(argv[i],inVariable[0]) == 0){
+            printf("NAME FOUND %s\n",argv[++i]);
+            nameBool = true;
+        }
+        if(strcmp(argv[i],inVariable[1]) == 0){
+            printf("INPUT FOUND %s\n",argv[++i]);
+            inputBool = true;
+        }
+        if(strcmp(argv[i],inVariable[2]) == 0) {
+            //printf("MATCH FOUND %s\n", argv[++i]);
+            MATCH = atoi(argv[++i]);
+            matchBool = true;
+        }
+        if(strcmp(argv[i],inVariable[3]) == 0) {
+           // printf("MISMATCH FOUND %s\n", argv[++i]);
+            MISMATCH = atoi(argv[++i]);
+            misBool = true;
+        }
+        if(strcmp(argv[i],inVariable[4]) == 0) {
+            //printf("GAP FOUND %s\n", argv[++i]);
+            GAP = atoi(argv[++i]);
+            gapBool = true;
+            //GAP = atoi(argv[++i]);
+        }
+    }
 
-    int match = 3;
-    int mismatch = -1;
-    int gap = -1;
-    int current_index =0;
+    if( !nameBool | !inputBool | !matchBool | !misBool | !gapBool){
+        printf("NOT ALL DEMANDED INPUT VARIABLES WERE GIVEN IN COMMAND LINE. EXITING.......");
+        exit(-10);
+    }else{
+        printf("COMMAND LINE VARIABLES AS DEMANDED. CONTINUE\n");
+    }
+}
 
 
+int main(int argc, char * argv[]) {
 
+
+    commandChecker(argc, argv);
+
+    printf("MATCH  %d, MISMATCH %d, GAP %d\n", MATCH, MISMATCH, GAP);
+
+    //exit(1);
 
     Q_len = strlen(TestQ);
     D_len = strlen(TestD);
@@ -169,7 +150,7 @@ int main() {
         ScoreTable[i][0] = 0;
         //TraceTable[i][0] = 0;
         TraceTable[i][0] = 'Z';
-        printf("Init check row %d\n",i);
+        //printf("Init check row %d\n",i);
     }
 
     printf("check done\n");
@@ -179,7 +160,7 @@ int main() {
         ScoreTable[0][i] = 0;
         //TraceTable[0][i] = 0;
         TraceTable[0][i] = 'Z';
-        printf("Init check column %d\n",i);
+        //printf("Init check column %d\n",i);
     }
 
 
