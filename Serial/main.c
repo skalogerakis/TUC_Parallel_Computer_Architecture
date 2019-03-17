@@ -35,12 +35,12 @@ char TestD[] = "xxxabxcxxxaabbcc";
 
 int Q_len, D_len;
 
-char Q[];
-char D[];
 int MATCH;
 int MISMATCH;
 int GAP;
 bool nameBool, inputBool, matchBool, misBool, gapBool = false;
+
+
 
 /*
  * Add more input variables if you wish and update commandChecker function
@@ -62,11 +62,11 @@ void commandChecker(int argc, char * argv[]){
     for (int i = 0; i < argc; i++) {
         //printf("Argument %s\n",argv[i]);
         if(strcmp(argv[i],inVariable[0]) == 0){
-            printf("NAME FOUND %s\n",argv[++i]);
+            //printf("NAME FOUND %s\n",argv[++i]);
             nameBool = true;
         }
         if(strcmp(argv[i],inVariable[1]) == 0){
-            printf("INPUT FOUND %s\n",argv[++i]);
+            //printf("INPUT FOUND %s\n",argv[++i]);
             inputBool = true;
         }
         if(strcmp(argv[i],inVariable[2]) == 0) {
@@ -166,6 +166,9 @@ int main(int argc, char * argv[]) {
 
     printf("START SIMILARITY MATRIX\n");
 
+    int counterMax = 0;
+
+
     for(int i = 1; i < Q_len + 1; i++){
         for(int j = 1; j < D_len + 1; j++){
             //TableCalc(QDArray[i][j],Tr_QDArray[i][j],i,j);
@@ -207,13 +210,100 @@ int main(int argc, char * argv[]) {
             //printf("check per loop %d \n", tempMax);
             ScoreTable[i][j] = tempMax;
 
-            if(tempMax > MAX_SIMILARITY){
+            if(tempMax > MAX_SIMILARITY) {
+                counterMax = 0;
                 MAX_SIMILARITY = tempMax;
+            }else if(tempMax == MAX_SIMILARITY && tempMax!=0){
+                counterMax++;
             }
         }
     }
 
-    printf("SIMILARITY MAX%d \n", MAX_SIMILARITY);
+
+    printf("SIMILARITY MAX %d and COUNTER MAX %d\n", MAX_SIMILARITY, counterMax);
+
+    /*
+     * We find all max value we need to backtrack
+     */
+    int xMax[counterMax+1];
+    int yMax[counterMax+1];
+
+    int tempCount=0;
+    for (int i = 0; i < Q_len + 1; i++){
+        for (int j = 0; j < D_len + 1; j++){
+            if(MAX_SIMILARITY == ScoreTable[i][j]){
+                printf("i %d and j %d\n", i, j);
+
+                xMax[tempCount] = i;
+                yMax[tempCount] = j;
+                tempCount++;
+            }
+        }
+    }
+
+    printf("SIMILARITY MAX %d and COUNTER MAX %d\n", MAX_SIMILARITY, counterMax);
+
+    for(int i = 0; i< counterMax+1; i++){
+
+        int currXpos = xMax[i];
+        int currYpos = yMax[i];
+        char xElem = TestQ[currXpos];
+        char yElem = TestD[currYpos];
+        char currNode = TraceTable[currXpos][currYpos];
+        int score = ScoreTable[xMax[i]][yMax[i]];
+        int destCounter=0;
+        char *qOut;
+
+//        if(xMax[i]>yMax[i]){
+//            qOut = (char *)malloc(sizeof(char)*xMax[i]);
+//        }else{
+//            qOut = (char *)malloc(sizeof(char)*yMax[i]);
+//        }
+
+        while(currNode != ZEROCODE ){
+
+            if(currNode == UPCODE){
+                //printf("TRACE %d, - , TESTQ %c\n",ScoreTable[currXpos][currYpos], TestQ[currXpos]);
+                currXpos--;
+                xElem = TestQ[currXpos];
+                yElem = '-';
+
+                currNode = TraceTable[currXpos][currYpos];
+
+            }else if(currNode == LEFTCODE){
+                //printf("TRACE %d, TESTD %c, - \n",ScoreTable[currXpos][currYpos], TestD[currYpos]);
+                currYpos--;
+                xElem = '-';
+                yElem = TestD[currYpos];
+
+                currNode = TraceTable[currXpos][currYpos];
+
+            }else if(currNode == DIAGCODE){
+                //printf("TRACE %d, TESTD %c, TESTQ %c\n",ScoreTable[currXpos][currYpos], TestD[currYpos], TestQ[currXpos]);
+                currYpos--;
+                currXpos--;
+                xElem = TestQ[currXpos];
+                yElem = TestD[currYpos];
+
+                currNode = TraceTable[currXpos][currYpos];
+
+            }
+
+            //printf("TRACE %d, TESTD %c, TESTQ %c\n",ScoreTable[currXpos][currYpos], TestD[currYpos], TestQ[currXpos]);
+//            printf("TestD %c , TESTQ %c\n",yElem, xElem);
+            //qOut[destCounter++] = xElem;
+            printf("TestD %c , TESTQ %c\n",yElem, xElem);
+
+        }
+        //printf("TestD %c , TESTQ %c\n",TestD[currYpos], TestQ[currXpos]);
+        //printf("TestD %c , TESTQ %c\n",yElem, xElem);
+        printf("\n\n");
+    }
+
+    //max
+//    for (int i = 0; i < counterMax + 1; i++){
+//        printf("x %d y %d\t",xMax[i], yMax[i]);
+//    }
 
     for (int i = 0; i < Q_len + 1; i++){
         printf("\n");
