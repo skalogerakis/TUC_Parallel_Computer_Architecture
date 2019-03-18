@@ -1,0 +1,27 @@
+Pairs:		10
+Q_Sz_Min:	1
+Q_Sz_Max:	5
+D_Sz_All:	6
+
+Q:	NTC
+D:	CGANTC
+Q:	NTA
+D:	CGANTA
+Q:	NTB
+D:	CGANTB
+Q:	NTV
+D:	CGANTV
+Q:	NTE
+D:	CGANTE
+Q:	NTF
+D:	CGANTF
+Q:	NTG
+D:	CGANTG
+Q:	NTH
+D:	CGANTH
+Q:	NTI
+D:	CGANTI
+Q:	NTR
+D:	CGANTR
+
+

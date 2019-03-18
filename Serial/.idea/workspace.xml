@@ -12,7 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1b5cdd3-fc45-4b0c-abf7-ef5a043dd675" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Serial.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Serial.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -41,24 +43,24 @@
     <session id="-1436068638">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="19" />
-          <entry key="ObjectiveC" value="8159" />
+          <entry key="ObjectiveC" value="12078" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Disassembly" value="7" />
+          <entry key="Disassembly" value="17" />
           <entry key="ObjectiveC" value="2" />
         </counts>
       </usages-collector>
@@ -78,14 +80,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="292" column="28" selection-start-line="292" selection-start-column="28" selection-end-line="292" selection-end-column="28" />
+            <state relative-caret-position="244">
+              <caret line="414" lean-forward="true" selection-start-line="414" selection-end-line="414" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#716#726#0" />
-                <element signature="e#963#973#0" />
-                <element signature="e#939#968#0" />
-                <marker date="1552795581499" expanded="true" signature="9357:9549" ph="..." />
+                <element signature="e#830#852#0" />
+                <element signature="e#931#2608#0" />
+                <element signature="e#2625#2810#0" />
+                <element signature="e#3000#3456#0" />
+                <marker date="1552934581690" expanded="true" signature="18874:19066" ph="..." />
               </folding>
             </state>
           </provider>
@@ -119,8 +122,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1906" />
-    <option name="y" value="-8" />
+    <option name="x" value="1942" />
+    <option name="y" value="-23" />
     <option name="width" value="1936" />
     <option name="height" value="1096" />
   </component>
@@ -183,12 +186,13 @@
       <workItem from="1552086272474" duration="11214000" />
       <workItem from="1552146560277" duration="2204000" />
       <workItem from="1552409422471" duration="4234000" />
-      <workItem from="1552758231621" duration="28048000" />
+      <workItem from="1552758231621" duration="29278000" />
+      <workItem from="1552820612120" duration="39278000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54800000" />
+    <option name="totallyTimeSpent" value="95308000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -203,13 +207,13 @@
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26599148" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952183" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32952183" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3991684" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35135135" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32952183" />
@@ -236,14 +240,29 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.c</url>
-          <line>293</line>
-          <option name="timeStamp" value="26" />
+          <line>298</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>371</line>
+          <option name="timeStamp" value="82" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="pairs" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>pairs</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>maxS</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -300,14 +319,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="292" column="28" selection-start-line="292" selection-start-column="28" selection-end-line="292" selection-end-column="28" />
+        <state relative-caret-position="244">
+          <caret line="414" lean-forward="true" selection-start-line="414" selection-end-line="414" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#716#726#0" />
-            <element signature="e#963#973#0" />
-            <element signature="e#939#968#0" />
-            <marker date="1552795581499" expanded="true" signature="9357:9549" ph="..." />
+            <element signature="e#830#852#0" />
+            <element signature="e#931#2608#0" />
+            <element signature="e#2625#2810#0" />
+            <element signature="e#3000#3456#0" />
+            <marker date="1552934581690" expanded="true" signature="18874:19066" ph="..." />
           </folding>
         </state>
       </provider>
