@@ -1,7 +1,7 @@
 Pairs:		1
 Q_Sz_Min:	1
-Q_Sz_Max:	10
-D_Sz_All:	9
+Q_Sz_Max:	5
+D_Sz_All:	16
 
-Q:	TGTTACGG
-D:	GGTTGACTA
+Q:	abc
+D:	xxxabxcxxxaabbcc

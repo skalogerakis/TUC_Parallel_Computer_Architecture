@@ -25,7 +25,7 @@ static char const DIAGCODE = 'D';
 static char const ZEROCODE = 'Z';
 
 
-int MAX_SIMILARITY=0;
+int _MAX_SIMILARITY=0;
 
 //char TestQ[] = "abc";
 //char TestD[] = "xxxabxcxxxaabbcc";
@@ -41,102 +41,12 @@ int GAP;
 
 bool nameBool, inputBool, matchBool, misBool, gapBool = false;
 
-
 int pairs= -1;
 int qMin = -1;
 int qMax = -1;
 int dSize = -1;
 
-void testers(){
-
-//    while(pairs>0){
-//        fscanf(fp,)
-//        pairs--;
-//    }
-
-//    char line[1000];
-//    while((fscanf(fp, "%[^\n]", line)) != EOF){
-//        fgetc(fp);
-//        printf("Hello\n");
-//        printf("Line = %s \n", line);
-//    }
-    char * line = NULL;
-    //char * Q = (char *)malloc(sizeof(char)*qMax);
-
-
-
-//    while(pairs>0){
-//        //char  Q[1000];
-//        //char D[1000];
-//        char iniQ[qMax+10];
-//        char iniD[dSize+10];
-////        char *Q = (char *)malloc(sizeof(char)*(qMax+1));
-////        char *D = (char *)malloc(sizeof(char)*(dSize+1));
-//
-//        fgets(iniQ, sizeof(iniQ) , fp);
-//        printf("INI Q %d\n", strlen(iniQ));
-////        if( sscanf(iniQ, "Q: %s\n", Q) == 1){
-////            printf("Match Q %d\n", strlen(Q));
-////        }
-//        fgets(iniD, sizeof(iniD), fp);
-//        printf("INI D %d\n", strlen(iniD));
-////        if( sscanf(iniD, "D: %s\n", D) == 1){
-////            printf("Match D %d\n", strlen(D));
-////        }
-//        //printf("Match D %s\n", D);
-////        free(Q);
-////        free(D);
-//        free(iniD);
-//        free(iniQ);
-//        pairs--;
-//        printf("\n\n\n");
-//    }
-
-//    ssize_t lineRead;
-//    size_t lineLen =0;  //this will get reallocated
-//    while ((lineRead = getline(&line, &lineLen, fp)) != -1) {
-//        printf("Retrieved line of length %zu:\n", lineRead);
-//
-//        char  Q[100000];
-//        char D[100000];
-//        char tline[1000000];
-//
-//        //sscanf returns 1 when matches
-//        if( sscanf(line, "Q: %s\n", Q) == 1){
-//            fgets(tline, 1000000, fp);
-//            //char *test = (char *)malloc(sizeof(char)*strlen(Q));
-//            //strcpy(test,Q);
-//            printf("Match Q %s\n", tline);
-//            //Q = (char *)malloc(sizeof(char)*lineRead);
-//
-//        }else{
-//            printf("NO match Q at %s\n", line);
-//        }
-//
-//        if( sscanf(line, "D: %s\n", D) == 1){
-//            printf("Match D %s\n", D);
-//            //Q = (char *)malloc(sizeof(char)*lineRead);
-//        }else{
-//            printf("NO match D at %s\n", line);
-//        }
-//
-//        //printf("%s\n", Q);
-//        free(Q);
-//    }
-    //LOOKS WORKS
-//    unsigned long count = 0;
-//    size_t num;
-//    unsigned long BUFELEM = 100;
-//    unsigned char buf[BUFELEM];
-//    do
-//    {
-//        num = fread( buf, 1, BUFELEM, fp );
-//        ++count;
-//        printf("%s buf %ld\n ",buf,count);
-///* do sth. with buffer contents here [1] */
-//    }
-//    while ( num == BUFELEM );
-}
+FILE *finFile;
 
 /*
  * Add more input variables if you wish and update commandChecker function
@@ -202,10 +112,6 @@ void ErrorCode(int checker){
     }
 }
 
-long maxFinder(long x, long y){
-    return x > y ? x : y;
-}
-
 char* reverseArr(char *str, size_t len) {
     size_t i = 0;
     while (len > i) {
@@ -214,6 +120,20 @@ char* reverseArr(char *str, size_t len) {
         str[i++] = tmp;
     }
     return str;
+}
+//TODO FIX THE PROBLEM WITH /001
+char * stringFixer(char *str) {
+    char *loc = strchr(str,'\001');
+    char *pDest = str;
+    if(loc != NULL){
+        while(*str){
+            if(*str != '\001')
+                *pDest++ = *str;
+            str++;
+        }
+        *pDest = '\0';
+    }
+    return *pDest;
 }
 
 /*
@@ -240,6 +160,10 @@ void fileHeaderValues(FILE *fp){
 }
 
 void dataParser(char * Q, char * D){
+
+    //At first write as output the strings as they are
+    fprintf(fwrite, "\n\nQ: \t%s\n", Q);
+    fprintf(fwrite, "\n\nD: \t%s\n", D);
 
     Q_len = strlen(Q);
     D_len = strlen(D);
@@ -299,7 +223,7 @@ void dataParser(char * Q, char * D){
 
     printf("START SIMILARITY MATRIX\n");
 
-    int counterMax = 0;
+    int _counterMax = 0;
 
 
     for(int i = 1; i < Q_len + 1; i++){
@@ -344,28 +268,28 @@ void dataParser(char * Q, char * D){
             //printf("check per loop %d \n", tempMax);
             ScoreTable[i][j] = tempMax;
 
-            if(tempMax > MAX_SIMILARITY) {
-                counterMax = 0;
-                MAX_SIMILARITY = tempMax;
-            }else if(tempMax == MAX_SIMILARITY && tempMax!=0){
-                counterMax++;
+            if(tempMax > _MAX_SIMILARITY) {
+                _counterMax = 0;
+                _MAX_SIMILARITY = tempMax;
+            }else if(tempMax == _MAX_SIMILARITY && tempMax!=0){
+                _counterMax++;
             }
         }
     }
 
 
-    printf("SIMILARITY MAX %d and COUNTER MAX %d\n", MAX_SIMILARITY, counterMax);
+    printf("SIMILARITY MAX %d and COUNTER MAX %d\n", _MAX_SIMILARITY, _counterMax);
 
     /*
      * We find all max value we need to backtrack
      */
-    int xMax[counterMax+1];
-    int yMax[counterMax+1];
+    int xMax[_counterMax+1];
+    int yMax[_counterMax+1];
 
     int tempCount=0;
     for (int i = 0; i < Q_len + 1; i++){
         for (int j = 0; j < D_len + 1; j++){
-            if(MAX_SIMILARITY == ScoreTable[i][j]){
+            if(_MAX_SIMILARITY == ScoreTable[i][j]){
                 printf("i %d and j %d\n", i, j);
 
                 xMax[tempCount] = i;
@@ -375,13 +299,13 @@ void dataParser(char * Q, char * D){
         }
     }
 
-    printf("SIMILARITY MAX %d and COUNTER MAX %d\n", MAX_SIMILARITY, counterMax);
+    printf("SIMILARITY MAX %d and COUNTER MAX %d\n", _MAX_SIMILARITY, _counterMax);
 
-    for(int i = 0; i< counterMax+1; i++){
+    for(int i = 0; i< _counterMax+1; i++){
 
         int currXpos = xMax[i];
         int currYpos = yMax[i];
-        char xElem = Q[currXpos];
+        char xElem = Q[currXpos] ;
         char yElem = D[currYpos];
         char currNode = TraceTable[currXpos][currYpos];
         int score = ScoreTable[xMax[i]][yMax[i]];
@@ -390,8 +314,10 @@ void dataParser(char * Q, char * D){
         //char dOut[yMax[i]+1];
 
         //TODO also works with dynamic allocation. Check if it can work with large files
-        char *qOut = (char *)calloc(xMax[i]+1, sizeof(char));
-        char *dOut = (char *)calloc(xMax[i]+1, sizeof(char));
+        char *qOut = NULL;
+        char *dOut = NULL;
+        qOut = (char *)calloc(xMax[i]+1, sizeof(char));
+        dOut = (char *)calloc(xMax[i]+1, sizeof(char));
         //char *qOut;
 
         //THIS SEEMS TO WORK TODO CHECK
@@ -436,6 +362,8 @@ void dataParser(char * Q, char * D){
 //            destCounter++;
             qOut[lengthCount] = xElem;
             dOut[lengthCount] = yElem;
+
+
             lengthQCount--;
             lengthDCount--;
             lengthCount++;
@@ -443,11 +371,21 @@ void dataParser(char * Q, char * D){
 
         }
 
-        //printf("Compl %s, %s\n",qOut, dOut);
-        printf("l D %d l Q %d\n", strlen(dOut), strlen(qOut));
+        //printf("l D %d l Q %d\n", strlen(dOut), strlen(qOut));
+
+        if(strlen(dOut)!= strlen(qOut)){
+            if(strlen(dOut) < strlen(qOut) ){
+                qOut = (char *)stringFixer(qOut);
+            }else{
+                dOut = (char *)stringFixer(dOut);
+            }
+        }
         dOut = reverseArr(dOut, strlen(dOut));
         qOut = reverseArr(qOut, strlen(qOut));
-        printf("le D %s l eQ %s\n", dOut, qOut);
+        //printf("le D %s l eQ %s\n", dOut, qOut);
+
+        //Here we are writing the other demanded info(score, start, stop)
+        fprintf(fwrite, "\nMATCH %d [SCORE: %d,START: %d,STOP: %d]", _counterMax, _MAX_SIMILARITY, );
 
         free(qOut);
         free(dOut);
@@ -455,24 +393,23 @@ void dataParser(char * Q, char * D){
         printf("\n\n");
     }
 
-
-
-    for (int i = 0; i < Q_len + 1; i++){
-        printf("\n");
-        for (int j = 0; j < D_len + 1; j++){
-            printf("%d\t",ScoreTable[i][j]);
-        }
-
-    }
-
-    printf("\n\n\n");
-    for (int i = 0; i < Q_len + 1; i++){
-        printf("\n");
-        for (int j = 0; j < D_len + 1; j++){
-            printf("%c\t",TraceTable[i][j]);
-        }
-
-    }
+    //PRINTER OF THE  ARRAYS. USED FOR DEBBUGING PURPOSES ONLY
+//    for (int i = 0; i < Q_len + 1; i++){
+//        printf("\n");
+//        for (int j = 0; j < D_len + 1; j++){
+//            printf("%d\t",ScoreTable[i][j]);
+//        }
+//
+//    }
+//
+//    printf("\n\n\n");
+//    for (int i = 0; i < Q_len + 1; i++){
+//        printf("\n");
+//        for (int j = 0; j < D_len + 1; j++){
+//            printf("%c\t",TraceTable[i][j]);
+//        }
+//
+//    }
 
 
 }
@@ -491,9 +428,11 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
     long dIndex = 0;
     //TODO check that memory was allocated successfully
 
-    char * Q = (char *)calloc(bytereader, sizeof(char));
-    char * D = (char *)calloc(bytereader, sizeof(char));
+    char * Q;
+    char * D;
 
+    Q = (char *)calloc(bytereader, sizeof(char));
+    D = (char *)calloc(bytereader, sizeof(char));
     //char D[100000];
     uint8_t dFlag=0;
     uint8_t qFlag=0;
@@ -632,11 +571,18 @@ int main(int argc, char * argv[]) {
 
     FILE *fp;
 
-    fp = fopen("D:\\TUC_PROJECT\\TUC_Parallel_Computer_Architecture\\MyDocs\\D2test.txt","r");
+    fp = fopen("D:\\TUC_PROJECT\\TUC_Parallel_Computer_Architecture\\MyDocs\\D1.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");
         exit(-9);
+    }
+
+    finFile = fopen("D:\\TUC_PROJECT\\TUC_Parallel_Computer_Architecture\\MyDocs\\FINAL.txt","a");
+
+    if(finFile == NULL){
+        printf("Error while opening write file!\n");
+        exit(1);
     }
     //printf("Success\n");
 

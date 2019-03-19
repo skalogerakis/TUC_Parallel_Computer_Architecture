@@ -12,7 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1b5cdd3-fc45-4b0c-abf7-ef5a043dd675" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -41,19 +41,20 @@
     <session id="-1436068638">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="19" />
-          <entry key="ObjectiveC" value="13004" />
+          <entry key="ObjectiveC" value="14063" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -78,18 +79,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="451" column="8" selection-start-line="451" selection-start-column="8" selection-end-line="451" selection-end-column="8" />
+            <state relative-caret-position="980">
+              <caret line="386" column="73" lean-forward="true" selection-start-line="386" selection-start-column="73" selection-end-line="386" selection-end-column="73" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#830#852#0" />
-                <element signature="e#931#2608#0" />
-                <element signature="e#2625#2810#0" />
-                <element signature="e#5546#5584#0" />
-                <element signature="e#3000#3456#0" />
-                <element signature="e#6123#8434#0" />
-                <element signature="e#6123#6148#0" />
-                <element signature="e#8751#16376#0" />
+                <element signature="e#996#1301#0" />
+                <element signature="e#996#2673#0" />
+                <element signature="e#2675#2825#0" />
+                <element signature="e#3002#3189#0" />
+                <element signature="e#3190#3361#0" />
+                <element signature="e#3191#3770#0" />
+                <element signature="e#13028#15764#0" />
               </folding>
             </state>
           </provider>
@@ -104,6 +104,11 @@
       <find>node</find>
       <find>Trace</find>
       <find>Test</find>
+      <find>dataParser</find>
+      <find>ScoreTable</find>
+      <find>Q_len</find>
+      <find>fwrite</find>
+      <find>MAX_SIMILARITY</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -189,12 +194,13 @@
       <workItem from="1552146560277" duration="2204000" />
       <workItem from="1552409422471" duration="4234000" />
       <workItem from="1552758231621" duration="29278000" />
-      <workItem from="1552820612120" duration="45659000" />
+      <workItem from="1552820612120" duration="46042000" />
+      <workItem from="1553014227864" duration="9602000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101689000" />
+    <option name="totallyTimeSpent" value="111674000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -209,7 +215,7 @@
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26599148" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26865673" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -238,23 +244,20 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>448</line>
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="pairs" language="ObjectiveC" />
+        <watch expression="qOut" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>qOut</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>pairs</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -316,18 +319,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="451" column="8" selection-start-line="451" selection-start-column="8" selection-end-line="451" selection-end-column="8" />
+        <state relative-caret-position="980">
+          <caret line="386" column="73" lean-forward="true" selection-start-line="386" selection-start-column="73" selection-end-line="386" selection-end-column="73" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#830#852#0" />
-            <element signature="e#931#2608#0" />
-            <element signature="e#2625#2810#0" />
-            <element signature="e#5546#5584#0" />
-            <element signature="e#3000#3456#0" />
-            <element signature="e#6123#8434#0" />
-            <element signature="e#6123#6148#0" />
-            <element signature="e#8751#16376#0" />
+            <element signature="e#996#1301#0" />
+            <element signature="e#996#2673#0" />
+            <element signature="e#2675#2825#0" />
+            <element signature="e#3002#3189#0" />
+            <element signature="e#3190#3361#0" />
+            <element signature="e#3191#3770#0" />
+            <element signature="e#13028#15764#0" />
           </folding>
         </state>
       </provider>
