@@ -12,7 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1b5cdd3-fc45-4b0c-abf7-ef5a043dd675" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../MyDocs/FINAL.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../MyDocs/FINAL.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Serial.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Serial.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Serial.exe.stackdump" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Serial.exe.stackdump" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -41,25 +45,25 @@
     <session id="-1436068638">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.6" value="3" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="19" />
-          <entry key="ObjectiveC" value="14063" />
+          <entry key="ObjectiveC" value="15427" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Disassembly" value="17" />
+          <entry key="Disassembly" value="18" />
           <entry key="ObjectiveC" value="2" />
         </counts>
       </usages-collector>
@@ -79,17 +83,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="980">
-              <caret line="386" column="73" lean-forward="true" selection-start-line="386" selection-start-column="73" selection-end-line="386" selection-end-column="73" />
+            <state relative-caret-position="346">
+              <caret line="438" column="17" selection-start-line="438" selection-start-column="17" selection-end-line="438" selection-end-column="17" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#996#1301#0" />
-                <element signature="e#996#2673#0" />
-                <element signature="e#2675#2825#0" />
-                <element signature="e#3002#3189#0" />
-                <element signature="e#3190#3361#0" />
-                <element signature="e#3191#3770#0" />
-                <element signature="e#13028#15764#0" />
+                <element signature="e#943#1433#0" />
+                <element signature="e#1435#1567#0" />
+                <element signature="e#1569#3246#0" />
+                <element signature="e#3248#3573#0" />
+                <element signature="e#3575#3762#0" />
+                <element signature="e#3763#3795#0" />
+                <element signature="e#4099#4692#0" />
+                <element signature="e#4589#11933#0" />
+                <element signature="e#14258#16938#1" />
               </folding>
             </state>
           </provider>
@@ -104,11 +110,25 @@
       <find>node</find>
       <find>Trace</find>
       <find>Test</find>
-      <find>dataParser</find>
       <find>ScoreTable</find>
       <find>Q_len</find>
       <find>fwrite</find>
       <find>MAX_SIMILARITY</find>
+      <find>commandChecker</find>
+      <find>fileHeaderValues</find>
+      <find>fileParser</find>
+      <find>fillDataBuffer</find>
+      <find>dataParser</find>
+      <find>fpr</find>
+      <find>\t\t</find>
+      <find>cellTimeFin</find>
+      <find>printf</find>
+      <find>call</find>
+      <find>mal</find>
+      <find>cal</find>
+      <find>HI</find>
+      <find>_MAX_SIMILARITY</find>
+      <find>callo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -128,11 +148,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1942" />
-    <option name="y" value="-23" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-75" />
+    <option name="y" value="22" />
     <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="height" value="1070" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -140,8 +160,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -168,7 +188,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Serial" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-name FILENAME -mismatch -3 -match 3 -gap -2 -input PATH " PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Serial" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Serial">
+    <configuration name="Serial" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-name FILENAME -mismatch -1 -match 3 -gap -1 -input PATH " PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Serial" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Serial">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -195,12 +215,13 @@
       <workItem from="1552409422471" duration="4234000" />
       <workItem from="1552758231621" duration="29278000" />
       <workItem from="1552820612120" duration="46042000" />
-      <workItem from="1553014227864" duration="9602000" />
+      <workItem from="1553014227864" duration="22195000" />
+      <workItem from="1553046255472" duration="1216000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111674000" />
+    <option name="totallyTimeSpent" value="125483000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -212,21 +233,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
+    <frame x="-75" y="22" width="1936" height="1070" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26865673" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13326226" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952183" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35135135" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25259876" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32952183" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32952183" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.36902288" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32952183" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" show_stripe_button="false" />
@@ -244,15 +264,54 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>278</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>383</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>293</line>
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="CidrExceptionBreakpoint">
+          <properties />
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="pairs" language="ObjectiveC" />
         <watch expression="qOut" language="ObjectiveC" />
+        <watch expression="finFile" language="ObjectiveC" />
+        <watch expression="_MAX_SIMILARITY" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>_MAX_SIMILARITY</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>finFile</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>qOut</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -319,17 +378,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="980">
-          <caret line="386" column="73" lean-forward="true" selection-start-line="386" selection-start-column="73" selection-end-line="386" selection-end-column="73" />
+        <state relative-caret-position="346">
+          <caret line="438" column="17" selection-start-line="438" selection-start-column="17" selection-end-line="438" selection-end-column="17" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#996#1301#0" />
-            <element signature="e#996#2673#0" />
-            <element signature="e#2675#2825#0" />
-            <element signature="e#3002#3189#0" />
-            <element signature="e#3190#3361#0" />
-            <element signature="e#3191#3770#0" />
-            <element signature="e#13028#15764#0" />
+            <element signature="e#943#1433#0" />
+            <element signature="e#1435#1567#0" />
+            <element signature="e#1569#3246#0" />
+            <element signature="e#3248#3573#0" />
+            <element signature="e#3575#3762#0" />
+            <element signature="e#3763#3795#0" />
+            <element signature="e#4099#4692#0" />
+            <element signature="e#4589#11933#0" />
+            <element signature="e#14258#16938#1" />
           </folding>
         </state>
       </provider>
