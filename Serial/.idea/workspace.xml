@@ -12,11 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1b5cdd3-fc45-4b0c-abf7-ef5a043dd675" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../MyDocs/FINAL.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../MyDocs/FINAL.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Serial.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Serial.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Serial.exe.stackdump" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Serial.exe.stackdump" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -45,25 +43,25 @@
     <session id="-1436068638">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.6" value="3" />
+          <entry key="project.open.time.6" value="4" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="19" />
-          <entry key="ObjectiveC" value="15427" />
+          <entry key="ObjectiveC" value="15533" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Disassembly" value="18" />
+          <entry key="Disassembly" value="19" />
           <entry key="ObjectiveC" value="2" />
         </counts>
       </usages-collector>
@@ -83,19 +81,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="438" column="17" selection-start-line="438" selection-start-column="17" selection-end-line="438" selection-end-column="17" />
+            <state relative-caret-position="217">
+              <caret line="298" column="39" lean-forward="true" selection-start-line="298" selection-start-column="39" selection-end-line="298" selection-end-column="39" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#943#1433#0" />
-                <element signature="e#1435#1567#0" />
-                <element signature="e#1569#3246#0" />
-                <element signature="e#3248#3573#0" />
-                <element signature="e#3575#3762#0" />
-                <element signature="e#3763#3795#0" />
-                <element signature="e#4099#4692#0" />
-                <element signature="e#4589#11933#0" />
-                <element signature="e#14258#16938#1" />
+                <element signature="e#1326#1458#0" />
+                <element signature="e#1460#3141#0" />
+                <element signature="e#3143#3468#0" />
+                <element signature="e#3470#3657#0" />
+                <element signature="e#3658#3690#0" />
+                <element signature="e#3994#4587#0" />
               </folding>
             </state>
           </provider>
@@ -110,14 +105,12 @@
       <find>node</find>
       <find>Trace</find>
       <find>Test</find>
-      <find>ScoreTable</find>
       <find>Q_len</find>
       <find>fwrite</find>
       <find>MAX_SIMILARITY</find>
       <find>commandChecker</find>
       <find>fileHeaderValues</find>
       <find>fileParser</find>
-      <find>fillDataBuffer</find>
       <find>dataParser</find>
       <find>fpr</find>
       <find>\t\t</find>
@@ -128,7 +121,10 @@
       <find>cal</find>
       <find>HI</find>
       <find>_MAX_SIMILARITY</find>
+      <find>fillDataBuffer</find>
       <find>callo</find>
+      <find>start</find>
+      <find>ScoreTable</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -148,9 +144,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-75" />
-    <option name="y" value="22" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-126" />
+    <option name="y" value="-21" />
     <option name="width" value="1936" />
     <option name="height" value="1070" />
   </component>
@@ -160,8 +156,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -217,11 +213,12 @@
       <workItem from="1552820612120" duration="46042000" />
       <workItem from="1553014227864" duration="22195000" />
       <workItem from="1553046255472" duration="1216000" />
+      <workItem from="1553047758079" duration="3547000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125483000" />
+    <option name="totallyTimeSpent" value="129030000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -233,14 +230,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-75" y="22" width="1936" height="1070" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13326226" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13432837" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952183" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.25259876" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.35135135" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -268,18 +265,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.c</url>
-          <line>278</line>
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>383</line>
-          <option name="timeStamp" value="107" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>293</line>
-          <option name="timeStamp" value="110" />
+          <line>619</line>
+          <option name="timeStamp" value="113" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -353,6 +340,13 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>Q</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://D:/Cygwin/usr/include/w32api/rpcnsip.h">
@@ -378,19 +372,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="438" column="17" selection-start-line="438" selection-start-column="17" selection-end-line="438" selection-end-column="17" />
+        <state relative-caret-position="217">
+          <caret line="298" column="39" lean-forward="true" selection-start-line="298" selection-start-column="39" selection-end-line="298" selection-end-column="39" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#943#1433#0" />
-            <element signature="e#1435#1567#0" />
-            <element signature="e#1569#3246#0" />
-            <element signature="e#3248#3573#0" />
-            <element signature="e#3575#3762#0" />
-            <element signature="e#3763#3795#0" />
-            <element signature="e#4099#4692#0" />
-            <element signature="e#4589#11933#0" />
-            <element signature="e#14258#16938#1" />
+            <element signature="e#1326#1458#0" />
+            <element signature="e#1460#3141#0" />
+            <element signature="e#3143#3468#0" />
+            <element signature="e#3470#3657#0" />
+            <element signature="e#3658#3690#0" />
+            <element signature="e#3994#4587#0" />
           </folding>
         </state>
       </provider>

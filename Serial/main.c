@@ -271,9 +271,6 @@ void dataParser(char * Q, char * D){
         }
     }
 
-    for(int i = 0; i< Q_len+1; i++) {
-        free(ScoreTable[i]);
-    }
 
     double cellTimeFin = gettime();
     _totalCellTime+= (cellTimeFin-cellTimeInit);
@@ -299,6 +296,11 @@ void dataParser(char * Q, char * D){
         }
     }
 
+//    for(int i = 0; i< Q_len+1; i++) {
+//        free(ScoreTable[i]);
+//    }
+    //free(ScoreTable);
+
     //printf("SIMILARITY MAX %d and COUNTER MAX %d\n", _MAX_SIMILARITY, _counterMax);
 
     double traceTimeInit = gettime();
@@ -313,6 +315,7 @@ void dataParser(char * Q, char * D){
         //char dOut[yMax[i]+1];
 
         //TODO also works with dynamic allocation. Check if it can work with large files
+        //TODO CHECK WHAT IS GOING ON WITH CALLOC
         char *_qOut;
 
         //_qOut = (char *)calloc((xMax[i]+1)*(yMax[i]+1), sizeof(char));
@@ -381,6 +384,8 @@ void dataParser(char * Q, char * D){
 //                _dOut = (char *)stringFixer(_dOut);
 //            }
 //        }
+
+
         _dOut = reverseArr(_dOut, strlen(_dOut));
         _qOut = reverseArr(_qOut, strlen(_qOut));
 
@@ -435,14 +440,15 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
 
     char * Q;
     char * D;
-
-    Q = (char *)calloc(bytereader, sizeof(char));
+    Q = (char *)malloc(bytereader* sizeof(char));
+    //Q = (char *)calloc(bytereader, sizeof(char));
     if(Q==NULL){
         printf("Error occured while trying to allocate memory for buffer.Terminating....");
         exit(-1);
     }
 
-    D = (char *)calloc(bytereader, sizeof(char));
+    D = (char *)malloc(bytereader*sizeof(char));
+    //D = (char *)calloc(bytereader, sizeof(char));
     if(D==NULL){
         printf("Error occured while trying to allocate memory for buffer.Terminating....");
         exit(-1);
@@ -504,7 +510,7 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
 
 //TODO finishing touches and check what is needed and not
 void fileParser(FILE *fp){
-    long long MAXLINELENGTH = 100000000000000;
+    //long long MAXLINELENGTH = 100000000000000;
     int BUFSIZE =  dSize+ qMax + 100;
     long            bytesread;
     char            buf[BUFSIZE];
@@ -558,11 +564,11 @@ void fileParser(FILE *fp){
         // to leave sufficient room for a new line (MAXLINELENGTH), cap it
         // at maximumsize - MAXLINELENGTH
         //sizeLeftover = mymin(bytesread+sizeLeftover-pos, sizeof(buf)-MAXLINELENGTH);
-        if(bytesread+sizeLeftover-pos > sizeof(buf)-MAXLINELENGTH){
-            sizeLeftover = sizeof(buf)-MAXLINELENGTH;
-        }else{
+//        if(bytesread+sizeLeftover-pos > sizeof(buf)-MAXLINELENGTH){
+//            sizeLeftover = sizeof(buf)-MAXLINELENGTH;
+//        }else{
             sizeLeftover = bytesread+sizeLeftover-pos;
-        }
+        //}
         // Extra protection - should never happen but you can never be too safe
         if (sizeLeftover<1) sizeLeftover=0;
 
@@ -587,7 +593,7 @@ int main(int argc, char * argv[]) {
 
     FILE *fp;
 
-    fp = fopen("D:\\TUC_PROJECT\\TUC_Parallel_Computer_Architecture\\MyDocs\\D8.txt","r");
+    fp = fopen("D:\\TUC_PROJECT\\TUC_Parallel_Computer_Architecture\\MyDocs\\D9.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");
