@@ -3,11 +3,12 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <stdbool.h>
+#include <stdint.h>
 //#include <w32api/rpcndr.h>
 
 
-int _cellVal = 0;
-int _traceSteps = 0;
+unsigned int _cellVal = 0;
+unsigned int _traceSteps = 0;
 double _totalTime = 0;
 double timeTotal=0;
 double _totalCellTime = 0;
@@ -23,7 +24,7 @@ static char const ZEROCODE = 'Z';
 
 int _MAX_SIMILARITY;
 
-int Q_len, D_len;
+int Q_len = 0, D_len = 0 ;
 
 int MATCH;
 int MISMATCH;
@@ -181,7 +182,7 @@ void dataParser(char * Q, char * D){
 
     int *ScoreTable[Q_len+1];
     for(int i = 0; i< Q_len+1; i++){
-        ScoreTable[i] = (int *)malloc((D_len+1)* sizeof(int));
+        ScoreTable[i] = malloc((D_len+1)* sizeof(*ScoreTable[i]));
         if(ScoreTable[i] == NULL){
             printf("Could not allocate memory for matrix ScoreTable.Terminating");
             exit(-2);
@@ -192,7 +193,7 @@ void dataParser(char * Q, char * D){
 
     char *TraceTable[Q_len+1];
     for(int i = 0; i< Q_len+1; i++){
-        TraceTable[i] = (char *)malloc((D_len+1)* sizeof(char));
+        TraceTable[i] = malloc((D_len+1)* sizeof(TraceTable[i]));
         if(TraceTable[i] == NULL){
             printf("Could not allocate memory for matrix TraceTable.Terminating");
             exit(-2);
@@ -204,14 +205,12 @@ void dataParser(char * Q, char * D){
 
     for(int i=0; i < Q_len + 1; i++){
         ScoreTable[i][0] = 0;
-        //TraceTable[i][0] = 0;
         TraceTable[i][0] = 'Z';
     }
 
 
     for(int i=0; i < D_len + 1; i++){
         ScoreTable[0][i] = 0;
-        //TraceTable[0][i] = 0;
         TraceTable[0][i] = 'Z';
     }
 
@@ -296,12 +295,13 @@ void dataParser(char * Q, char * D){
         }
     }
 
-//    for(int i = 0; i< Q_len+1; i++) {
-//        free(ScoreTable[i]);
-//    }
+    for(int i = 0; i< Q_len+1; i++) {
+        free(ScoreTable[i]);
+    }
     //free(ScoreTable);
 
     //printf("SIMILARITY MAX %d and COUNTER MAX %d\n", _MAX_SIMILARITY, _counterMax);
+    //TODO Traceback starts from here
 
     double traceTimeInit = gettime();
     for(int i = 0; i< _counterMax+1; i++){
@@ -316,7 +316,7 @@ void dataParser(char * Q, char * D){
 
         //TODO also works with dynamic allocation. Check if it can work with large files
         //TODO CHECK WHAT IS GOING ON WITH CALLOC
-        char *_qOut;
+        char *_qOut = NULL;
 
         //_qOut = (char *)calloc((xMax[i]+1)*(yMax[i]+1), sizeof(char));
         _qOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)*sizeof(char));
@@ -325,7 +325,7 @@ void dataParser(char * Q, char * D){
             exit(-1);
         }
 
-        char *_dOut;
+        char *_dOut = NULL;
         //_dOut = (char *)calloc((xMax[i]+1)*(yMax[i]+1), sizeof(char));
         _dOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)* sizeof(char));
         if(_dOut==NULL){
@@ -375,6 +375,8 @@ void dataParser(char * Q, char * D){
 
         }
 
+        _qOut[lengthCount] = '\0';
+        _dOut[lengthCount] = '\0';
 
         //TODO check what is going on here
 //        if(strlen(_dOut)!= strlen(_qOut)){
@@ -392,12 +394,17 @@ void dataParser(char * Q, char * D){
 
         //CHECKED OK
         //Here we are writing the other demanded info(score, start, stop)
-        fprintf(finFile, "\nMATCH %d [SCORE: %d,START: %d,STOP: %d]\n\tD: %s\n\tQ: %s\n", i+1, _MAX_SIMILARITY, (_endKeeper[i]-lengthCount) , _endKeeper[i]-1, _dOut, _qOut);
+        fprintf(finFile, "\nMATCH %d [SCORE: %d,START: %ld,STOP: %ld]\n\tD: %s\n\tQ: %s\n", i+1, _MAX_SIMILARITY, (_endKeeper[i]-lengthCount) , _endKeeper[i]-1, _dOut, _qOut);
 
         free(_qOut);
         free(_dOut);
 
         //printf("\n\n");
+    }
+
+    //free content of TraceTable
+    for(int i = 0; i< Q_len+1; i++) {
+        free(TraceTable[i]);
     }
 
     double traceTimeFin = gettime();
@@ -438,16 +445,16 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
     long dIndex = 0;
     //TODO check that memory was allocated successfully
 
-    char * Q;
-    char * D;
-    Q = (char *)malloc(bytereader* sizeof(char));
+    char * Q = NULL;
+    char * D = NULL;
+    Q = (char *)malloc(bytereader* sizeof(Q));
     //Q = (char *)calloc(bytereader, sizeof(char));
     if(Q==NULL){
         printf("Error occured while trying to allocate memory for buffer.Terminating....");
         exit(-1);
     }
 
-    D = (char *)malloc(bytereader*sizeof(char));
+    D = (char *)malloc(bytereader*sizeof(D));
     //D = (char *)calloc(bytereader, sizeof(char));
     if(D==NULL){
         printf("Error occured while trying to allocate memory for buffer.Terminating....");
@@ -474,6 +481,9 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
                 //printf ( "Q inedx %d\n", index );
                 //printf ( "Q %s\n", Q );
                 //printf ( "D is %s\n", D );
+                Q[qIndex] = '\0';
+                D[dIndex] = '\0';
+
                 dataParser(Q, D);
                 //fprintf(fwrite, "\n\nQ: \t%s\n", Q);
                 //fprintf(fwrite, "\n\nD: \t%s\n", D);
@@ -497,6 +507,8 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
         }
     }
 
+    Q[qIndex] = '\0';
+    D[dIndex] = '\0';
 
     //printf ( "HI Q %s\n", Q );
     //printf ( "HI D is %s\n", D );
@@ -511,13 +523,18 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
 //TODO finishing touches and check what is needed and not
 void fileParser(FILE *fp){
     //long long MAXLINELENGTH = 100000000000000;
-    int BUFSIZE =  dSize+ qMax + 100;
-    long            bytesread;
+    int BUFSIZE =  dSize+ qMax + 1000000;
+    long            bytesread = 0;
     char            buf[BUFSIZE];
     int              sizeLeftover=0;
     int              bLoopCompleted = 0;
     long        pos = 0;
     int pairCounter = 0;
+
+    //char *buf = NULL;
+
+    //buf = malloc((xMax[i]+1)*(yMax[i]+1)* sizeof(buf));
+
 
     do
     {
@@ -593,14 +610,14 @@ int main(int argc, char * argv[]) {
 
     FILE *fp;
 
-    fp = fopen("D:\\TUC_PROJECT\\TUC_Parallel_Computer_Architecture\\MyDocs\\D9.txt","r");
+    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/MyDocs/D10.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");
         exit(-9);
     }
 
-    finFile = fopen("D:\\TUC_PROJECT\\TUC_Parallel_Computer_Architecture\\MyDocs\\FINAL.txt","a");
+    finFile = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/MyDocs/FINAL.txt","a");
 
     if(finFile == NULL){
         printf("Error while opening write file!\n");
