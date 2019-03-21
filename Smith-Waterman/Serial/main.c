@@ -4,11 +4,10 @@
 #include <memory.h>
 #include <stdbool.h>
 #include <stdint.h>
-//#include <w32api/rpcndr.h>
 
 
-unsigned int _cellVal = 0;
-unsigned int _traceSteps = 0;
+u_int64_t _cellVal = 0;
+u_int64_t _traceSteps = 0;
 double _totalTime = 0;
 double timeTotal=0;
 double _totalCellTime = 0;
@@ -45,11 +44,14 @@ FILE *finFile;
  */
 const char* inVariable[] = {"-name", "-input", "-match", "-mismatch", "-gap" };
 
+/*
+ * This function is responsible to print all the demanded elements at the end of execution
+ */
 void terminalPrinter(){
     printf("\n\n");
     printf("NUMBER OF Q-D PAIRS: %d\n", pairs);
-    printf("TOTAL NUMBER OF CELLS UPDATED: %d\n",_cellVal);
-    printf("TRACEBACK STEPS: %d\n",_traceSteps);
+    printf("TOTAL NUMBER OF CELLS UPDATED: %lu\n",_cellVal);
+    printf("TRACEBACK STEPS: %lu\n",_traceSteps);
     printf("TOTAL TIME : %lf\n", _totalTime);
     printf("TOTAL CELL TIME : %lf\n", _totalCellTime);
     printf("TOTAL TRACEBACK TIME : %lf\n", _totalTraceTime);
@@ -58,6 +60,9 @@ void terminalPrinter(){
 
 }
 
+/*
+ * This function calculates the current time.Used to calculate elapsed time
+ */
 double gettime(void)
 {
     struct timeval ttime;
@@ -78,30 +83,23 @@ void commandChecker(int argc, char * argv[]){
      * If you wish to add new case for command line do it here.
      */
     for (uint8_t i = 0; i < argc; i++) {
-        //printf("Argument %s\n",argv[i]);
         if(strcmp(argv[i],inVariable[0]) == 0){
-            //printf("NAME FOUND %s\n",argv[++i]);
             nameBool = true;
         }
         if(strcmp(argv[i],inVariable[1]) == 0){
-            //printf("INPUT FOUND %s\n",argv[++i]);
             inputBool = true;
         }
         if(strcmp(argv[i],inVariable[2]) == 0) {
-            //printf("MATCH FOUND %s\n", argv[++i]);
             MATCH = atoi(argv[++i]);
             matchBool = true;
         }
         if(strcmp(argv[i],inVariable[3]) == 0) {
-           // printf("MISMATCH FOUND %s\n", argv[++i]);
             MISMATCH = atoi(argv[++i]);
             misBool = true;
         }
         if(strcmp(argv[i],inVariable[4]) == 0) {
-            //printf("GAP FOUND %s\n", argv[++i]);
             GAP = atoi(argv[++i]);
             gapBool = true;
-            //GAP = atoi(argv[++i]);
         }
     }
 
@@ -124,6 +122,10 @@ void ErrorCode(int checker){
     }
 }
 
+/*
+ * This function is responsible to reverse a string. Used at the end of backtracking algorithm
+ * as the final string to be printed needs to be reversed
+ */
 char* reverseArr(char *str, size_t len) {
     size_t i = 0;
     while (len > i) {
@@ -133,20 +135,6 @@ char* reverseArr(char *str, size_t len) {
     }
     return str;
 }
-//TODO FIX THE PROBLEM WITH /001
-//char * stringFixer(char *str) {
-//    char *loc = strchr(str,'\001');
-//    char *pDest = str;
-//    if(loc != NULL){
-//        while(*str){
-//            if(*str != '\001')
-//                *pDest++ = *str;
-//            str++;
-//        }
-//        *pDest = '\0';
-//    }
-//    return *pDest;
-//}
 
 /*
  * This function is responsible to update all header file value.
@@ -171,6 +159,11 @@ void fileHeaderValues(FILE *fp){
     //printf("Show pairs %d\n", dSize);
 }
 
+/*
+ * This function is where the algorithm and the calculations take place.
+ * It takes as parameters the 2 strings that we need to apply the algorithm
+ * and the game begins
+ */
 void dataParser(char * Q, char * D){
 
     //At first write as output the strings as they are
@@ -180,6 +173,10 @@ void dataParser(char * Q, char * D){
     Q_len = strlen(Q);
     D_len = strlen(D);
 
+    /*
+     * We use and initialize.The first one is responsible to mark the scores from the
+     * calculations.The second contains backtracking information.
+     */
     int *ScoreTable[Q_len+1];
     for(int i = 0; i< Q_len+1; i++){
         ScoreTable[i] = malloc((D_len+1)* sizeof(*ScoreTable[i]));
@@ -217,6 +214,10 @@ void dataParser(char * Q, char * D){
 
     printf("START SIMILARITY MATRIX\n");
 
+    /*
+     * Similarity matrix calculations. We also find how many
+     * max values we have in each matrix
+     */
     int _counterMax = 0;
 
     double cellTimeInit = gettime();
@@ -236,11 +237,8 @@ void dataParser(char * Q, char * D){
 
             diag = ScoreTable[i - 1][j - 1] + tempDiag;
 
-            //printf("up %d, left %d, diag %d \n", up, left, diag);
-
             uint tempMax = 0;
 
-            //TODO find smarter way
             if( up <= 0 && left <= 0 && diag <= 0 ){    //case we have max as negative value
                 tempMax = 0;
                 TraceTable[i][j] = ZEROCODE;
@@ -258,7 +256,6 @@ void dataParser(char * Q, char * D){
                 _cellVal++;
             }
 
-            //printf("check per loop %d \n", tempMax);
             ScoreTable[i][j] = tempMax;
 
             if(tempMax > _MAX_SIMILARITY) {
@@ -298,11 +295,10 @@ void dataParser(char * Q, char * D){
     for(int i = 0; i< Q_len+1; i++) {
         free(ScoreTable[i]);
     }
-    //free(ScoreTable);
 
-    //printf("SIMILARITY MAX %d and COUNTER MAX %d\n", _MAX_SIMILARITY, _counterMax);
-    //TODO Traceback starts from here
-
+    /*
+     * This is were backtracking starts. We continue with the loop until it hits zero
+     */
     double traceTimeInit = gettime();
     for(int i = 0; i< _counterMax+1; i++){
 
@@ -311,14 +307,9 @@ void dataParser(char * Q, char * D){
         char xElem = Q[currXpos];
         char yElem = D[currYpos];
         char currNode = TraceTable[currXpos][currYpos];
-        //char qOut[xMax[i]+1];
-        //char dOut[yMax[i]+1];
 
-        //TODO also works with dynamic allocation. Check if it can work with large files
-        //TODO CHECK WHAT IS GOING ON WITH CALLOC
         char *_qOut = NULL;
 
-        //_qOut = (char *)calloc((xMax[i]+1)*(yMax[i]+1), sizeof(char));
         _qOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)*sizeof(char));
         if(_qOut==NULL){
             printf("Error occured while trying to allocate memory for traceback.Terminating....");
@@ -326,16 +317,12 @@ void dataParser(char * Q, char * D){
         }
 
         char *_dOut = NULL;
-        //_dOut = (char *)calloc((xMax[i]+1)*(yMax[i]+1), sizeof(char));
         _dOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)* sizeof(char));
         if(_dOut==NULL){
             printf("Error occured while trying to allocate memory for traceback.Terminating....");
             exit(-1);
         }
-        //char *qOut;
 
-        //THIS SEEMS TO WORK TODO CHECK
-        //qOut = (char *)malloc(sizeof(char) * (maxFinder(xMax[i],yMax[i])+1));
         int lengthCount = 0;
 
         while(currNode != ZEROCODE ){
@@ -364,10 +351,6 @@ void dataParser(char * Q, char * D){
 
             }
             _traceSteps++;
-            //printf("TRACE %d, TESTD %c, TESTQ %c\n",ScoreTable[currXpos][currYpos], TestD[currYpos], TestQ[currXpos]);
-//            printf("TestD %c , TESTQ %c\n",yElem, xElem);
-//            qOut[i][destCounter] = xElem;
-//            destCounter++;
             _qOut[lengthCount] = xElem;
             _dOut[lengthCount] = yElem;
 
@@ -378,22 +361,13 @@ void dataParser(char * Q, char * D){
         _qOut[lengthCount] = '\0';
         _dOut[lengthCount] = '\0';
 
-        //TODO check what is going on here
-//        if(strlen(_dOut)!= strlen(_qOut)){
-//            if(strlen(_dOut) < strlen(_qOut) ){
-//                _qOut = (char *)stringFixer(_qOut);
-//            }else{
-//                _dOut = (char *)stringFixer(_dOut);
-//            }
-//        }
-
-
         _dOut = reverseArr(_dOut, strlen(_dOut));
         _qOut = reverseArr(_qOut, strlen(_qOut));
 
 
-        //CHECKED OK
-        //Here we are writing the other demanded info(score, start, stop)
+        /*
+         * Write all the info demanded on an output file
+         */
         fprintf(finFile, "\nMATCH %d [SCORE: %d,START: %ld,STOP: %ld]\n\tD: %s\n\tQ: %s\n", i+1, _MAX_SIMILARITY, (_endKeeper[i]-lengthCount) , _endKeeper[i]-1, _dOut, _qOut);
 
         free(_qOut);
@@ -431,14 +405,11 @@ void dataParser(char * Q, char * D){
 
 }
 
-//TODO finishing touches and check what is needed and not
+/*
+ * This function is related with file parser. We find the point where the buffer
+ * hits the 2nd Q that find and we return that position which will continue in the next loop
+ */
 long fillDataBuffer(char * buf, long bytereader ,int compFlag){
-    //Needed for testing. Will use it later.
-//    FILE *fwrite = fopen("D:\\TUC_PROJECT\\TUC_Parallel_Computer_Architecture\\MyDocs\\FINAL.txt","a");
-//    if(fwrite == NULL){
-//        printf("Error while opening write file!\n");
-//        exit(1);
-//    }
 
     long index = 0;
     long qIndex = 0;
@@ -448,19 +419,17 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
     char * Q = NULL;
     char * D = NULL;
     Q = (char *)malloc(bytereader* sizeof(Q));
-    //Q = (char *)calloc(bytereader, sizeof(char));
     if(Q==NULL){
         printf("Error occured while trying to allocate memory for buffer.Terminating....");
         exit(-1);
     }
 
     D = (char *)malloc(bytereader*sizeof(D));
-    //D = (char *)calloc(bytereader, sizeof(char));
     if(D==NULL){
         printf("Error occured while trying to allocate memory for buffer.Terminating....");
         exit(-1);
     }
-    //char D[100000];
+
     uint8_t dFlag=0;
     uint8_t qFlag=0;
     uint8_t qCount=0;
@@ -478,15 +447,12 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
             qFlag = 1;
             qCount++;
             if(qCount>1){
-                //printf ( "Q inedx %d\n", index );
-                //printf ( "Q %s\n", Q );
-                //printf ( "D is %s\n", D );
+
                 Q[qIndex] = '\0';
                 D[dIndex] = '\0';
 
                 dataParser(Q, D);
-                //fprintf(fwrite, "\n\nQ: \t%s\n", Q);
-                //fprintf(fwrite, "\n\nD: \t%s\n", D);
+
                 free(Q);
                 free(D);
                 return index;
@@ -510,49 +476,46 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
     Q[qIndex] = '\0';
     D[dIndex] = '\0';
 
-    //printf ( "HI Q %s\n", Q );
-    //printf ( "HI D is %s\n", D );
     dataParser(Q, D);
-//    fprintf(fwrite, "\n\nQ: \t%s\n", Q);
-//    fprintf(fwrite, "\n\nD: \t%s\n", D);
+
     free(Q);
     free(D);
     return bufLen;
 }
 
-//TODO finishing touches and check what is needed and not
+/*
+ * This function is used to read input from file. As files are too large,
+ * c functions such as sscanf, fgets cannot be applied. For that reason we use
+ * buffer that we fill until we find our escape in which case we return. The next
+ * buffer starts from that point until EOF. More info about that can be found on the
+ * link : http://www.softwareprojects.com/resources/programming/t-processing-large-files-in-c-1636.html?fbclid=IwAR3H8v6N2xoVIFXxTzUswMNSsNPzYrm439KkLcUMCxmtb2mrMWRPEvOeF7w
+ */
 void fileParser(FILE *fp){
-    //long long MAXLINELENGTH = 100000000000000;
     int BUFSIZE =  dSize+ qMax + 1000000;
-    long            bytesread = 0;
-    char            buf[BUFSIZE];
-    int              sizeLeftover=0;
-    int              bLoopCompleted = 0;
-    long        pos = 0;
+    long numbytes = 0;
+    char buf[BUFSIZE];
+    int  sizeLeftover=0;
+    int isCompleted = 0;
+    long pos = 0;
     int pairCounter = 0;
-
-    //char *buf = NULL;
-
-    //buf = malloc((xMax[i]+1)*(yMax[i]+1)* sizeof(buf));
-
 
     do
     {
 
         // Read next block from file and save into buf, right after the
         // "left over" buffer
-        bytesread = fread(buf+sizeLeftover, 1, sizeof(buf)-1-sizeLeftover, fp);
-        if (bytesread<1)
+        numbytes = fread(buf+sizeLeftover, 1, sizeof(buf)-1-sizeLeftover, fp);
+        if (numbytes<1)
         {
             // Turn on 'loop completed' flag so that we know to exit at the bottom
             // Still need to process any block we currently have in the
             // leftover buffer
-            bLoopCompleted = 1;
-            bytesread  = 0;
+            isCompleted = 1;
+            numbytes  = 0;
         }
 
         // Add NULL terminator at the end of our buffer
-        buf[bytesread+sizeLeftover] = 0;
+        buf[numbytes+sizeLeftover] = 0;
 
         // Process data - Replace with your function
         //
@@ -562,30 +525,16 @@ void fileParser(FILE *fp){
         // the last record (in which case - if no end-of-record separator,
         // use eof and process anyway)
 
-        pos = fillDataBuffer(buf, bytesread+sizeLeftover,
-                          bLoopCompleted);
+        pos = fillDataBuffer(buf, numbytes+sizeLeftover,isCompleted);
         pairCounter++;
         // If error occured, bail
         if (pos<1)
         {
-            bLoopCompleted = 1;
+            isCompleted = 1;
             pos      = 0;
         }
 
-        // Set Left over buffer size to
-        //
-        //  * The remaining unprocessed buffer that was not processed
-        //  by ProcessData (because it couldn't find end-of-line)
-        //
-        // For protection if the remaining unprocessed buffer is too big
-        // to leave sufficient room for a new line (MAXLINELENGTH), cap it
-        // at maximumsize - MAXLINELENGTH
-        //sizeLeftover = mymin(bytesread+sizeLeftover-pos, sizeof(buf)-MAXLINELENGTH);
-//        if(bytesread+sizeLeftover-pos > sizeof(buf)-MAXLINELENGTH){
-//            sizeLeftover = sizeof(buf)-MAXLINELENGTH;
-//        }else{
-            sizeLeftover = bytesread+sizeLeftover-pos;
-        //}
+        sizeLeftover = numbytes+sizeLeftover-pos;
         // Extra protection - should never happen but you can never be too safe
         if (sizeLeftover<1) sizeLeftover=0;
 
@@ -595,22 +544,22 @@ void fileParser(FILE *fp){
         if (pos!=0 && sizeLeftover!=0)
             memmove(buf, buf+pos, sizeLeftover);
 
-    } while(!bLoopCompleted && pairCounter != pairs);
+    } while(!isCompleted && pairCounter != pairs);
 }
 
 
+//TODO finalize input from terminal and directories
 int main(int argc, char * argv[]) {
 
     double timeInitTotal = gettime();
 
     commandChecker(argc, argv);
 
-    //printf("MATCH  %d, MISMATCH %d, GAP %d\n", MATCH, MISMATCH, GAP);
     printf("STARTING EXECUTION....\n");
 
     FILE *fp;
 
-    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/MyDocs/D10.txt","r");
+    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/MyDocs/D7.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");

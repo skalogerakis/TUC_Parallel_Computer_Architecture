@@ -12,34 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe223220-f827-48c8-88bb-1fa95968acbf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/3.12.3/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/3.12.3/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/3.12.3/CMakeRCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/3.12.3/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/3.12.3/CompilerIdC/a.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/flags.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/feature_tests.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/CMakeFiles/feature_tests.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/Serial.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/Serial.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Serial/cmake-build-debug/" />
@@ -55,10 +28,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Serial/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            <state relative-caret-position="141">
+              <caret line="408" column="53" selection-start-line="408" selection-start-column="53" selection-end-line="408" selection-end-column="53" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#877#1367#0" />
+                <element signature="e#1369#1501#0" />
+                <element signature="e#1587#3268#0" />
+                <element signature="e#3186#3511#0" />
+                <element signature="e#3513#3700#0" />
+                <element signature="e#3671#4264#0" />
+                <element signature="e#4266#11254#0" />
+                <element signature="e#11151#12856#0" />
+                <element signature="e#12883#15295#0" />
               </folding>
             </state>
           </provider>
@@ -70,11 +52,12 @@
     <findStrings>
       <find>Q_len</find>
       <find>ScoreTable</find>
-      <find>fillDataBuffer</find>
       <find>malloc</find>
       <find>_endKeeper</find>
       <find>_d</find>
       <find>_cellVal</find>
+      <find>fillDataBuffer</find>
+      <find>bytesread</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,12 +135,12 @@
       <updated>1553110777837</updated>
       <workItem from="1553110780615" duration="173000" />
       <workItem from="1553114254241" duration="5062000" />
-      <workItem from="1553120205495" duration="2150000" />
+      <workItem from="1553120205495" duration="6227000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7385000" />
+    <option name="totallyTimeSpent" value="11462000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1360" height="770" extended-state="6" />
@@ -168,7 +151,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39313573" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3369735" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.46177846" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -188,24 +171,22 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Serial/main.c</url>
-          <line>636</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Serial/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        <state relative-caret-position="141">
+          <caret line="408" column="53" selection-start-line="408" selection-start-column="53" selection-end-line="408" selection-end-column="53" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#877#1367#0" />
+            <element signature="e#1369#1501#0" />
+            <element signature="e#1587#3268#0" />
+            <element signature="e#3186#3511#0" />
+            <element signature="e#3513#3700#0" />
+            <element signature="e#3671#4264#0" />
+            <element signature="e#4266#11254#0" />
+            <element signature="e#11151#12856#0" />
+            <element signature="e#12883#15295#0" />
           </folding>
         </state>
       </provider>
