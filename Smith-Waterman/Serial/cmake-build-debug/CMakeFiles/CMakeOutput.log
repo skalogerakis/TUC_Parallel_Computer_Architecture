@@ -10,33 +10,33 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/3.13.2/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/3.13.2/CompilerIdC/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_1af43/fast"
-/usr/bin/make -f CMakeFiles/cmTC_1af43.dir/build.make CMakeFiles/cmTC_1af43.dir/build
-make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_1af43.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_1af43.dir/testCCompiler.c.o   -c /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_1af43
-/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1af43.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_1af43.dir/testCCompiler.c.o  -o cmTC_1af43 
-make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_8a284/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8a284.dir/build.make CMakeFiles/cmTC_8a284.dir/build
+make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8a284.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_8a284.dir/testCCompiler.c.o   -c /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_8a284
+/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a284.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_8a284.dir/testCCompiler.c.o  -o cmTC_8a284 
+make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c169a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_c169a.dir/build.make CMakeFiles/cmTC_c169a.dir/build
-make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_c169a.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_c169a.dir/CMakeCCompilerABI.c.o   -c /opt/clion-2018.3.4/bin/cmake/linux/share/cmake-3.13/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_c169a
-/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c169a.dir/link.txt --verbose=1
-/usr/bin/cc     -v CMakeFiles/cmTC_c169a.dir/CMakeCCompilerABI.c.o  -o cmTC_c169a 
+Run Build Command:"/usr/bin/make" "cmTC_8dbce/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8dbce.dir/build.make CMakeFiles/cmTC_8dbce.dir/build
+make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8dbce.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_8dbce.dir/CMakeCCompilerABI.c.o   -c /opt/clion-2018.3.4/bin/cmake/linux/share/cmake-3.13/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_8dbce
+/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8dbce.dir/link.txt --verbose=1
+/usr/bin/cc     -v CMakeFiles/cmTC_8dbce.dir/CMakeCCompilerABI.c.o  -o cmTC_8dbce 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
@@ -48,24 +48,24 @@ Thread model: posix
 gcc version 7.3.0 (Ubuntu 7.3.0-27ubuntu1~18.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c169a' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccriOnP9.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_c169a /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_c169a.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c169a' '-mtune=generic' '-march=x86-64'
-make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8dbce' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccDj6SNW.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_8dbce /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_8dbce.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8dbce' '-mtune=generic' '-march=x86-64'
+make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_c169a/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_c169a.dir/build.make CMakeFiles/cmTC_c169a.dir/build]
-  ignore line: [make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_c169a.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_c169a.dir/CMakeCCompilerABI.c.o   -c /opt/clion-2018.3.4/bin/cmake/linux/share/cmake-3.13/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_c169a]
-  ignore line: [/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c169a.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_c169a.dir/CMakeCCompilerABI.c.o  -o cmTC_c169a ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_8dbce/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_8dbce.dir/build.make CMakeFiles/cmTC_8dbce.dir/build]
+  ignore line: [make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_8dbce.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_8dbce.dir/CMakeCCompilerABI.c.o   -c /opt/clion-2018.3.4/bin/cmake/linux/share/cmake-3.13/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_8dbce]
+  ignore line: [/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8dbce.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_8dbce.dir/CMakeCCompilerABI.c.o  -o cmTC_8dbce ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
@@ -77,13 +77,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 7.3.0 (Ubuntu 7.3.0-27ubuntu1~18.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c169a' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccriOnP9.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_c169a /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_c169a.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8dbce' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccDj6SNW.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_8dbce /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_8dbce.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccriOnP9.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccDj6SNW.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -102,7 +102,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_c169a] ==> ignore
+    arg [cmTC_8dbce] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
@@ -114,7 +114,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
-    arg [CMakeFiles/cmTC_c169a.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_8dbce.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -144,17 +144,17 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_57998/fast"
-/usr/bin/make -f CMakeFiles/cmTC_57998.dir/build.make CMakeFiles/cmTC_57998.dir/build
-make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_57998.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_57998.dir/feature_tests.c.o   -c /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_57998
-/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_57998.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_57998.dir/feature_tests.c.o  -o cmTC_57998 
-make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_e1901/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e1901.dir/build.make CMakeFiles/cmTC_e1901.dir/build
+make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e1901.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_e1901.dir/feature_tests.c.o   -c /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_e1901
+/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e1901.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_e1901.dir/feature_tests.c.o  -o cmTC_e1901 
+make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -164,17 +164,17 @@ make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Ar
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_af90e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_af90e.dir/build.make CMakeFiles/cmTC_af90e.dir/build
-make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_af90e.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_af90e.dir/feature_tests.c.o   -c /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_af90e
-/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_af90e.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_af90e.dir/feature_tests.c.o  -o cmTC_af90e 
-make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_d9c73/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d9c73.dir/build.make CMakeFiles/cmTC_d9c73.dir/build
+make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d9c73.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_d9c73.dir/feature_tests.c.o   -c /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_d9c73
+/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d9c73.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_d9c73.dir/feature_tests.c.o  -o cmTC_d9c73 
+make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -184,17 +184,17 @@ make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Ar
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_4b75e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_4b75e.dir/build.make CMakeFiles/cmTC_4b75e.dir/build
-make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_4b75e.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_4b75e.dir/feature_tests.c.o   -c /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/feature_tests.c
-Linking C executable cmTC_4b75e
-/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b75e.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_4b75e.dir/feature_tests.c.o  -o cmTC_4b75e 
-make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTC_aaf02/fast"
+/usr/bin/make -f CMakeFiles/cmTC_aaf02.dir/build.make CMakeFiles/cmTC_aaf02.dir/build
+make[1]: Entering directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_aaf02.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_aaf02.dir/feature_tests.c.o   -c /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_aaf02
+/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aaf02.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_aaf02.dir/feature_tests.c.o  -o cmTC_aaf02 
+make[1]: Leaving directory '/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes

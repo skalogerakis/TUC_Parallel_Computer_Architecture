@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/main.c
+/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/main.c
 stdio.h
 -
 sys/time.h

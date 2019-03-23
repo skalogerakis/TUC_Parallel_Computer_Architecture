@@ -1,4 +1,4 @@
-/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial
+/opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial
 -- The C compiler identification is GNU 7.3.0
 -- Check for working C compiler: /usr/bin/cc
 -- Check for working C compiler: /usr/bin/cc -- works
@@ -8,4 +8,4 @@
 -- Detecting C compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Serial/cmake-build-debug
+-- Build files have been written to: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Serial/cmake-build-debug

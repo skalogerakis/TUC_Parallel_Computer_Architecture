@@ -164,9 +164,11 @@ void fileHeaderValues(FILE *fp){
  * It takes as parameters the 2 strings that we need to apply the algorithm
  * and the game begins
  */
+
 void dataParser(char * Q, char * D){
 
     //At first write as output the strings as they are
+    //TODO ENABLE
     fprintf(finFile, "\n\nQ: \t%s", Q);
     fprintf(finFile, "\nD: \t%s\n", D);
 
@@ -187,28 +189,14 @@ void dataParser(char * Q, char * D){
     }
     printf("Memory Allocated successfully for ScoreTable matrix.\n");
 
-
-    char *TraceTable[Q_len+1];
-    for(int i = 0; i< Q_len+1; i++){
-        TraceTable[i] = malloc((D_len+1)* sizeof(TraceTable[i]));
-        if(TraceTable[i] == NULL){
-            printf("Could not allocate memory for matrix TraceTable.Terminating");
-            exit(-2);
-        }
-    }
-
-    printf("Memory Allocated successfully for TraceTable matrix.\n");
     //Initialize 2D array (We have one additional column and row)
 
     for(int i=0; i < Q_len + 1; i++){
         ScoreTable[i][0] = 0;
-        TraceTable[i][0] = 'Z';
     }
-
 
     for(int i=0; i < D_len + 1; i++){
         ScoreTable[0][i] = 0;
-        TraceTable[0][i] = 'Z';
     }
 
 
@@ -241,17 +229,13 @@ void dataParser(char * Q, char * D){
 
             if( up <= 0 && left <= 0 && diag <= 0 ){    //case we have max as negative value
                 tempMax = 0;
-                TraceTable[i][j] = ZEROCODE;
             }else{
-                if( up > left && up >= diag){
+                if( up > left && up > diag){
                     tempMax = up;
-                    TraceTable[i][j] = UPCODE;
-                }else if (left >= up && left >= diag){
+                }else if (left >= up && left > diag){
                     tempMax = left;
-                    TraceTable[i][j] = LEFTCODE;
                 }else{
                     tempMax = diag;
-                    TraceTable[i][j] = DIAGCODE;
                 }
                 _cellVal++;
             }
@@ -273,6 +257,8 @@ void dataParser(char * Q, char * D){
 
     printf("Similarity matrix done. Start backtracking\n");
 
+    //printf("MAX %d\n",_MAX_SIMILARITY);
+
     /*
      * We find all max value we need to backtrack
      */
@@ -292,13 +278,11 @@ void dataParser(char * Q, char * D){
         }
     }
 
-    for(int i = 0; i< Q_len+1; i++) {
-        free(ScoreTable[i]);
-    }
 
     /*
      * This is were backtracking starts. We continue with the loop until it hits zero
      */
+
     double traceTimeInit = gettime();
     for(int i = 0; i< _counterMax+1; i++){
 
@@ -306,7 +290,7 @@ void dataParser(char * Q, char * D){
         long currYpos = yMax[i];
         char xElem = Q[currXpos];
         char yElem = D[currYpos];
-        char currNode = TraceTable[currXpos][currYpos];
+        char currNode = ScoreTable[currXpos][currYpos];
 
         char *_qOut = NULL;
 
@@ -325,49 +309,78 @@ void dataParser(char * Q, char * D){
 
         int lengthCount = 0;
 
-        while(currNode != ZEROCODE ){
+        //We initialize traceflag to zero when we want to find a new max value
+        //Traceback until we reach zero. Added some cases to make it even more strict
+        u_int8_t traceFlag = 0;
+        while(traceFlag != 1){
+            int up, left, diag;
 
-            if(currNode == UPCODE){
-                currXpos--;
-                xElem = Q[currXpos];
-                yElem = '-';
+            up = ScoreTable[currXpos-1][currYpos];  //we want same column and one row up
+            left = ScoreTable[currXpos][currYpos-1]; //we want same row and one column left
+            diag = ScoreTable[currXpos - 1][currYpos - 1];
 
-                currNode = TraceTable[currXpos][currYpos];
-
-            }else if(currNode == LEFTCODE){
-                currYpos--;
-                xElem = '-';
-                yElem = D[currYpos];
-
-                currNode = TraceTable[currXpos][currYpos];
-
-            }else if(currNode == DIAGCODE){
+            if(diag == 0 && ScoreTable[currXpos][currYpos] - MATCH == 0){
+                traceFlag = 1;
                 currYpos--;
                 currXpos--;
                 xElem = Q[currXpos];
                 yElem = D[currYpos];
+            }else{
+                if( up > left && up > diag){
+                    currXpos--;
+                    xElem = Q[currXpos];
+                    yElem = '-';
+                }else if (left > up && left > diag){
+                    currYpos--;
+                    xElem = '-';
+                    yElem = D[currYpos];
+                }else if(diag >= up && diag >= left){
+                    if(Q[currXpos-1] == D[currYpos-1] || (diag > up && diag > left) ){
+                        currYpos--;
+                        currXpos--;
+                        xElem = Q[currXpos];
+                        yElem = D[currYpos];
+                    }else if(Q[currXpos-1] == D[currYpos]){
+                        currXpos--;
+                        xElem = Q[currXpos];
+                        yElem = '-';
+                    }else{
+                        currYpos--;
+                        xElem = '-';
+                        yElem = D[currYpos];
+                    }
 
-                currNode = TraceTable[currXpos][currYpos];
+                }else{
+                    if(Q[currXpos] == D[currYpos-1]){
+                        currYpos--;
+                        xElem = '-';
+                        yElem = D[currYpos];
+                    }else{
+                        currXpos--;
+                        xElem = Q[currXpos];
+                        yElem = '-';
+                    }
+                }
 
             }
             _traceSteps++;
             _qOut[lengthCount] = xElem;
             _dOut[lengthCount] = yElem;
-
             lengthCount++;
 
         }
 
-        _qOut[lengthCount] = '\0';
-        _dOut[lengthCount] = '\0';
+        _qOut[lengthCount+1] = '\0';
+        _dOut[lengthCount+1] = '\0';
 
         _dOut = reverseArr(_dOut, strlen(_dOut));
         _qOut = reverseArr(_qOut, strlen(_qOut));
 
-
+        //printf("\nQ reversed %s and \nD reversed %s",_qOut,_dOut);
         /*
          * Write all the info demanded on an output file
          */
+        //TODO ENABLE IT AT THE END
         fprintf(finFile, "\nMATCH %d [SCORE: %d,START: %ld,STOP: %ld]\n\tD: %s\n\tQ: %s\n", i+1, _MAX_SIMILARITY, (_endKeeper[i]-lengthCount) , _endKeeper[i]-1, _dOut, _qOut);
 
         free(_qOut);
@@ -376,13 +389,13 @@ void dataParser(char * Q, char * D){
         //printf("\n\n");
     }
 
-    //free content of TraceTable
-    for(int i = 0; i< Q_len+1; i++) {
-        free(TraceTable[i]);
-    }
-
     double traceTimeFin = gettime();
     _totalTraceTime+=(traceTimeFin - traceTimeInit);
+
+    //TODO DISABLE IT ON PRINT
+    for(int i = 0; i< Q_len+1; i++) {
+        free(ScoreTable[i]);
+    }
 
     //PRINTER OF THE  ARRAYS. USED FOR DEBBUGING PURPOSES ONLY
 //    for (int i = 0; i < Q_len + 1; i++){
@@ -392,19 +405,9 @@ void dataParser(char * Q, char * D){
 //        }
 //
 //    }
-//
-//    printf("\n\n\n");
-//    for (int i = 0; i < Q_len + 1; i++){
-//        printf("\n");
-//        for (int j = 0; j < D_len + 1; j++){
-//            printf("%c\t",TraceTable[i][j]);
-//        }
-//
-//    }
 
 
 }
-
 /*
  * This function is related with file parser. We find the point where the buffer
  * hits the 2nd Q that find and we return that position which will continue in the next loop
@@ -418,13 +421,13 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
 
     char * Q = NULL;
     char * D = NULL;
-    Q = (char *)malloc(bytereader* sizeof(Q));
+    Q = (char *)malloc(bytereader* sizeof(char));
     if(Q==NULL){
         printf("Error occured while trying to allocate memory for buffer.Terminating....");
         exit(-1);
     }
 
-    D = (char *)malloc(bytereader*sizeof(D));
+    D = (char *)malloc(bytereader*sizeof(char));
     if(D==NULL){
         printf("Error occured while trying to allocate memory for buffer.Terminating....");
         exit(-1);
@@ -491,7 +494,8 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
  * link : http://www.softwareprojects.com/resources/programming/t-processing-large-files-in-c-1636.html?fbclid=IwAR3H8v6N2xoVIFXxTzUswMNSsNPzYrm439KkLcUMCxmtb2mrMWRPEvOeF7w
  */
 void fileParser(FILE *fp){
-    int BUFSIZE =  dSize+ qMax + 1000000;
+    //TODO WHAT IS GOING ON WITH BUFSIZE AND D8
+    int BUFSIZE =  dSize+ qMax + 10000;
     long numbytes = 0;
     char buf[BUFSIZE];
     int  sizeLeftover=0;
@@ -559,14 +563,15 @@ int main(int argc, char * argv[]) {
 
     FILE *fp;
 
-    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/MyDocs/D7.txt","r");
+    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D7.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");
         exit(-9);
     }
 
-    finFile = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/MyDocs/FINAL.txt","a");
+    //TODO ENABLE
+    finFile = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/FINAL.txt","a");
 
     if(finFile == NULL){
         printf("Error while opening write file!\n");
@@ -578,6 +583,7 @@ int main(int argc, char * argv[]) {
 
 
     fclose(fp);
+    //TODO ENABLE
     fclose(finFile);
 
     double timeFinTotal = gettime();
