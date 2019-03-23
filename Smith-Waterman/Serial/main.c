@@ -370,8 +370,8 @@ void dataParser(char * Q, char * D){
 
         }
 
-        _qOut[lengthCount+1] = '\0';
-        _dOut[lengthCount+1] = '\0';
+        _qOut[lengthCount] = '\0';
+        _dOut[lengthCount] = '\0';
 
         _dOut = reverseArr(_dOut, strlen(_dOut));
         _qOut = reverseArr(_qOut, strlen(_qOut));
@@ -563,7 +563,7 @@ int main(int argc, char * argv[]) {
 
     FILE *fp;
 
-    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D7.txt","r");
+    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D1.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");
