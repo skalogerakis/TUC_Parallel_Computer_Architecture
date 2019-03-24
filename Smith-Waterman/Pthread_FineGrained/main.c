@@ -57,8 +57,8 @@ typedef struct thread_data _td;
 FILE *finFile;
 
 int **ScoreTable;
-char * Q;
-char * D;
+char * Q = NULL;
+char * D = NULL;
 
 
 /*
@@ -236,7 +236,48 @@ long long int * firstAntiElement(long long int currAnti, _td* tData){
     //return coor;
 }
 
+void updateScore(long long int x, long long int y){
+
+    printf("x %lld, y %lld\n", x, y);
+
+    long long int up, left, diag;
+
+    up = ScoreTable[x-1][y] + GAP;
+
+    left = ScoreTable[x][y-1] + GAP; //we want same row and one column left
+
+    long long int tempDiag,tempMax;
+
+
+    //TODO wrong while printing.Fix that
+
+
+    tempDiag = (D[y - 1] == Q[x - 1]) ? MATCH : MISMATCH;
+
+
+    diag = ScoreTable[x - 1][y - 1] + tempDiag;
+
+    printf("D %c, Q %c up %lld, left %lld, diag %lld\n", D[x], Q[y], up, left, diag );
+
+    if( up <= 0 && left <= 0 && diag <= 0 ){    //case we have max as negative value
+        tempMax = 0;
+    }else{
+        if( up > left && up > diag){
+            tempMax = up;
+        }else if (left >= up && left > diag){
+            tempMax = left;
+        }else{
+            tempMax = diag;
+        }
+        //_cellVal++;
+    }
+
+    ScoreTable[x][y] = tempMax;
+    //printf("MAX %lld\n",tempMax);
+}
+
 int SerialFlag = 0;
+int balanceCount;
 
 void *calcSimilarity(void *threadArg){
     _td *tData;
@@ -251,105 +292,82 @@ void *calcSimilarity(void *threadArg){
 
     for (long long int i = 1; i<=antiDiagNum; i++){
         //printf("Antidiagonal length %lld\n\n", antiDiagLength(i));
-        tData->antiLen = antiDiagLength(i);
-        firstAntiElement(i, &tData[i]);
-        //tData->xCalc = coor[1];
-        //tData->yCalc = coor[2];
-        printf("Hello Houston from thread %d and len %lld\n",tData->thread_id, tData->antiLen);
-        printf("X %lld, Y %lld\n",tData[i].xCalc, tData[i].yCalc);
+        // tData->xCalc = coor[1];
+        //        //tData->yCalc = coor[2];
+        //        //printf("Hello Houston from thread %d and len %lld\n",tData->thread_id, tData->antiLen);
+        //        //printf("X %lld, Y %lld\n",tData[i].xCalc, tData[i].yCalc);
+        tData[tData->thread_id].antiLen = antiDiagLength(i);
+        firstAntiElement(i, &tData[tData->thread_id]);
 
-        long long int lenDiv = tData->antiLen/THREADS;
-        long long int modDiv = tData->antiLen%THREADS;
+
+        //SerialFlag = 0;
+        //balanceCount = 1;
+
+        long long int lenDiv = tData[tData->thread_id].antiLen / THREADS;
+        long long int modDiv = tData[tData->thread_id].antiLen % THREADS;
+
+
+        long long int finEleX = (tData[tData->thread_id].xCalc-1) * lenDiv;
+        long long int finEleY = (tData[tData->thread_id].yCalc+1) * lenDiv;
+        //printf("calc X %lld,calc Y %lld and thread %d\n",tData[i].xCalc,tData[i].yCalc,tData->thread_id);
+        printf("FIN X %lld,FIN Y %lld and thread %d\n",finEleX,finEleY,tData->thread_id);
         printf("DIV %lld, MOD %lld\n",lenDiv,modDiv);
 
-        for(long long j=1;j<=lenDiv;j++){
+        for(long long j=0;j<lenDiv;j++){
 
             long long int currX, currY;
-            long long int up, left, diag;
-
-            currX = tData[i].xCalc - tData->thread_id * j;
-            currY = tData[i].yCalc + tData->thread_id * j;
-            printf("TSO KAI LO %lld , %lld\n",currX,currY);
-
-            up = ScoreTable[currX-1][currY] + GAP;
-
-            left = ScoreTable[currX][currY-1] + GAP; //we want same row and one column left
-
-            int tempDiag,tempMax;
 
 
-            //TODO wrong while printing.Fix that
-            printf("D %c, Q %c\n", D[tData[i].xCalc], Q[tData[i].yCalc] );
+            currX = tData[tData->thread_id].xCalc - tData->thread_id;
+            currY = tData[tData->thread_id].yCalc + tData->thread_id;
+            //printf("TSO KAI LO %lld , %lld\n",currX,currY);
 
-            tempDiag = (D[tData[i].yCalc - 1] == Q[tData[i].xCalc - 1]) ? MATCH : MISMATCH;
-
-
-            diag = ScoreTable[currX - 1][currY - 1] + tempDiag;
-
-            if( up <= 0 && left <= 0 && diag <= 0 ){    //case we have max as negative value
-                tempMax = 0;
-            }else{
-                if( up > left && up > diag){
-                    tempMax = up;
-                }else if (left >= up && left > diag){
-                    tempMax = left;
-                }else{
-                    tempMax = diag;
-                }
-                //_cellVal++;
-            }
-
-            ScoreTable[currX][currY] = tempMax;
-            printf("MAX %d\n",tempMax);
+            tData[tData->thread_id].xCalc = (tData[tData->thread_id].xCalc-1) * lenDiv;
+            tData[tData->thread_id].yCalc = (tData[tData->thread_id].yCalc+1) * lenDiv;
+            updateScore(currX, currY);
 
         }
-        if(lenDiv == 0 && SerialFlag == 0){
+
+        if(lenDiv == 0) {   //TODO works fine
             pthread_mutex_lock(&lock);
+            SerialFlag++;
+            if (SerialFlag == 1) {
+                for (int j = 0; j < tData[tData->thread_id].antiLen; j++) {
 
+                    long long int currX, currY;
+                    currX = tData[tData->thread_id].xCalc - j;
+                    currY = tData[tData->thread_id].yCalc + j;
 
-            for(int j=0; j<tData->antiLen;j++){
+                    //printf("Hello case X %lld, Y %lld and thread %d\n", currX, currY, tData->thread_id);
+                    updateScore(currX, currY);
 
-                long long int up, left, diag;
-
-                long long int currX, currY;
-                currX = tData[i].xCalc - j;
-                currY = tData[i].yCalc + j;
-
-                printf("Hello case X %lld, Y %lld and thread %d\n",currX,currY,tData->thread_id);
-
-                up = ScoreTable[currX-1][currY] + GAP;
-
-                left = ScoreTable[currX][currY-1] + GAP; //we want same row and one column left
-
-                int tempDiag,tempMax;
-
-                tempDiag = (D[currX - 1] == Q[currY - 1]) ? MATCH : MISMATCH;
-
-
-                diag = ScoreTable[currX - 1][currY - 1] + tempDiag;
-
-                if( up <= 0 && left <= 0 && diag <= 0 ){    //case we have max as negative value
-                    tempMax = 0;
-                }else{
-                    if( up > left && up > diag){
-                        tempMax = up;
-                    }else if (left >= up && left > diag){
-                        tempMax = left;
-                    }else{
-                        tempMax = diag;
-                    }
-                    //_cellVal++;
                 }
-
             }
 
-            SerialFlag = 1;
+//            SerialFlag = 1;
 
             pthread_mutex_unlock(&lock);
+        }else if( modDiv!=0){
+            pthread_mutex_lock(&lock);
 
+            if(balanceCount <= modDiv){
+                long long int currX, currY;
+                currX = finEleX - balanceCount;
+                currY = finEleY + balanceCount;
+
+                printf("Balance case X %lld, Y %lld and thread %d\n",currX,currY,tData[tData->thread_id].thread_id);
+
+                updateScore(currX, currY);
+            }
+
+
+            balanceCount++;
+            pthread_mutex_unlock(&lock);
         }
-        printf("WAIT thread %d\n",tData->thread_id);
+        printf("WAIT thread %d\n",tData[tData->thread_id].thread_id);
         pthread_barrier_wait(&barrier);
+        SerialFlag = 0;
+        balanceCount = 1;
         printf("\n\n");
 
     }
@@ -365,7 +383,7 @@ void *calcSimilarity(void *threadArg){
  * and the game begins
  */
 
-void dataParser(char * Q, char * D){
+void dataParser(){
 
     //At first write as output the strings as they are
     //TODO ENABLE
@@ -440,7 +458,8 @@ void dataParser(char * Q, char * D){
 
     pthread_barrier_init(&barrier, NULL,THREADS);
 
-    _td *tData = (_td *)malloc(THREADS * sizeof(_td));
+    _td *tData = malloc(THREADS * sizeof(*tData));
+    //memset(tData, 0, sizeof(_td));
     //_td tData[THREADS];
 
     antiDiagNum = D_len + Q_len  - 1;
@@ -470,7 +489,6 @@ void dataParser(char * Q, char * D){
 
     }
 
-
     /*
      * After the parallel part is over join all the threads and move on
      */
@@ -482,8 +500,15 @@ void dataParser(char * Q, char * D){
     }
 
     pthread_barrier_destroy(&barrier);
+    pthread_mutex_destroy(&lock);
+
+    //free(mthread);
+//    for(int i = 0; i< THREADS; i++) {
+//        free(tData);
+//    }
 
     free(tData);
+
 
 
 
@@ -690,9 +715,7 @@ void dataParser(char * Q, char * D){
 //    _totalTraceTime+=(traceTimeFin - traceTimeInit);
 
     //TODO DISABLE IT ON PRINT
-//    for(int i = 0; i< Q_len+1; i++) {
-//        free(ScoreTable[i]);
-//    }
+
 
     //PRINTER OF THE  ARRAYS. USED FOR DEBBUGING PURPOSES ONLY
     for (int i = 0; i < Q_len + 1; i++){
@@ -701,6 +724,10 @@ void dataParser(char * Q, char * D){
             printf("%d\t",ScoreTable[i][j]);
         }
 
+    }
+
+    for(int i = 0; i< Q_len+1; i++) {
+        free(ScoreTable[i]);
     }
 
 
@@ -750,7 +777,8 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
                 Q[qIndex] = '\0';
                 D[dIndex] = '\0';
 
-                dataParser(Q, D);
+                //dataParser(Q, D);
+                dataParser();
 
                 free(Q);
                 free(D);
@@ -775,7 +803,8 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
     Q[qIndex] = '\0';
     D[dIndex] = '\0';
 
-    dataParser(Q, D);
+    //dataParser(Q, D);
+    dataParser();
 
     free(Q);
     free(D);
