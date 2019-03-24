@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated>
-      <config projectName="Serial" targetName="Serial" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -12,8 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe223220-f827-48c8-88bb-1fa95968acbf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Serial/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,28 +20,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Serial/main.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="408" column="53" selection-start-line="408" selection-start-column="53" selection-end-line="408" selection-end-column="53" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#877#1367#0" />
-                <element signature="e#1369#1501#0" />
-                <element signature="e#1587#3268#0" />
-                <element signature="e#3186#3511#0" />
-                <element signature="e#3513#3700#0" />
-                <element signature="e#3671#4264#0" />
-                <element signature="e#4266#11254#0" />
-                <element signature="e#11151#12856#0" />
-                <element signature="e#12883#15295#0" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/Smith-Waterman/Serial/main.c">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -71,37 +52,44 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1765" />
-    <option name="width" value="1390" />
-    <option name="height" value="1000" />
+    <option name="x" value="2199" />
+    <option name="y" value="69" />
+    <option name="width" value="1020" />
+    <option name="height" value="576" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Serial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TUC_Parallel_Computer_Architecture" type="b2602c69:ProjectViewProjectNode" />
               <item name="TUC_Parallel_Computer_Architecture" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Serial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TUC_Parallel_Computer_Architecture" type="b2602c69:ProjectViewProjectNode" />
               <item name="TUC_Parallel_Computer_Architecture" type="462c0819:PsiDirectoryNode" />
+              <item name="Smith-Waterman" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TUC_Parallel_Computer_Architecture" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TUC_Parallel_Computer_Architecture" type="462c0819:PsiDirectoryNode" />
+              <item name="Smith-Waterman" type="462c0819:PsiDirectoryNode" />
               <item name="Serial" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Serial/CMakeLists.txt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Smith-Waterman" />
     <property name="settings.editor.selected.configurable" value="dynamic.analysis.tools.valgrind" />
   </component>
   <component name="RunDashboard">
@@ -117,7 +105,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Serial" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-name ID -input PATH -match 2 -mismatch -3 -gap -1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Serial" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Serial">
+    <configuration name="Serial" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-name ID -input PATH -match 2 -mismatch -3 -gap -1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="Serial" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="Serial">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -135,23 +123,23 @@
       <updated>1553110777837</updated>
       <workItem from="1553110780615" duration="173000" />
       <workItem from="1553114254241" duration="5062000" />
-      <workItem from="1553120205495" duration="6227000" />
+      <workItem from="1553120205495" duration="6758000" />
+      <workItem from="1553127131011" duration="53000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11462000" />
+    <option name="totallyTimeSpent" value="12046000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="-2" width="1360" height="770" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15525115" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15753424" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3369735" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3369735" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.46177846" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -160,7 +148,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32917318" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="CMake" order="11" />
+      <window_info active="true" anchor="bottom" id="CMake" order="11" visible="true" weight="0.32917318" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.4071763" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -172,24 +160,9 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Serial/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="408" column="53" selection-start-line="408" selection-start-column="53" selection-end-line="408" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#877#1367#0" />
-            <element signature="e#1369#1501#0" />
-            <element signature="e#1587#3268#0" />
-            <element signature="e#3186#3511#0" />
-            <element signature="e#3513#3700#0" />
-            <element signature="e#3671#4264#0" />
-            <element signature="e#4266#11254#0" />
-            <element signature="e#11151#12856#0" />
-            <element signature="e#12883#15295#0" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/Serial/main.c" />
+    <entry file="file://$PROJECT_DIR$/Smith-Waterman/Serial/main.c">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

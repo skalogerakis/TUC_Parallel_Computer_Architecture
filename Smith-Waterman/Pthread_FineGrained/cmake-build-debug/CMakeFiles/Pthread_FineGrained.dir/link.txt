@@ -1,0 +1,1 @@
+/usr/bin/cc  -pthread -g   CMakeFiles/Pthread_FineGrained.dir/main.c.o  -o Pthread_FineGrained 

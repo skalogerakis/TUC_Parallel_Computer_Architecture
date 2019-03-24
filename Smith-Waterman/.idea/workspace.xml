@@ -14,8 +14,7 @@
     <list default="true" id="1c0752ff-043b-4850-acb4-a0cf193cae32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyDocs/FINAL.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MyDocs/FINAL.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Serial/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/Serial/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/Serial/main.c">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="218">
-              <caret line="373" column="34" lean-forward="true" selection-start-line="373" selection-start-column="34" selection-end-line="373" selection-end-column="34" />
+              <caret line="373" column="34" selection-start-line="373" selection-start-column="34" selection-end-line="373" selection-end-column="34" />
               <folding>
                 <element signature="e#846#1436#0" />
                 <element signature="e#1655#1960#0" />
@@ -39,7 +38,6 @@
                 <element signature="e#2995#3320#0" />
                 <element signature="e#3322#3669#0" />
                 <element signature="e#3671#4264#0" />
-                <element signature="e#11847#13688#0" />
               </folding>
             </state>
           </provider>
@@ -67,8 +65,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="146" />
-    <option name="width" value="1853" />
+    <option name="x" value="65" />
+    <option name="y" value="136" />
+    <option name="width" value="1843" />
     <option name="height" value="789" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -129,30 +128,30 @@
       <workItem from="1553127182903" duration="310000" />
       <workItem from="1553159051868" duration="4436000" />
       <workItem from="1553259431425" duration="17417000" />
-      <workItem from="1553333263011" duration="575000" />
+      <workItem from="1553333263011" duration="1269000" />
+      <workItem from="1553334998233" duration="43000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22738000" />
+    <option name="totallyTimeSpent" value="23475000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="25" width="1863" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.32856357" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33241606" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4514039" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4514039" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.38552916" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Messages" order="8" weight="0.32829374" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32937366" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="CMake" order="12" />
@@ -169,7 +168,7 @@
     <entry file="file://$PROJECT_DIR$/Serial/main.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
-          <caret line="373" column="34" lean-forward="true" selection-start-line="373" selection-start-column="34" selection-end-line="373" selection-end-column="34" />
+          <caret line="373" column="34" selection-start-line="373" selection-start-column="34" selection-end-line="373" selection-end-column="34" />
           <folding>
             <element signature="e#846#1436#0" />
             <element signature="e#1655#1960#0" />
@@ -177,7 +176,6 @@
             <element signature="e#2995#3320#0" />
             <element signature="e#3322#3669#0" />
             <element signature="e#3671#4264#0" />
-            <element signature="e#11847#13688#0" />
           </folding>
         </state>
       </provider>

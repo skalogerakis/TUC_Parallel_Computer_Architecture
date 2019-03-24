@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/Pthread_FineGrained/main.c
+stdio.h
+-
+sys/time.h
+-
+stdlib.h
+-
+memory.h
+-
+stdbool.h
+-
+stdint.h
+-
+pthread.h
+-
+
