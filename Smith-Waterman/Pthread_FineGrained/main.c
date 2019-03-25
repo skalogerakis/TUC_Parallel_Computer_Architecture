@@ -23,6 +23,9 @@ static char const ZEROCODE = 'Z';
 
 
 int _MAX_SIMILARITY;
+int SerialFlag = 0;
+int balanceCount =0;
+int barrierCounter = 0;
 
 int Q_len = 0, D_len = 0 ;
 
@@ -38,7 +41,9 @@ int qMin = -1;
 int qMax = -1;
 int dSize = -1;
 
-pthread_mutex_t lock;
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutexattr_t mutexattr;
+pthread_mutex_t *swmutex;
 pthread_barrier_t barrier;
 
 //long long int antiDiagLen = 0;
@@ -276,13 +281,131 @@ void updateScore(long long int x, long long int y){
     //printf("MAX %lld\n",tempMax);
 }
 
-int SerialFlag = 0;
-int balanceCount;
+
+
+//void *calcSimilarity(void *threadArg){
+//    _td *tData;
+//     tData = (_td *)threadArg;
+//     //long long int *coor;
+//
+//    //printf("Hello Houston from thread %d\n\n\n",tData->thread_id);
+//
+//    //TODO FIX VARIABLE DECLARATION
+//    //Don't start counting from the beginning. Eliminate elements from first line and column
+//    printf("D size %d, Q size %d anti %lld\n", D_len, Q_len, antiDiagNum);
+//
+//    for (long long int i = 1; i<=antiDiagNum; i++){
+//        //printf("Antidiagonal length %lld\n\n", antiDiagLength(i));
+//        tData[tData->thread_id].antiLen = antiDiagLength(i);
+//        //firstAntiElement(i, &tData[tData->thread_id]);
+//
+//        if(i <= Q_len){
+//            tData[tData->thread_id].xCalc = i;
+//            tData[tData->thread_id].yCalc = 1;
+////        tempY = 1;
+////        tempX = currAnti;
+//            //coor[1] = currAnti;
+//            //coor[2] = 1;
+//        }else{
+//            tData[tData->thread_id].xCalc = Q_len;
+//            tData[tData->thread_id].yCalc = i - Q_len + 1;
+//            //coor[1] = Q_len;
+//            //coor[2] = currAnti - Q_len + 1;
+////        tempY = currAnti - Q_len + 1;
+////        tempX = Q_len;
+//        }
+//        //tData->xCalc = coor[1];
+//        //tData->yCalc = coor[2];
+//        //printf("Hello Houston from thread %d and len %lld\n",tData->thread_id, tData->antiLen);
+//        //printf("X %lld, Y %lld\n",tData[i].xCalc, tData[i].yCalc);
+//
+//
+//        //SerialFlag = 0;
+//        //balanceCount = 1;
+//
+//        long long int lenDiv = tData[tData->thread_id].antiLen / THREADS;
+//        long long int modDiv = tData[tData->thread_id].antiLen % THREADS;
+//
+//
+//        long long int finEleX = (tData[tData->thread_id].xCalc-1) * lenDiv;
+//        long long int finEleY = (tData[tData->thread_id].yCalc+1) * lenDiv;
+//        //printf("calc X %lld,calc Y %lld and thread %d\n",tData[i].xCalc,tData[i].yCalc,tData->thread_id);
+//        printf("FIN X %lld,FIN Y %lld and thread %d\n",finEleX,finEleY,tData->thread_id);
+//        printf("DIV %lld, MOD %lld\n",lenDiv,modDiv);
+//
+//        for(long long j=0;j<lenDiv;j++){
+//
+//            long long int currX, currY;
+//
+//
+//            currX = tData[tData->thread_id].xCalc - tData->thread_id;
+//            currY = tData[tData->thread_id].yCalc + tData->thread_id;
+//            //printf("TSO KAI LO %lld , %lld\n",currX,currY);
+//
+//            tData[tData->thread_id].xCalc = (tData[tData->thread_id].xCalc-1) * lenDiv;
+//            tData[tData->thread_id].yCalc = (tData[tData->thread_id].yCalc+1) * lenDiv;
+//            updateScore(currX, currY);
+//
+//        }
+//
+//        if(lenDiv == 0) {   //TODO works fine
+//            pthread_mutex_lock(&lock);
+//            SerialFlag++;
+//            if (SerialFlag == 1) {
+//                for (int j = 0; j < tData->antiLen; j++) {
+//
+//                    long long int currX, currY;
+//                    currX = tData[tData->thread_id].xCalc - j;
+//                    currY = tData[tData->thread_id].yCalc + j;
+//
+//                    //printf("Hello case X %lld, Y %lld and thread %d\n", currX, currY, tData->thread_id);
+//                    updateScore(currX, currY);
+//
+//                }
+//            }
+//
+////            SerialFlag = 1;
+//
+//            pthread_mutex_unlock(&lock);
+//        }else if( modDiv!=0){
+//            pthread_mutex_lock(&lock);
+//
+//            if(balanceCount <= modDiv){
+//                long long int currX, currY;
+//                currX = finEleX - balanceCount;
+//                currY = finEleY + balanceCount;
+//
+//                printf("Balance case X %lld, Y %lld and thread %d\n",currX,currY,tData->thread_id);
+//
+//                updateScore(currX, currY);
+//            }
+//
+//
+//            balanceCount++;
+//            pthread_mutex_unlock(&lock);
+//        }
+//        printf("WAIT thread %d\n",tData->thread_id);
+//        pthread_barrier_wait(&barrier);
+//        SerialFlag = 0;
+//        balanceCount = 1;
+//        printf("\n\n");
+//
+//    }
+//
+//    printf("WATI BAR\n\n");
+//    pthread_barrier_wait(&barrier);
+//    return ((void *) 0);
+//}
 
 void *calcSimilarity(void *threadArg){
-    _td *tData;
-     tData = (_td *)threadArg;
-     //long long int *coor;
+//    _td *tData;
+//    tData = (_td *)threadArg;
+    long tid;
+    tid = (long)threadArg;
+    long long int diaLen,initX,initY;
+
+    long long int currX, currY;
+    //long long int *coor;
 
     //printf("Hello Houston from thread %d\n\n\n",tData->thread_id);
 
@@ -292,88 +415,131 @@ void *calcSimilarity(void *threadArg){
 
     for (long long int i = 1; i<=antiDiagNum; i++){
         //printf("Antidiagonal length %lld\n\n", antiDiagLength(i));
-        // tData->xCalc = coor[1];
-        //        //tData->yCalc = coor[2];
-        //        //printf("Hello Houston from thread %d and len %lld\n",tData->thread_id, tData->antiLen);
-        //        //printf("X %lld, Y %lld\n",tData[i].xCalc, tData[i].yCalc);
-        tData[tData->thread_id].antiLen = antiDiagLength(i);
-        firstAntiElement(i, &tData[tData->thread_id]);
+
+        //tData[tData->thread_id].antiLen = antiDiagLength(i);
+        diaLen = antiDiagLength(i);
+
+        //printf("DIA %lld\n\n", diaLen);
+        //firstAntiElement(i, &tData[tData->thread_id]);
+
+        if(i <= Q_len){
+            //tData[tData->thread_id].xCalc = i;
+            //tData[tData->thread_id].yCalc = 1;
+            initX = i;
+            initY = 1;
+//        tempY = 1;
+//        tempX = currAnti;
+            //coor[1] = currAnti;
+            //coor[2] = 1;
+        }else{
+            initX = Q_len;
+            initY = i - Q_len + 1;
+            //tData[tData->thread_id].xCalc = Q_len;
+            //tData[tData->thread_id].yCalc = i - Q_len + 1;
+            //coor[1] = Q_len;
+            //coor[2] = currAnti - Q_len + 1;
+//        tempY = currAnti - Q_len + 1;
+//        tempX = Q_len;
+        }
+
+        //printf("DIA %lld, x %lld, y %lld on thread %ld \n\n", diaLen, initX, initY, tid);
+        //tData->xCalc = coor[1];
+        //tData->yCalc = coor[2];
+        //printf("Hello Houston from thread %d and len %lld\n",tData->thread_id, tData->antiLen);
+        //printf("X %lld, Y %lld\n",tData[i].xCalc, tData[i].yCalc);
 
 
         //SerialFlag = 0;
         //balanceCount = 1;
 
-        long long int lenDiv = tData[tData->thread_id].antiLen / THREADS;
-        long long int modDiv = tData[tData->thread_id].antiLen % THREADS;
+//        long long int lenDiv = tData[tData->thread_id].antiLen / THREADS;
+//        long long int modDiv = tData[tData->thread_id].antiLen % THREADS;
+
+        long long int lenDiv = diaLen / THREADS;
+        long long int modDiv = diaLen % THREADS;
+
+//        long long int finEleX = (tData[tData->thread_id].xCalc-1) * lenDiv;
+//        long long int finEleY = (tData[tData->thread_id].yCalc+1) * lenDiv;
+
+        long long int finEleX = initX - ((THREADS *lenDiv)-1);
+        long long int finEleY = initY + ((THREADS *lenDiv)-1);
 
 
-        long long int finEleX = (tData[tData->thread_id].xCalc-1) * lenDiv;
-        long long int finEleY = (tData[tData->thread_id].yCalc+1) * lenDiv;
         //printf("calc X %lld,calc Y %lld and thread %d\n",tData[i].xCalc,tData[i].yCalc,tData->thread_id);
-        printf("FIN X %lld,FIN Y %lld and thread %d\n",finEleX,finEleY,tData->thread_id);
-        printf("DIV %lld, MOD %lld\n",lenDiv,modDiv);
+        //printf("FIN X %lld,FIN Y %lld and thread %d\n",finEleX,finEleY,tData->thread_id);
+        printf("DIV %lld, MOD %lld and %ld\n",lenDiv,modDiv,tid);
+        printf("FIN X %lld,FIN Y %lld init X %lld initY %lld and thread %ld\n",finEleX,finEleY,initX,initY,tid);
 
-        for(long long j=0;j<lenDiv;j++){
+        for(long long j=1;j<=lenDiv;j++){
 
-            long long int currX, currY;
+//            currX = initX - tid;
+//            currY = initY + tid;
+            currX = initX - ((tid *j));
+            currY = initY + ((tid *j));
 
+            printf("TSO KAI LO %lld , %lld\n",currX,currY);
 
-            currX = tData[tData->thread_id].xCalc - tData->thread_id;
-            currY = tData[tData->thread_id].yCalc + tData->thread_id;
-            //printf("TSO KAI LO %lld , %lld\n",currX,currY);
-
-            tData[tData->thread_id].xCalc = (tData[tData->thread_id].xCalc-1) * lenDiv;
-            tData[tData->thread_id].yCalc = (tData[tData->thread_id].yCalc+1) * lenDiv;
+//            initX = (initX) * (lenDiv-1);
+//            initY = (initY) * (lenDiv+1);
             updateScore(currX, currY);
 
         }
 
         if(lenDiv == 0) {   //TODO works fine
-            pthread_mutex_lock(&lock);
-            SerialFlag++;
+
+            pthread_mutex_lock(&swmutex[tid]);
+            ++SerialFlag;
+
+            //printf("SERAL %d\n",SerialFlag);
             if (SerialFlag == 1) {
-                for (int j = 0; j < tData[tData->thread_id].antiLen; j++) {
+                //for (int j = 0; j < tData->antiLen; j++) {
+                for (int j = 0; j < diaLen; j++) {
+                    long long int currXa, currYa = 0;
+                    currXa = initX - j;
+                    currYa = initY + j;
 
-                    long long int currX, currY;
-                    currX = tData[tData->thread_id].xCalc - j;
-                    currY = tData[tData->thread_id].yCalc + j;
-
-                    //printf("Hello case X %lld, Y %lld and thread %d\n", currX, currY, tData->thread_id);
-                    updateScore(currX, currY);
+                    printf("Hello case X %lld, Y %lld and thread %ld\n", currXa, currYa, tid);
+                    updateScore(currXa, currYa);
 
                 }
             }
+            pthread_mutex_unlock(&swmutex[tid]);
+            //SerialFlag = 1;
+        //}
 
-//            SerialFlag = 1;
-
-            pthread_mutex_unlock(&lock);
         }else if( modDiv!=0){
-            pthread_mutex_lock(&lock);
+            pthread_mutex_lock(&swmutex[tid]);
+            balanceCount++;
+
 
             if(balanceCount <= modDiv){
-                long long int currX, currY;
-                currX = finEleX - balanceCount;
-                currY = finEleY + balanceCount;
+                long long int currXb, currYb =0;
+                currXb = finEleX - balanceCount;
+                currYb = finEleY + balanceCount;
 
-                printf("Balance case X %lld, Y %lld and thread %d\n",currX,currY,tData[tData->thread_id].thread_id);
+                printf("Balance case X %lld, Y %lld and thread %ld bal %d\n",currXb,currYb,tid, balanceCount);
 
-                updateScore(currX, currY);
+                updateScore(currXb, currYb);
             }
+            pthread_mutex_unlock(&swmutex[tid]);
 
 
-            balanceCount++;
-            pthread_mutex_unlock(&lock);
         }
-        printf("WAIT thread %d\n",tData[tData->thread_id].thread_id);
+        //printf("WAIT thread %d\n",tData->thread_id);
         pthread_barrier_wait(&barrier);
+        printf("WAIT thread %ld\n",tid);
+//        pthread_mutex_lock(&swmutex[tid]);
+//        barrierCounter++;
+//        pthread_mutex_lock(&swmutex[tid]);
         SerialFlag = 0;
-        balanceCount = 1;
-        printf("\n\n");
+        balanceCount = 0;
+        printf("NEXT \n\n");
 
     }
 
-
-
+    pthread_barrier_wait(&barrier);
+    //printf("WATI BAR\n\n");
+    //pthread_barrier_wait(&barrier);
     pthread_exit(NULL);
 }
 
@@ -405,18 +571,23 @@ void dataParser(){
 //            exit(-2);
 //        }
 //    }
-    ScoreTable = (int **)malloc((Q_len+1)* sizeof(int *));
+    ScoreTable = malloc((Q_len+1)* sizeof(int *));
     if(ScoreTable ==NULL){
         printf("Could not allocate memory for matrix ScoreTable.Terminating");
         exit(-2);
     }
     for(int i = 0; i< Q_len+1; i++){
-        ScoreTable[i] = (int *)malloc((D_len+1)* sizeof(int));
+        ScoreTable[i] = malloc((D_len+1)* sizeof(int));
         if(ScoreTable[i] == NULL){
             printf("Could not allocate memory for matrix ScoreTable.Terminating");
             exit(-2);
         }
     }
+
+//    ScoreTable = malloc((Q_len+1) * sizeof(int *));
+//    for(int i =0 ; Q_len + 1; i++){
+//        ScoreTable[i] = malloc((D_len+1)* sizeof(int));
+//    }
 
 //    for(int i = 0; i< Q_len+1; i++){
 //        ScoreTable[i] = malloc((D_len+1)* sizeof(*ScoreTable[i]));
@@ -447,18 +618,28 @@ void dataParser(){
     /*
      * Mutex Init should return zero. Otherwise print error message and exit
      */
-    if(pthread_mutex_init(&lock,NULL) != 0){
+
+    pthread_mutexattr_init(&mutexattr);
+    pthread_mutexattr_settype(&mutexattr,PTHREAD_MUTEX_NORMAL);
+
+    if(pthread_mutex_init(&lock,&mutexattr) != 0){
         printf("Error occured while trying to init mutexes. Exitiing...");
         exit(-1);
     }
-
+    swmutex = malloc(sizeof(pthread_mutex_t)*(THREADS+1));
+    for(int i = 0;i<THREADS+1; i++){
+        if(pthread_mutex_init(&swmutex[i],NULL) != 0){
+            printf("Error occured while trying to init mutexes. Exitiing...");
+            exit(-1);
+        }
+    }
 
 
     pthread_t mthread[THREADS];
 
     pthread_barrier_init(&barrier, NULL,THREADS);
 
-    _td *tData = malloc(THREADS * sizeof(*tData));
+    //_td *tData = malloc(THREADS * sizeof(*tData));
     //memset(tData, 0, sizeof(_td));
     //_td tData[THREADS];
 
@@ -469,18 +650,19 @@ void dataParser(){
      */
     //_td *tData;
     int threadChecker;
-    for(int i = 0; i<THREADS; i++){
+    for(long i = 0; i<THREADS; i++){
         //TODO LAST PARAMETER CAN PASS ARGUMENTS.CHECK IF WE CAN USE THAT
         /*
          * NULL for attributes as we want to use default
          */
         //printf("MAIN : Creating thread %ld\n",i);
         //tData = (_td *)malloc(THREADS * sizeof(tData));
-        tData[i].thread_id = i;
-        tData[i].yCalc = 0;
-        tData[i].xCalc = 0;
-        tData[i].antiLen = 1;
-        threadChecker = pthread_create(&mthread[i], NULL, calcSimilarity, (void *)&tData[i]);
+//        tData[i].thread_id = i;
+//        tData[i].yCalc = 0;
+//        tData[i].xCalc = 0;
+//        tData[i].antiLen = 1;
+        //threadChecker = pthread_create(&mthread[i], NULL, calcSimilarity, (void *)&tData[i]);
+        threadChecker = pthread_create(&mthread[i], NULL, calcSimilarity, (void *)i);
         if(threadChecker){
             printf("Thread creation failed.Exiting");
             exit(-1);
@@ -494,20 +676,23 @@ void dataParser(){
      */
 
     for(int i = 0; i<THREADS; i++){
-        printf("MAIN : completed join with thread %d \n\n",tData[i].thread_id);
+       // printf("MAIN : completed join with thread %d \n\n",tData[i].thread_id);
         pthread_join(mthread[i], NULL);
 
     }
 
     pthread_barrier_destroy(&barrier);
     pthread_mutex_destroy(&lock);
+    for(int i = 0;i<THREADS+1; i++){
+        pthread_mutex_destroy(&swmutex[i]);
+    }
 
     //free(mthread);
 //    for(int i = 0; i< THREADS; i++) {
 //        free(tData);
 //    }
 
-    free(tData);
+    //free(tData);
 
 
 
@@ -888,7 +1073,7 @@ int main(int argc, char * argv[]) {
 
     FILE *fp;
 
-    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D1Test.txt","r");
+    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D1.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");
