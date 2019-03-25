@@ -12,7 +12,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="359a0084-2947-47ee-bca4-553f0e8c1234" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Pthread_FineGrained" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Pthread_FineGrained" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/Serial" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/Serial" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,12 +38,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="524" column="43" lean-forward="true" selection-start-line="524" selection-start-column="43" selection-end-line="524" selection-end-column="43" />
+            <state relative-caret-position="-1538">
+              <caret line="552" column="8" selection-start-line="552" selection-start-column="8" selection-end-line="552" selection-end-column="8" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#7302#7342#0" />
-                <element signature="e#27162#28833#1" />
+                <element signature="e#7627#7667#0" />
+                <element signature="e#23451#23527#0" />
+                <marker date="1553511260915" expanded="true" signature="15725:15784" ph="..." />
               </folding>
             </state>
           </provider>
@@ -51,15 +63,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>_td</find>
-      <find>antiDiagLength</find>
-      <find>tData</find>
-      <find>antiLen</find>
-      <find>firstAntiElement</find>
-      <find>WATI</find>
-      <find>ScoreTable</find>
-      <find>thread</find>
-      <find>calcSimilarity</find>
       <find>ScoreTa</find>
       <find>score</find>
       <find>finEleX</find>
@@ -78,9 +81,18 @@
       <find>calc</find>
       <find>lock</find>
       <find>swmutex</find>
-      <find>printf</find>
-      <find>updateScore</find>
       <find>initX</find>
+      <find>_Max</find>
+      <find>_MAX_SIMILARITY</find>
+      <find>printf</find>
+      <find>_cellVal</find>
+      <find>_counterMax</find>
+      <find>updateScore</find>
+      <find>print</find>
+      <find>fileParser</find>
+      <find>dataParser</find>
+      <find>fillDataBuffer</find>
+      <find>calcSimilarity</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -95,41 +107,24 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="25" />
-    <option name="y" value="27" />
-    <option name="width" value="1843" />
-    <option name="height" value="789" />
+    <option name="x" value="57" />
+    <option name="y" value="25" />
+    <option name="width" value="1863" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Pthread_FineGrained" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Pthread_FineGrained" type="462c0819:PsiDirectoryNode" />
-              <item name="cmake-build-debug" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Serial" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -144,7 +139,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Pthread_FineGrained">
-    <configuration name="Pthread_FineGrained" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-threads 5 -name ID -input IN -match 3 -mismatch -1 -gap -1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Pthread_FineGrained" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Pthread_FineGrained">
+    <configuration name="Pthread_FineGrained" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-threads 4 -name ID -input IN -match 3 -mismatch -1 -gap -1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Pthread_FineGrained" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Pthread_FineGrained">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -171,12 +166,13 @@
       <updated>1553335035202</updated>
       <workItem from="1553335037203" duration="35700000" />
       <workItem from="1553417750670" duration="30088000" />
-      <workItem from="1553462155389" duration="18889000" />
+      <workItem from="1553462155389" duration="20939000" />
+      <workItem from="1553504928123" duration="6279000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84677000" />
+    <option name="totallyTimeSpent" value="93006000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -196,7 +192,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36609071" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33693305" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5226782" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -243,11 +239,32 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.c</url>
-          <line>1110</line>
+          <line>1122</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="_counterMax" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>_counterMax</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>cellTimeFin</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/final.txt" />
@@ -267,22 +284,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1538">
+          <caret line="552" column="8" selection-start-line="552" selection-start-column="8" selection-end-line="552" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#7627#7667#0" />
+            <element signature="e#23451#23527#0" />
+            <marker date="1553511260915" expanded="true" signature="15725:15784" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="524" column="43" lean-forward="true" selection-start-line="524" selection-start-column="43" selection-end-line="524" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#7302#7342#0" />
-            <element signature="e#27162#28833#1" />
-          </folding>
         </state>
       </provider>
     </entry>
