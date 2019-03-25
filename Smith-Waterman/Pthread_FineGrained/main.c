@@ -43,7 +43,7 @@ int dSize = -1;
 
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutexattr_t mutexattr;
-pthread_mutex_t *swmutex;
+//pthread_mutex_t *swmutex;
 pthread_barrier_t barrier;
 
 //long long int antiDiagLen = 0;
@@ -61,7 +61,7 @@ typedef struct thread_data _td;
 
 FILE *finFile;
 
-int **ScoreTable;
+int **ScoreTable = NULL;
 char * Q = NULL;
 char * D = NULL;
 
@@ -243,7 +243,7 @@ long long int * firstAntiElement(long long int currAnti, _td* tData){
 
 void updateScore(long long int x, long long int y){
 
-    printf("x %lld, y %lld\n", x, y);
+    //printf("x %lld, y %lld\t", x, y);
 
     long long int up, left, diag;
 
@@ -262,7 +262,7 @@ void updateScore(long long int x, long long int y){
 
     diag = ScoreTable[x - 1][y - 1] + tempDiag;
 
-    printf("D %c, Q %c up %lld, left %lld, diag %lld\n", D[x], Q[y], up, left, diag );
+    //printf("D %c, Q %c up %lld, left %lld, diag %lld\n", D[x], Q[y], up, left, diag );
 
     if( up <= 0 && left <= 0 && diag <= 0 ){    //case we have max as negative value
         tempMax = 0;
@@ -411,9 +411,11 @@ void *calcSimilarity(void *threadArg){
 
     //TODO FIX VARIABLE DECLARATION
     //Don't start counting from the beginning. Eliminate elements from first line and column
-    printf("D size %d, Q size %d anti %lld\n", D_len, Q_len, antiDiagNum);
+    //printf("D size %d, Q size %d anti %lld\n", D_len, Q_len, antiDiagNum);
 
     for (long long int i = 1; i<=antiDiagNum; i++){
+        SerialFlag = 0;
+        balanceCount = 0;
         //printf("Antidiagonal length %lld\n\n", antiDiagLength(i));
 
         //tData[tData->thread_id].antiLen = antiDiagLength(i);
@@ -468,28 +470,32 @@ void *calcSimilarity(void *threadArg){
         //printf("calc X %lld,calc Y %lld and thread %d\n",tData[i].xCalc,tData[i].yCalc,tData->thread_id);
         //printf("FIN X %lld,FIN Y %lld and thread %d\n",finEleX,finEleY,tData->thread_id);
         printf("DIV %lld, MOD %lld and %ld\n",lenDiv,modDiv,tid);
-        printf("FIN X %lld,FIN Y %lld init X %lld initY %lld and thread %ld\n",finEleX,finEleY,initX,initY,tid);
+        //printf("FIN X %lld,FIN Y %lld init X %lld initY %lld and thread %ld\n",finEleX,finEleY,initX,initY,tid);
 
         for(long long j=1;j<=lenDiv;j++){
 
-//            currX = initX - tid;
-//            currY = initY + tid;
-            currX = initX - ((tid *j));
-            currY = initY + ((tid *j));
 
-            printf("TSO KAI LO %lld , %lld\n",currX,currY);
+            currX = initX - tid;
+            currY = initY + tid;
+            //currX = initX - ((tid *j));
+            //currY = initY + ((tid *j));
 
-//            initX = (initX) * (lenDiv-1);
-//            initY = (initY) * (lenDiv+1);
+            //printf("TSO KAI LO %lld , %lld\n",currX,currY);
+
+            initX = initX - (THREADS);
+            initY = initY + (THREADS);
+            //initY = (initY) * (lenDiv+1);
+            printf("MAIN, %lld, %lld, %ld",currX,currY,tid);
             updateScore(currX, currY);
+
 
         }
 
         if(lenDiv == 0) {   //TODO works fine
 
-            pthread_mutex_lock(&swmutex[tid]);
-            ++SerialFlag;
-
+            pthread_mutex_lock(&lock);
+            SerialFlag+=1;
+            pthread_mutex_unlock(&lock);
             //printf("SERAL %d\n",SerialFlag);
             if (SerialFlag == 1) {
                 //for (int j = 0; j < tData->antiLen; j++) {
@@ -498,46 +504,50 @@ void *calcSimilarity(void *threadArg){
                     currXa = initX - j;
                     currYa = initY + j;
 
-                    printf("Hello case X %lld, Y %lld and thread %ld\n", currXa, currYa, tid);
+                    //printf("Hello case X %lld, Y %lld and thread %ld\n", currXa, currYa, tid);
+                    printf("DIV0, %lld, %lld, %ld",currXa,currYa,tid);
                     updateScore(currXa, currYa);
 
                 }
             }
-            pthread_mutex_unlock(&swmutex[tid]);
+
             //SerialFlag = 1;
         //}
 
-        }else if( modDiv!=0){
-            pthread_mutex_lock(&swmutex[tid]);
-            balanceCount++;
+        }else if( modDiv!=0 && tid < modDiv){
+//            pthread_mutex_lock(&lock);
+//            balanceCount+=1;
+//            pthread_mutex_unlock(&lock);
 
-
-            if(balanceCount <= modDiv){
+            //if(balanceCount <= modDiv){
                 long long int currXb, currYb =0;
-                currXb = finEleX - balanceCount;
-                currYb = finEleY + balanceCount;
+                currXb = finEleX - (tid +1);
+                currYb = finEleY + (tid+1);
 
-                printf("Balance case X %lld, Y %lld and thread %ld bal %d\n",currXb,currYb,tid, balanceCount);
-
+                //printf("Balance case X %lld, Y %lld and thread %ld bal %d\n",currXb,currYb,tid, balanceCount);
+                printf("MOD, %lld, %lld, %ld",currXb,currYb,tid);
                 updateScore(currXb, currYb);
-            }
-            pthread_mutex_unlock(&swmutex[tid]);
+            //}
+
 
 
         }
         //printf("WAIT thread %d\n",tData->thread_id);
         pthread_barrier_wait(&barrier);
-        printf("WAIT thread %ld\n",tid);
+        //printf("WAIT thread %ld\n",tid);
 //        pthread_mutex_lock(&swmutex[tid]);
 //        barrierCounter++;
 //        pthread_mutex_lock(&swmutex[tid]);
-        SerialFlag = 0;
-        balanceCount = 0;
-        printf("NEXT \n\n");
-
+//        pthread_mutex_lock(&lock);
+//        SerialFlag = 0;
+//        balanceCount = 0;
+//        pthread_mutex_unlock(&lock);
+        //printf("NEXT \n\n");
+        printf("\n\n");
     }
 
     pthread_barrier_wait(&barrier);
+
     //printf("WATI BAR\n\n");
     //pthread_barrier_wait(&barrier);
     pthread_exit(NULL);
@@ -626,13 +636,13 @@ void dataParser(){
         printf("Error occured while trying to init mutexes. Exitiing...");
         exit(-1);
     }
-    swmutex = malloc(sizeof(pthread_mutex_t)*(THREADS+1));
-    for(int i = 0;i<THREADS+1; i++){
-        if(pthread_mutex_init(&swmutex[i],NULL) != 0){
-            printf("Error occured while trying to init mutexes. Exitiing...");
-            exit(-1);
-        }
-    }
+//    swmutex = malloc(sizeof(pthread_mutex_t)*(THREADS+1));
+//    for(int i = 0;i<THREADS+1; i++){
+//        if(pthread_mutex_init(&swmutex[i],NULL) != 0){
+//            printf("Error occured while trying to init mutexes. Exitiing...");
+//            exit(-1);
+//        }
+//    }
 
 
     pthread_t mthread[THREADS];
@@ -683,9 +693,9 @@ void dataParser(){
 
     pthread_barrier_destroy(&barrier);
     pthread_mutex_destroy(&lock);
-    for(int i = 0;i<THREADS+1; i++){
-        pthread_mutex_destroy(&swmutex[i]);
-    }
+//    for(int i = 0;i<THREADS+1; i++){
+//        pthread_mutex_destroy(&swmutex[i]);
+//    }
 
     //free(mthread);
 //    for(int i = 0; i< THREADS; i++) {
