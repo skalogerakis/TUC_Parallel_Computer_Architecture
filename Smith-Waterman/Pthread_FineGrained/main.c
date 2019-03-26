@@ -242,18 +242,18 @@ long long int * firstAntiElement(long long int currAnti, _td* tData){
     //return coor;
 }
 
-void updateScore(long long int x, long long int y){
+int updateScore(long long int x, long long int y){
 
     //printf("x %lld, y %lld\t", x, y);
 
-    long long int up, left, diag;
+    int up, left, diag;
 
     up = ScoreTable[x-1][y] + GAP;
 
     left = ScoreTable[x][y-1] + GAP; //we want same row and one column left
 
-    long long int tempDiag,tempMax;
-
+    int tempDiag,tempMax;
+    int tempCell=0;
 
     //TODO wrong while printing.Fix that
 
@@ -275,7 +275,13 @@ void updateScore(long long int x, long long int y){
         }else{
             tempMax = diag;
         }
-        _cellVal++;
+
+//        pthread_mutex_lock(&lock);
+//
+//        _cellVal++;
+//        //printf("_cellVAL %lu on x %lld and y %lld\n",_cellVal, x, y);
+//        pthread_mutex_unlock(&lock);
+            tempCell++;
     }
 
     ScoreTable[x][y] = tempMax;
@@ -292,134 +298,21 @@ void updateScore(long long int x, long long int y){
         //pthread_mutex_unlock(&lock);
     }
     //pthread_mutex_unlock(&lock);
-
+    return tempCell;
 }
 
-
-
-//void *calcSimilarity(void *threadArg){
-//    _td *tData;
-//     tData = (_td *)threadArg;
-//     //long long int *coor;
-//
-//    //printf("Hello Houston from thread %d\n\n\n",tData->thread_id);
-//
-//    //TODO FIX VARIABLE DECLARATION
-//    //Don't start counting from the beginning. Eliminate elements from first line and column
-//    printf("D size %d, Q size %d anti %lld\n", D_len, Q_len, antiDiagNum);
-//
-//    for (long long int i = 1; i<=antiDiagNum; i++){
-//        //printf("Antidiagonal length %lld\n\n", antiDiagLength(i));
-//        tData[tData->thread_id].antiLen = antiDiagLength(i);
-//        //firstAntiElement(i, &tData[tData->thread_id]);
-//
-//        if(i <= Q_len){
-//            tData[tData->thread_id].xCalc = i;
-//            tData[tData->thread_id].yCalc = 1;
-////        tempY = 1;
-////        tempX = currAnti;
-//            //coor[1] = currAnti;
-//            //coor[2] = 1;
-//        }else{
-//            tData[tData->thread_id].xCalc = Q_len;
-//            tData[tData->thread_id].yCalc = i - Q_len + 1;
-//            //coor[1] = Q_len;
-//            //coor[2] = currAnti - Q_len + 1;
-////        tempY = currAnti - Q_len + 1;
-////        tempX = Q_len;
-//        }
-//        //tData->xCalc = coor[1];
-//        //tData->yCalc = coor[2];
-//        //printf("Hello Houston from thread %d and len %lld\n",tData->thread_id, tData->antiLen);
-//        //printf("X %lld, Y %lld\n",tData[i].xCalc, tData[i].yCalc);
-//
-//
-//        //SerialFlag = 0;
-//        //balanceCount = 1;
-//
-//        long long int lenDiv = tData[tData->thread_id].antiLen / THREADS;
-//        long long int modDiv = tData[tData->thread_id].antiLen % THREADS;
-//
-//
-//        long long int finEleX = (tData[tData->thread_id].xCalc-1) * lenDiv;
-//        long long int finEleY = (tData[tData->thread_id].yCalc+1) * lenDiv;
-//        //printf("calc X %lld,calc Y %lld and thread %d\n",tData[i].xCalc,tData[i].yCalc,tData->thread_id);
-//        printf("FIN X %lld,FIN Y %lld and thread %d\n",finEleX,finEleY,tData->thread_id);
-//        printf("DIV %lld, MOD %lld\n",lenDiv,modDiv);
-//
-//        for(long long j=0;j<lenDiv;j++){
-//
-//            long long int currX, currY;
-//
-//
-//            currX = tData[tData->thread_id].xCalc - tData->thread_id;
-//            currY = tData[tData->thread_id].yCalc + tData->thread_id;
-//            //printf("TSO KAI LO %lld , %lld\n",currX,currY);
-//
-//            tData[tData->thread_id].xCalc = (tData[tData->thread_id].xCalc-1) * lenDiv;
-//            tData[tData->thread_id].yCalc = (tData[tData->thread_id].yCalc+1) * lenDiv;
-//            updateScore(currX, currY);
-//
-//        }
-//
-//        if(lenDiv == 0) {   //TODO works fine
-//            pthread_mutex_lock(&lock);
-//            SerialFlag++;
-//            if (SerialFlag == 1) {
-//                for (int j = 0; j < tData->antiLen; j++) {
-//
-//                    long long int currX, currY;
-//                    currX = tData[tData->thread_id].xCalc - j;
-//                    currY = tData[tData->thread_id].yCalc + j;
-//
-//                    //printf("Hello case X %lld, Y %lld and thread %d\n", currX, currY, tData->thread_id);
-//                    updateScore(currX, currY);
-//
-//                }
-//            }
-//
-////            SerialFlag = 1;
-//
-//            pthread_mutex_unlock(&lock);
-//        }else if( modDiv!=0){
-//            pthread_mutex_lock(&lock);
-//
-//            if(balanceCount <= modDiv){
-//                long long int currX, currY;
-//                currX = finEleX - balanceCount;
-//                currY = finEleY + balanceCount;
-//
-//                printf("Balance case X %lld, Y %lld and thread %d\n",currX,currY,tData->thread_id);
-//
-//                updateScore(currX, currY);
-//            }
-//
-//
-//            balanceCount++;
-//            pthread_mutex_unlock(&lock);
-//        }
-//        printf("WAIT thread %d\n",tData->thread_id);
-//        pthread_barrier_wait(&barrier);
-//        SerialFlag = 0;
-//        balanceCount = 1;
-//        printf("\n\n");
-//
-//    }
-//
-//    printf("WATI BAR\n\n");
-//    pthread_barrier_wait(&barrier);
-//    return ((void *) 0);
-//}
 
 void *calcSimilarity(void *threadArg){
 //    _td *tData;
 //    tData = (_td *)threadArg;
-printf("START CALCULATION\n");
+
+
     long tid;
     tid = (long)threadArg;
-    long long int diaLen,initX,initY;
+    int diaLen,initX,initY;
 
-    long long int currX, currY;
+    int currX, currY;
+    int cellUp=0;
     //long long int *coor;
 
     //printf("Hello Houston from thread %d\n\n\n",tData->thread_id);
@@ -427,36 +320,24 @@ printf("START CALCULATION\n");
     //TODO FIX VARIABLE DECLARATION
     //Don't start counting from the beginning. Eliminate elements from first line and column
     //printf("D size %d, Q size %d anti %lld\n", D_len, Q_len, antiDiagNum);
+    printf("START CALC\n");
 
-    for (long long int i = 1; i<=antiDiagNum; i++){
+
+    for (int i = 1; i<=antiDiagNum; i++){
+        double tbStart = gettime();
         SerialFlag = 0;
         balanceCount = 0;
-        //printf("Antidiagonal length %lld\n\n", antiDiagLength(i));
 
-        //tData[tData->thread_id].antiLen = antiDiagLength(i);
         diaLen = antiDiagLength(i);
 
-        //printf("DIA %lld\n\n", diaLen);
-        //firstAntiElement(i, &tData[tData->thread_id]);
-
         if(i <= Q_len){
-            //tData[tData->thread_id].xCalc = i;
-            //tData[tData->thread_id].yCalc = 1;
             initX = i;
             initY = 1;
-//        tempY = 1;
-//        tempX = currAnti;
-            //coor[1] = currAnti;
-            //coor[2] = 1;
+
         }else{
             initX = Q_len;
             initY = i - Q_len + 1;
-            //tData[tData->thread_id].xCalc = Q_len;
-            //tData[tData->thread_id].yCalc = i - Q_len + 1;
-            //coor[1] = Q_len;
-            //coor[2] = currAnti - Q_len + 1;
-//        tempY = currAnti - Q_len + 1;
-//        tempX = Q_len;
+
         }
 
         //printf("DIA %lld, x %lld, y %lld on thread %ld \n\n", diaLen, initX, initY, tid);
@@ -465,47 +346,47 @@ printf("START CALCULATION\n");
         //printf("Hello Houston from thread %d and len %lld\n",tData->thread_id, tData->antiLen);
         //printf("X %lld, Y %lld\n",tData[i].xCalc, tData[i].yCalc);
 
+        //TODO COMMENTED OUT
+//        long long int lenDiv = diaLen / THREADS;
+//        long long int modDiv = diaLen % THREADS;
+//
+//        long long int finEleX = initX - ((THREADS *lenDiv)-1);
+//        long long int finEleY = initY + ((THREADS *lenDiv)-1);
 
-        //SerialFlag = 0;
-        //balanceCount = 1;
+        int lenDiv = diaLen / THREADS;
+        int modDiv = diaLen % THREADS;
 
-//        long long int lenDiv = tData[tData->thread_id].antiLen / THREADS;
-//        long long int modDiv = tData[tData->thread_id].antiLen % THREADS;
-
-        long long int lenDiv = diaLen / THREADS;
-        long long int modDiv = diaLen % THREADS;
-
-//        long long int finEleX = (tData[tData->thread_id].xCalc-1) * lenDiv;
-//        long long int finEleY = (tData[tData->thread_id].yCalc+1) * lenDiv;
-
-        long long int finEleX = initX - ((THREADS *lenDiv)-1);
-        long long int finEleY = initY + ((THREADS *lenDiv)-1);
-
+        int finEleX = initX - ((THREADS *lenDiv)-1);
+        int finEleY = initY + ((THREADS *lenDiv)-1);
 
         //printf("calc X %lld,calc Y %lld and thread %d\n",tData[i].xCalc,tData[i].yCalc,tData->thread_id);
         //printf("FIN X %lld,FIN Y %lld and thread %d\n",finEleX,finEleY,tData->thread_id);
         //printf("DIV %lld, MOD %lld and %ld\n",lenDiv,modDiv,tid);
         //printf("FIN X %lld,FIN Y %lld init X %lld initY %lld and thread %ld\n",finEleX,finEleY,initX,initY,tid);
 
-        for(long long j=1;j<=lenDiv;j++){
+        double tStart = gettime();
+        //printf("START CALCULATION\n");
 
+        for(int j=1;j<=lenDiv;j++){
+            //printf("LEN UPDATE %lld\n", j);
 
             currX = initX - tid;
             currY = initY + tid;
-            //currX = initX - ((tid *j));
-            //currY = initY + ((tid *j));
 
-            //printf("TSO KAI LO %lld , %lld\n",currX,currY);
-
+            //printf("BASIC _cellVAL %lu on x %lld and y %lld\n",_cellVal, currX, currY);
             initX = initX - (THREADS);
             initY = initY + (THREADS);
-            //initY = (initY) * (lenDiv+1);
-            //printf("MAIN, %lld, %lld, %ld",currX,currY,tid);
-            updateScore(currX, currY);
+            cellUp+=updateScore(currX, currY);
 
 
         }
 
+        double tFin = gettime();
+        //printf("TIME %lf %ld\n",tFin-tStart,tid);
+
+//        pthread_mutex_lock(&lock);
+//        SerialFlag+=1;
+//        pthread_mutex_unlock(&lock);
         if(lenDiv == 0 && tid ==0) {   //TODO works fine
 
 //            pthread_mutex_lock(&lock);
@@ -515,14 +396,15 @@ printf("START CALCULATION\n");
 //            if (SerialFlag == 1) {
                 //for (int j = 0; j < tData->antiLen; j++) {
                 for (int j = 0; j < diaLen; j++) {
-                    long long int currXa, currYa = 0;
-                    currXa = initX - j;
-                    currYa = initY + j;
+//                    long long int currXa, currYa = 0;
+//                    currXa = initX - j;
+//                    currYa = initY + j;
+                    //printf("START _cellVAL %lu on x %lld and y %lld\n",_cellVal, currXa, currYa);
                     //currXa = initX -(tid);
                     //currYa = initY -(tid);
                     //printf("Hello case X %lld, Y %lld and thread %ld\n", currXa, currYa, tid);
                     //printf("DIV0, %lld, %lld, %ld",currXa,currYa,tid);
-                    updateScore(currXa, currYa);
+                    cellUp+=updateScore(initX - j, initY + j);
 
                 }
             //}
@@ -530,35 +412,42 @@ printf("START CALCULATION\n");
             //SerialFlag = 1;
         //}
 
-        }else if( modDiv!=0 && tid < modDiv){
+        }else if( modDiv!=0 && tid < modDiv && lenDiv != 0){
 //            pthread_mutex_lock(&lock);
 //            balanceCount+=1;
 //            pthread_mutex_unlock(&lock);
 
             //if(balanceCount <= modDiv){
-                long long int currXb, currYb =0;
-                currXb = finEleX - (tid +1);
-                currYb = finEleY + (tid+1);
-
+            //TODO commented out
+//                long long int currXb, currYb =0;
+//                currXb = finEleX - (tid +1);
+//                currYb = finEleY + (tid+1);
+                //printf("MOD _cellVAL %lu on x %lld and y %lld\n",_cellVal, currXb, currYb);
                 //printf("Balance case X %lld, Y %lld and thread %ld bal %d\n",currXb,currYb,tid, balanceCount);
                 //printf("MOD, %lld, %lld, %ld",currXb,currYb,tid);
-                updateScore(currXb, currYb);
+                cellUp+=updateScore(finEleX - (tid +1), finEleY + (tid+1));
             //}
 
 
-
         }
+        double tbFin = gettime();
+        //printf("TIME ANTI %lf on %lld tid %ld\n",tbFin-tbStart, i,tid);
         //printf("WAIT thread %d\n",tData->thread_id);
         pthread_barrier_wait(&barrier);
         //printf("WAIT thread %ld\n",tid);
 
-        //printf("\n\n");
-    }
 
+        //printf("\n");
+    }
+    pthread_mutex_lock(&lock);
+    _cellVal += cellUp;
+    pthread_mutex_unlock(&lock);
     //pthread_barrier_wait(&barrier);
 
     //printf("WATI BAR\n\n");
     //pthread_barrier_wait(&barrier);
+
+
     pthread_exit(NULL);
 }
 
@@ -572,8 +461,8 @@ void dataParser(){
 
     //At first write as output the strings as they are
     //TODO ENABLE
-    fprintf(finFile, "\n\nQ: \t%s", Q);
-    fprintf(finFile, "\nD: \t%s\n", D);
+//    fprintf(finFile, "\n\nQ: \t%s", Q);
+//    fprintf(finFile, "\nD: \t%s\n", D);
 
     Q_len = strlen(Q);
     D_len = strlen(D);
@@ -582,14 +471,7 @@ void dataParser(){
      * We use and initialize.The first one is responsible to mark the scores from the
      * calculations.The second contains backtracking information.
      */
-//    int *ScoreTable[Q_len+1];
-//    for(int i = 0; i< Q_len+1; i++){
-//        ScoreTable[i] = malloc((D_len+1)* sizeof(*ScoreTable[i]));
-//        if(ScoreTable[i] == NULL){
-//            printf("Could not allocate memory for matrix ScoreTable.Terminating");
-//            exit(-2);
-//        }
-//    }
+
     ScoreTable = malloc((Q_len+1)* sizeof(int *));
     if(ScoreTable ==NULL){
         printf("Could not allocate memory for matrix ScoreTable.Terminating");
@@ -603,18 +485,6 @@ void dataParser(){
         }
     }
 
-//    ScoreTable = malloc((Q_len+1) * sizeof(int *));
-//    for(int i =0 ; Q_len + 1; i++){
-//        ScoreTable[i] = malloc((D_len+1)* sizeof(int));
-//    }
-
-//    for(int i = 0; i< Q_len+1; i++){
-//        ScoreTable[i] = malloc((D_len+1)* sizeof(*ScoreTable[i]));
-//        if(ScoreTable[i] == NULL){
-//            printf("Could not allocate memory for matrix ScoreTable.Terminating");
-//            exit(-2);
-//        }
-//    }
     printf("Memory Allocated successfully for ScoreTable matrix.\n");
 
     //Initialize 2D array (We have one additional column and row)
@@ -651,14 +521,12 @@ void dataParser(){
 
     pthread_barrier_init(&barrier, NULL,THREADS);
 
-    //_td *tData = malloc(THREADS * sizeof(*tData));
-    //memset(tData, 0, sizeof(_td));
-    //_td tData[THREADS];
-
     antiDiagNum = D_len + Q_len  - 1;
 
     double cellTimeInit = gettime();
 
+
+    printf("START SIMILARITY MATRIX\n");
 
     /*
      * Create the demanded number of threads on the beginning
@@ -671,12 +539,6 @@ void dataParser(){
          * NULL for attributes as we want to use default
          */
         //printf("MAIN : Creating thread %ld\n",i);
-        //tData = (_td *)malloc(THREADS * sizeof(tData));
-//        tData[i].thread_id = i;
-//        tData[i].yCalc = 0;
-//        tData[i].xCalc = 0;
-//        tData[i].antiLen = 1;
-        //threadChecker = pthread_create(&mthread[i], NULL, calcSimilarity, (void *)&tData[i]);
         threadChecker = pthread_create(&mthread[i], NULL, calcSimilarity, (void *)i);
         if(threadChecker){
             printf("Thread creation failed.Exiting");
@@ -701,82 +563,20 @@ void dataParser(){
 
     pthread_barrier_destroy(&barrier);
     pthread_mutex_destroy(&lock);
-//    for(int i = 0;i<THREADS+1; i++){
-//        pthread_mutex_destroy(&swmutex[i]);
-//    }
 
-    //free(mthread);
-//    for(int i = 0; i< THREADS; i++) {
-//        free(tData);
-//    }
 
-    //free(tData);
 
 
     //printf("MAXAX %d",_MAX_SIMILARITY);
 
-    printf("START SIMILARITY MATRIX\n");
+
 
     /*
      * Similarity matrix calculations. We also find how many
      * max values we have in each matrix
      */
-//    int _counterMax = 0;
-//
-//    double cellTimeInit = gettime();
-//    _MAX_SIMILARITY=0;
-//
-//    for(int i = 1; i < Q_len + 1; i++){
-//        for(int j = 1; j < D_len + 1; j++){
-//            int up, left, diag;
-//
-//            up = ScoreTable[i-1][j] + GAP;  //we want same column and one row up
-//            left = ScoreTable[i][j-1] + GAP; //we want same row and one column left
-//
-//            //for diagonal check if we have match or mismatch
-//            uint tempDiag;
-//
-//            tempDiag = (D[j - 1] == Q[i - 1]) ? MATCH : MISMATCH;
-//
-//            diag = ScoreTable[i - 1][j - 1] + tempDiag;
-//
-//            uint tempMax = 0;
-//
-//            if( up <= 0 && left <= 0 && diag <= 0 ){    //case we have max as negative value
-//                tempMax = 0;
-//            }else{
-//                if( up > left && up > diag){
-//                    tempMax = up;
-//                }else if (left >= up && left > diag){
-//                    tempMax = left;
-//                }else{
-//                    tempMax = diag;
-//                }
-//                _cellVal++;
-//            }
-//
-//            ScoreTable[i][j] = tempMax;
-//
-//            if(tempMax > _MAX_SIMILARITY) {
-//                _counterMax = 0;
-//                _MAX_SIMILARITY = tempMax;
-//            }else if(tempMax == _MAX_SIMILARITY && tempMax!=0){
-//                _counterMax++;
-//            }
-//        }
-//    }
-//
-//
-//    double cellTimeFin = gettime();
-//    _totalCellTime+= (cellTimeFin-cellTimeInit);
 
     printf("Similarity matrix done. Start backtracking\n");
-
-
-
-
-
-
 
 
 
@@ -786,136 +586,136 @@ void dataParser(){
      * FIND ALL MAX VALUES FOR BACKTRACKING
      */
     //TODO IN THE END ENABLE BACKTRACKING AGAIN
-
-    long xMax[_counterMax+1];
-    long yMax[_counterMax+1];
-    long _endKeeper[_counterMax+1];
-
-    int tempCount=0;
-    for (int i = 0; i < Q_len + 1; i++){
-        for (int j = 0; j < D_len + 1; j++){
-            if(_MAX_SIMILARITY == ScoreTable[i][j]){
-                _endKeeper[tempCount] = j;
-                xMax[tempCount] = i;
-                yMax[tempCount] = j;
-                tempCount++;
-            }
-        }
-    }
-
-
-    /*
-     * BACKTRACKING. We continue with the loop until it hits zero
-     */
-
-    double traceTimeInit = gettime();
-    for(int i = 0; i< _counterMax+1; i++){
-
-        long currXpos = xMax[i];
-        long currYpos = yMax[i];
-        char xElem = Q[currXpos];
-        char yElem = D[currYpos];
-        char currNode = ScoreTable[currXpos][currYpos];
-
-        char *_qOut = NULL;
-
-        _qOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)*sizeof(char));
-        if(_qOut==NULL){
-            printf("Error occured while trying to allocate memory for traceback.Terminating....");
-            exit(-1);
-        }
-
-        char *_dOut = NULL;
-        _dOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)* sizeof(char));
-        if(_dOut==NULL){
-            printf("Error occured while trying to allocate memory for traceback.Terminating....");
-            exit(-1);
-        }
-
-        int lengthCount = 0;
-
-        //We initialize traceflag to zero when we want to find a new max value
-        //Traceback until we reach zero. Added some cases to make it even more strict
-        u_int8_t traceFlag = 0;
-        while(traceFlag != 1){
-            int up, left, diag;
-
-            up = ScoreTable[currXpos-1][currYpos];  //we want same column and one row up
-            left = ScoreTable[currXpos][currYpos-1]; //we want same row and one column left
-            diag = ScoreTable[currXpos - 1][currYpos - 1];
-
-            if(diag == 0 && ScoreTable[currXpos][currYpos] - MATCH == 0){
-                traceFlag = 1;
-                currYpos--;
-                currXpos--;
-                xElem = Q[currXpos];
-                yElem = D[currYpos];
-            }else{
-                if( up > left && up > diag){
-                    currXpos--;
-                    xElem = Q[currXpos];
-                    yElem = '-';
-                }else if (left > up && left > diag){
-                    currYpos--;
-                    xElem = '-';
-                    yElem = D[currYpos];
-                }else if(diag >= up && diag >= left){
-                    if(Q[currXpos-1] == D[currYpos-1] || (diag > up && diag > left) ){
-                        currYpos--;
-                        currXpos--;
-                        xElem = Q[currXpos];
-                        yElem = D[currYpos];
-                    }else if(Q[currXpos-1] == D[currYpos]){
-                        currXpos--;
-                        xElem = Q[currXpos];
-                        yElem = '-';
-                    }else{
-                        currYpos--;
-                        xElem = '-';
-                        yElem = D[currYpos];
-                    }
-
-                }else{
-                    if(Q[currXpos] == D[currYpos-1]){
-                        currYpos--;
-                        xElem = '-';
-                        yElem = D[currYpos];
-                    }else{
-                        currXpos--;
-                        xElem = Q[currXpos];
-                        yElem = '-';
-                    }
-                }
-
-            }
-            _traceSteps++;
-            _qOut[lengthCount] = xElem;
-            _dOut[lengthCount] = yElem;
-            lengthCount++;
-
-        }
-
-        _qOut[lengthCount] = '\0';
-        _dOut[lengthCount] = '\0';
-
-        _dOut = reverseArr(_dOut, strlen(_dOut));
-        _qOut = reverseArr(_qOut, strlen(_qOut));
-
-        //printf("\nQ reversed %s and \nD reversed %s",_qOut,_dOut);
-        /*
-         * Write all the info demanded on an output file
-         */
-        //TODO ENABLE IT AT THE END
-        fprintf(finFile, "\nMATCH %d [SCORE: %d,START: %ld,STOP: %ld]\n\tD: %s\n\tQ: %s\n", i+1, _MAX_SIMILARITY, (_endKeeper[i]-lengthCount) , _endKeeper[i]-1, _dOut, _qOut);
-
-        free(_qOut);
-        free(_dOut);
-
-        //printf("\n\n");
-    }
-
-    double traceTimeFin = gettime();
-    _totalTraceTime+=(traceTimeFin - traceTimeInit);
+//
+//    long xMax[_counterMax+1];
+//    long yMax[_counterMax+1];
+//    long _endKeeper[_counterMax+1];
+//
+//    int tempCount=0;
+//    for (int i = 0; i < Q_len + 1; i++){
+//        for (int j = 0; j < D_len + 1; j++){
+//            if(_MAX_SIMILARITY == ScoreTable[i][j]){
+//                _endKeeper[tempCount] = j;
+//                xMax[tempCount] = i;
+//                yMax[tempCount] = j;
+//                tempCount++;
+//            }
+//        }
+//    }
+//
+//
+//    /*
+//     * BACKTRACKING. We continue with the loop until it hits zero
+//     */
+//
+//    double traceTimeInit = gettime();
+//    for(int i = 0; i< _counterMax+1; i++){
+//
+//        long currXpos = xMax[i];
+//        long currYpos = yMax[i];
+//        char xElem = Q[currXpos];
+//        char yElem = D[currYpos];
+//        char currNode = ScoreTable[currXpos][currYpos];
+//
+//        char *_qOut = NULL;
+//
+//        _qOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)*sizeof(char));
+//        if(_qOut==NULL){
+//            printf("Error occured while trying to allocate memory for traceback.Terminating....");
+//            exit(-1);
+//        }
+//
+//        char *_dOut = NULL;
+//        _dOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)* sizeof(char));
+//        if(_dOut==NULL){
+//            printf("Error occured while trying to allocate memory for traceback.Terminating....");
+//            exit(-1);
+//        }
+//
+//        int lengthCount = 0;
+//
+//        //We initialize traceflag to zero when we want to find a new max value
+//        //Traceback until we reach zero. Added some cases to make it even more strict
+//        u_int8_t traceFlag = 0;
+//        while(traceFlag != 1){
+//            int up, left, diag;
+//
+//            up = ScoreTable[currXpos-1][currYpos];  //we want same column and one row up
+//            left = ScoreTable[currXpos][currYpos-1]; //we want same row and one column left
+//            diag = ScoreTable[currXpos - 1][currYpos - 1];
+//
+//            if(diag == 0 && ScoreTable[currXpos][currYpos] - MATCH == 0){
+//                traceFlag = 1;
+//                currYpos--;
+//                currXpos--;
+//                xElem = Q[currXpos];
+//                yElem = D[currYpos];
+//            }else{
+//                if( up > left && up > diag){
+//                    currXpos--;
+//                    xElem = Q[currXpos];
+//                    yElem = '-';
+//                }else if (left > up && left > diag){
+//                    currYpos--;
+//                    xElem = '-';
+//                    yElem = D[currYpos];
+//                }else if(diag >= up && diag >= left){
+//                    if(Q[currXpos-1] == D[currYpos-1] || (diag > up && diag > left) ){
+//                        currYpos--;
+//                        currXpos--;
+//                        xElem = Q[currXpos];
+//                        yElem = D[currYpos];
+//                    }else if(Q[currXpos-1] == D[currYpos]){
+//                        currXpos--;
+//                        xElem = Q[currXpos];
+//                        yElem = '-';
+//                    }else{
+//                        currYpos--;
+//                        xElem = '-';
+//                        yElem = D[currYpos];
+//                    }
+//
+//                }else{
+//                    if(Q[currXpos] == D[currYpos-1]){
+//                        currYpos--;
+//                        xElem = '-';
+//                        yElem = D[currYpos];
+//                    }else{
+//                        currXpos--;
+//                        xElem = Q[currXpos];
+//                        yElem = '-';
+//                    }
+//                }
+//
+//            }
+//            _traceSteps++;
+//            _qOut[lengthCount] = xElem;
+//            _dOut[lengthCount] = yElem;
+//            lengthCount++;
+//
+//        }
+//
+//        _qOut[lengthCount] = '\0';
+//        _dOut[lengthCount] = '\0';
+//
+//        _dOut = reverseArr(_dOut, strlen(_dOut));
+//        _qOut = reverseArr(_qOut, strlen(_qOut));
+//
+//        //printf("\nQ reversed %s and \nD reversed %s",_qOut,_dOut);
+//        /*
+//         * Write all the info demanded on an output file
+//         */
+//        //TODO ENABLE IT AT THE END
+//        fprintf(finFile, "\nMATCH %d [SCORE: %d,START: %ld,STOP: %ld]\n\tD: %s\n\tQ: %s\n", i+1, _MAX_SIMILARITY, (_endKeeper[i]-lengthCount) , _endKeeper[i]-1, _dOut, _qOut);
+//
+//        free(_qOut);
+//        free(_dOut);
+//
+//        //printf("\n\n");
+//    }
+//
+//    double traceTimeFin = gettime();
+//    _totalTraceTime+=(traceTimeFin - traceTimeInit);
 
 
 
@@ -1095,7 +895,7 @@ int main(int argc, char * argv[]) {
 
     FILE *fp;
 
-    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D7.txt","r");
+    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D6.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");
@@ -1103,13 +903,13 @@ int main(int argc, char * argv[]) {
     }
 
     //TODO ENABLE
-    finFile = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/finePthreads/D9.txt","a");
-    printf("THREADS : %d\n",THREADS);
-
-    if(finFile == NULL){
-        printf("Error while opening write file!\n");
-        exit(1);
-    }
+//    finFile = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/finePthreads/D9.txt","a");
+//    printf("THREADS : %d\n",THREADS);
+//
+//    if(finFile == NULL){
+//        printf("Error while opening write file!\n");
+//        exit(1);
+//    }
 
     fileHeaderValues(fp);
     fileParser(fp);
@@ -1117,7 +917,7 @@ int main(int argc, char * argv[]) {
 
     fclose(fp);
     //TODO ENABLE
-    fclose(finFile);
+    //fclose(finFile);
 
     double timeFinTotal = gettime();
     _totalTime = timeFinTotal - timeInitTotal;

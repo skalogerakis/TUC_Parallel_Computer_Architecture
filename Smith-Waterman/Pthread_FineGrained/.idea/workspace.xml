@@ -16,7 +16,6 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Pthread_FineGrained" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Pthread_FineGrained" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/.idea/codeStyles/Project.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Serial/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
@@ -38,13 +37,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1538">
-              <caret line="552" column="8" selection-start-line="552" selection-start-column="8" selection-end-line="552" selection-end-column="8" />
+            <state relative-caret-position="244">
+              <caret line="897" column="103" selection-start-line="897" selection-start-column="103" selection-end-line="897" selection-end-column="103" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#7627#7667#0" />
-                <element signature="e#23451#23527#0" />
-                <marker date="1553511260915" expanded="true" signature="15725:15784" ph="..." />
+                <element signature="e#996#1113#1" />
+                <element signature="e#1441#2031#0" />
+                <element signature="e#2250#3756#0" />
+                <element signature="e#3758#4083#0" />
+                <element signature="e#4085#4432#0" />
+                <element signature="e#4434#5027#0" />
+                <element signature="e#5030#5383#0" />
+                <element signature="e#5030#5843#0" />
+                <element signature="e#5845#6512#0" />
               </folding>
             </state>
           </provider>
@@ -63,35 +68,35 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ScoreTa</find>
-      <find>score</find>
-      <find>finEleX</find>
-      <find>mutex</find>
-      <find>diaLen</find>
-      <find>dial</find>
-      <find>Bala</find>
-      <find>balanceCount</find>
-      <find>bal</find>
-      <find>hello</find>
-      <find>barrierCounter</find>
       <find>bala</find>
-      <find>barrier</find>
       <find>bar</find>
       <find>Q</find>
-      <find>calc</find>
-      <find>lock</find>
       <find>swmutex</find>
       <find>initX</find>
       <find>_Max</find>
       <find>_MAX_SIMILARITY</find>
-      <find>printf</find>
       <find>_cellVal</find>
       <find>_counterMax</find>
-      <find>updateScore</find>
       <find>print</find>
       <find>fileParser</find>
       <find>dataParser</find>
       <find>fillDataBuffer</find>
+      <find>lock</find>
+      <find>SerialFlag</find>
+      <find>balanceCount</find>
+      <find>Score</find>
+      <find>barrier</find>
+      <find>LEN UP</find>
+      <find>finFile</find>
+      <find>1</find>
+      <find>prin</find>
+      <find>printf</find>
+      <find>calc</find>
+      <find>tFin</find>
+      <find>ScoreTable</find>
+      <find>updateScore</find>
+      <find>START</find>
+      <find>update</find>
       <find>calcSimilarity</find>
     </findStrings>
   </component>
@@ -138,21 +143,12 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Pthread_FineGrained">
-    <configuration name="Pthread_FineGrained" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-threads 4 -name ID -input IN -match 3 -mismatch -1 -gap -1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Pthread_FineGrained" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Pthread_FineGrained">
+  <component name="RunManager">
+    <configuration name="Pthread_FineGrained" type="CMakeRunConfiguration" factoryName="Application" singleton="false" PROGRAM_PARAMS="-threads 15 -name ID -input IN -match 3 -mismatch -1 -gap -1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Pthread_FineGrained" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Pthread_FineGrained">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Serial" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-threads 5 -name ID -input NAME -match 3 -mismatch -1 -gap -1 " PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Serial" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Serial">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Serial" />
-      <item itemvalue="Application.Pthread_FineGrained" />
-    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -167,12 +163,15 @@
       <workItem from="1553335037203" duration="35700000" />
       <workItem from="1553417750670" duration="30088000" />
       <workItem from="1553462155389" duration="20939000" />
-      <workItem from="1553504928123" duration="6279000" />
+      <workItem from="1553504928123" duration="9561000" />
+      <workItem from="1553536359386" duration="10272000" />
+      <workItem from="1553564205241" duration="3524000" />
+      <workItem from="1553595478217" duration="1936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93006000" />
+    <option name="totallyTimeSpent" value="112020000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -185,20 +184,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="25" width="1863" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24986242" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24986242" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33693305" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3401728" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5226782" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.37580994" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.3736501" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32829374" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32937366" />
@@ -239,7 +237,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.c</url>
-          <line>1122</line>
+          <line>922</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -286,13 +284,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1538">
-          <caret line="552" column="8" selection-start-line="552" selection-start-column="8" selection-end-line="552" selection-end-column="8" />
+        <state relative-caret-position="244">
+          <caret line="897" column="103" selection-start-line="897" selection-start-column="103" selection-end-line="897" selection-end-column="103" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#7627#7667#0" />
-            <element signature="e#23451#23527#0" />
-            <marker date="1553511260915" expanded="true" signature="15725:15784" ph="..." />
+            <element signature="e#996#1113#1" />
+            <element signature="e#1441#2031#0" />
+            <element signature="e#2250#3756#0" />
+            <element signature="e#3758#4083#0" />
+            <element signature="e#4085#4432#0" />
+            <element signature="e#4434#5027#0" />
+            <element signature="e#5030#5383#0" />
+            <element signature="e#5030#5843#0" />
+            <element signature="e#5845#6512#0" />
           </folding>
         </state>
       </provider>
