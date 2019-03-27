@@ -12,9 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="359a0084-2947-47ee-bca4-553f0e8c1234" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Pthread_FineGrained" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Pthread_FineGrained" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Serial/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
@@ -37,19 +35,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="897" column="103" selection-start-line="897" selection-start-column="103" selection-end-line="897" selection-end-column="103" />
+            <state relative-caret-position="780">
+              <caret line="379" column="12" selection-start-line="379" selection-start-column="12" selection-end-line="379" selection-end-column="12" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#996#1113#1" />
-                <element signature="e#1441#2031#0" />
                 <element signature="e#2250#3756#0" />
                 <element signature="e#3758#4083#0" />
                 <element signature="e#4085#4432#0" />
                 <element signature="e#4434#5027#0" />
                 <element signature="e#5030#5383#0" />
-                <element signature="e#5030#5843#0" />
                 <element signature="e#5845#6512#0" />
+                <element signature="e#9515#11988#0" />
+                <element signature="e#16159#16213#0" />
+                <element signature="e#21170#23130#0" />
               </folding>
             </state>
           </provider>
@@ -68,18 +67,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bala</find>
-      <find>bar</find>
-      <find>Q</find>
-      <find>swmutex</find>
-      <find>initX</find>
-      <find>_Max</find>
-      <find>_MAX_SIMILARITY</find>
-      <find>_cellVal</find>
-      <find>_counterMax</find>
-      <find>print</find>
-      <find>fileParser</find>
-      <find>dataParser</find>
       <find>fillDataBuffer</find>
       <find>lock</find>
       <find>SerialFlag</find>
@@ -94,10 +81,22 @@
       <find>calc</find>
       <find>tFin</find>
       <find>ScoreTable</find>
-      <find>updateScore</find>
       <find>START</find>
-      <find>update</find>
       <find>calcSimilarity</find>
+      <find>startFla</find>
+      <find>bar</find>
+      <find>main</find>
+      <find>multithreadCreator</find>
+      <find>antiDiagNum</find>
+      <find>cell</find>
+      <find>start</find>
+      <find>startPro</find>
+      <find>multithreadModifier</find>
+      <find>startProcess</find>
+      <find>update</find>
+      <find>startFlag</find>
+      <find>updateScore</find>
+      <find>UNST</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,7 +125,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Serial" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -144,7 +143,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Pthread_FineGrained" type="CMakeRunConfiguration" factoryName="Application" singleton="false" PROGRAM_PARAMS="-threads 15 -name ID -input IN -match 3 -mismatch -1 -gap -1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Pthread_FineGrained" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Pthread_FineGrained">
+    <configuration name="Pthread_FineGrained" type="CMakeRunConfiguration" factoryName="Application" singleton="false" PROGRAM_PARAMS="-threads 2 -name ID -input IN -match 3 -mismatch -1 -gap -1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Pthread_FineGrained" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Pthread_FineGrained">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -167,11 +166,12 @@
       <workItem from="1553536359386" duration="10272000" />
       <workItem from="1553564205241" duration="3524000" />
       <workItem from="1553595478217" duration="1936000" />
+      <workItem from="1553597802166" duration="9806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112020000" />
+    <option name="totallyTimeSpent" value="121826000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -190,7 +190,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3401728" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.60799134" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.5226782" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -233,23 +233,62 @@
     <option name="version" value="1" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>922</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="_counterMax" language="ObjectiveC" />
+        <watch expression="diaLen" language="ObjectiveC" />
+        <watch expression="initX" language="ObjectiveC" />
+        <watch expression="initY" language="ObjectiveC" />
+        <watch expression="lenDiv" language="ObjectiveC" />
+        <watch expression="modDiv" language="ObjectiveC" />
+        <watch expression="finEleX" language="ObjectiveC" />
+        <watch expression="ScoreTable" language="ObjectiveC" />
+        <watch expression="finEleY" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>ScoreTable</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>finEleY</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>finEleX</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>modDiv</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>lenDiv</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>initY</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>initX</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>diaLen</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>_counterMax</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -282,29 +321,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="897" column="103" selection-start-line="897" selection-start-column="103" selection-end-line="897" selection-end-column="103" />
+        <state relative-caret-position="780">
+          <caret line="379" column="12" selection-start-line="379" selection-start-column="12" selection-end-line="379" selection-end-column="12" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#996#1113#1" />
-            <element signature="e#1441#2031#0" />
             <element signature="e#2250#3756#0" />
             <element signature="e#3758#4083#0" />
             <element signature="e#4085#4432#0" />
             <element signature="e#4434#5027#0" />
             <element signature="e#5030#5383#0" />
-            <element signature="e#5030#5843#0" />
             <element signature="e#5845#6512#0" />
+            <element signature="e#9515#11988#0" />
+            <element signature="e#16159#16213#0" />
+            <element signature="e#21170#23130#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
         </state>
       </provider>
     </entry>

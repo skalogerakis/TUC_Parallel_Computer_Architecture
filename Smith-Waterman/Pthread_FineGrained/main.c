@@ -42,9 +42,20 @@ int qMin = -1;
 int qMax = -1;
 int dSize = -1;
 
+//TODO CHECK VARIABLE TYPE
+int diaLen;
+int lenDiv;
+int modDiv;
+int finEleX;
+int finEleY;
+int initX;
+int initY;
+
+volatile int startFlag = 0;
+
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 pthread_mutexattr_t mutexattr;
-//pthread_mutex_t *swmutex;
+
 pthread_barrier_t barrier;
 
 //long long int antiDiagLen = 0;
@@ -242,6 +253,20 @@ long long int * firstAntiElement(long long int currAnti, _td* tData){
     //return coor;
 }
 
+void firstElementUpdater(int i){
+
+    if(i <= Q_len){
+        initX = i;
+        initY = 1;
+
+    }else{
+        initX = Q_len;
+        initY = i - Q_len + 1;
+
+    }
+}
+
+
 int updateScore(long long int x, long long int y){
 
     //printf("x %lld, y %lld\t", x, y);
@@ -301,11 +326,119 @@ int updateScore(long long int x, long long int y){
     return tempCell;
 }
 
+void *startProcess(void *threadArg){
+
+    long tid;
+    tid = (long)threadArg;
+
+    while(1){
+        printf("Getin stuck from %ld\n",tid);
+        //TODO: NOTE THIS COULD WORK WITH BOTH WHILE(1) or while flag with a barrier
+
+        if(startFlag == 1){
+            printf("UNSTUCK from %ld\n",tid);
+            int currX,currY;
+            int cellUp=0;
+            for(int j=1;j<=lenDiv;j++){
+                //printf("LEN UPDATE %lld\n", j);
+
+                currX = initX - tid;
+                currY = initY + tid;
+
+                //printf("BASIC _cellVAL %lu on x %lld and y %lld\n",_cellVal, currX, currY);
+                initX = initX - (THREADS);
+                initY = initY + (THREADS);
+                cellUp+=updateScore(currX, currY);
+
+
+            }
+
+//        pthread_mutex_lock(&lock);
+//        SerialFlag+=1;
+//        pthread_mutex_unlock(&lock);
+            if(lenDiv == 0 && tid ==0) {   //TODO works fine
+
+                for (int j = 0; j < diaLen; j++) {
+                    cellUp+=updateScore(initX - j, initY + j);
+
+                }
+
+            }else if( modDiv!=0 && tid < modDiv && lenDiv != 0){
+                cellUp+=updateScore(finEleX - (tid +1), finEleY + (tid+1));
+                //}
+
+
+            }
+
+
+
+            pthread_mutex_lock(&lock);
+            _cellVal += cellUp;
+            pthread_mutex_unlock(&lock);
+            pthread_barrier_wait(&barrier);
+
+            pthread_exit(NULL);
+        }
+
+        //break;
+    }
+
+
+}
+
+//TODO ADD COMMENTS AND CHECK DESTROY CASE
+void multithreadModifier(short selector){
+
+    pthread_t mthread[THREADS];
+
+    if(selector == 1){
+        printf("Creating Threads.\n");
+        /*
+     * Mutex Init should return zero. Otherwise print error message and exit
+     */
+
+        pthread_mutexattr_init(&mutexattr);
+        pthread_mutexattr_settype(&mutexattr,PTHREAD_MUTEX_NORMAL);
+        pthread_barrier_init(&barrier, NULL,THREADS);
+
+        if(pthread_mutex_init(&lock,&mutexattr) != 0){
+            printf("Error occured while trying to init mutexes. Exitiing...");
+            exit(-1);
+        }
+
+        /*
+         * Create the demanded number of threads on the beginning
+         */
+        int threadChecker;
+        for(long i = 0; i<THREADS; i++){
+            //TODO LAST PARAMETER CAN PASS ARGUMENTS.CHECK IF WE CAN USE THAT
+            /*
+             * NULL for attributes as we want to use default
+             */
+
+            threadChecker = pthread_create(&mthread[i], NULL, startProcess, (void *)i);
+            if(threadChecker){
+                printf("Thread creation failed.Exiting");
+                exit(-1);
+            }
+
+        }
+    }else if (selector == -1){
+        printf("Joining Threads.\n");
+        for(int i = 0; i<THREADS; i++){
+            printf("MAIN : completed join with thread %d \n\n",i);
+            pthread_join(mthread[i], NULL);
+        }
+        pthread_barrier_destroy(&barrier);
+        pthread_mutex_destroy(&lock);
+    }else{
+        printf("WARNING:You shouldn't be here. You did a wrong choice.Undefined thread behaviour may occur\n");
+    }
+
+}
+
 
 void *calcSimilarity(void *threadArg){
-//    _td *tData;
-//    tData = (_td *)threadArg;
-
 
     long tid;
     tid = (long)threadArg;
@@ -313,13 +446,6 @@ void *calcSimilarity(void *threadArg){
 
     int currX, currY;
     int cellUp=0;
-    //long long int *coor;
-
-    //printf("Hello Houston from thread %d\n\n\n",tData->thread_id);
-
-    //TODO FIX VARIABLE DECLARATION
-    //Don't start counting from the beginning. Eliminate elements from first line and column
-    //printf("D size %d, Q size %d anti %lld\n", D_len, Q_len, antiDiagNum);
     printf("START CALC\n");
 
 
@@ -330,28 +456,6 @@ void *calcSimilarity(void *threadArg){
 
         diaLen = antiDiagLength(i);
 
-        if(i <= Q_len){
-            initX = i;
-            initY = 1;
-
-        }else{
-            initX = Q_len;
-            initY = i - Q_len + 1;
-
-        }
-
-        //printf("DIA %lld, x %lld, y %lld on thread %ld \n\n", diaLen, initX, initY, tid);
-        //tData->xCalc = coor[1];
-        //tData->yCalc = coor[2];
-        //printf("Hello Houston from thread %d and len %lld\n",tData->thread_id, tData->antiLen);
-        //printf("X %lld, Y %lld\n",tData[i].xCalc, tData[i].yCalc);
-
-        //TODO COMMENTED OUT
-//        long long int lenDiv = diaLen / THREADS;
-//        long long int modDiv = diaLen % THREADS;
-//
-//        long long int finEleX = initX - ((THREADS *lenDiv)-1);
-//        long long int finEleY = initY + ((THREADS *lenDiv)-1);
 
         int lenDiv = diaLen / THREADS;
         int modDiv = diaLen % THREADS;
@@ -364,7 +468,7 @@ void *calcSimilarity(void *threadArg){
         //printf("DIV %lld, MOD %lld and %ld\n",lenDiv,modDiv,tid);
         //printf("FIN X %lld,FIN Y %lld init X %lld initY %lld and thread %ld\n",finEleX,finEleY,initX,initY,tid);
 
-        double tStart = gettime();
+        //double tStart = gettime();
         //printf("START CALCULATION\n");
 
         for(int j=1;j<=lenDiv;j++){
@@ -389,42 +493,12 @@ void *calcSimilarity(void *threadArg){
 //        pthread_mutex_unlock(&lock);
         if(lenDiv == 0 && tid ==0) {   //TODO works fine
 
-//            pthread_mutex_lock(&lock);
-//            SerialFlag+=1;
-//            pthread_mutex_unlock(&lock);
-//            //printf("SERAL %d\n",SerialFlag);
-//            if (SerialFlag == 1) {
-                //for (int j = 0; j < tData->antiLen; j++) {
                 for (int j = 0; j < diaLen; j++) {
-//                    long long int currXa, currYa = 0;
-//                    currXa = initX - j;
-//                    currYa = initY + j;
-                    //printf("START _cellVAL %lu on x %lld and y %lld\n",_cellVal, currXa, currYa);
-                    //currXa = initX -(tid);
-                    //currYa = initY -(tid);
-                    //printf("Hello case X %lld, Y %lld and thread %ld\n", currXa, currYa, tid);
-                    //printf("DIV0, %lld, %lld, %ld",currXa,currYa,tid);
                     cellUp+=updateScore(initX - j, initY + j);
 
                 }
-            //}
-
-            //SerialFlag = 1;
-        //}
 
         }else if( modDiv!=0 && tid < modDiv && lenDiv != 0){
-//            pthread_mutex_lock(&lock);
-//            balanceCount+=1;
-//            pthread_mutex_unlock(&lock);
-
-            //if(balanceCount <= modDiv){
-            //TODO commented out
-//                long long int currXb, currYb =0;
-//                currXb = finEleX - (tid +1);
-//                currYb = finEleY + (tid+1);
-                //printf("MOD _cellVAL %lu on x %lld and y %lld\n",_cellVal, currXb, currYb);
-                //printf("Balance case X %lld, Y %lld and thread %ld bal %d\n",currXb,currYb,tid, balanceCount);
-                //printf("MOD, %lld, %lld, %ld",currXb,currYb,tid);
                 cellUp+=updateScore(finEleX - (tid +1), finEleY + (tid+1));
             //}
 
@@ -432,6 +506,11 @@ void *calcSimilarity(void *threadArg){
         }
         double tbFin = gettime();
         //printf("TIME ANTI %lf on %lld tid %ld\n",tbFin-tbStart, i,tid);
+
+
+
+
+
         //printf("WAIT thread %d\n",tData->thread_id);
         pthread_barrier_wait(&barrier);
         //printf("WAIT thread %ld\n",tid);
@@ -442,11 +521,6 @@ void *calcSimilarity(void *threadArg){
     pthread_mutex_lock(&lock);
     _cellVal += cellUp;
     pthread_mutex_unlock(&lock);
-    //pthread_barrier_wait(&barrier);
-
-    //printf("WATI BAR\n\n");
-    //pthread_barrier_wait(&barrier);
-
 
     pthread_exit(NULL);
 }
@@ -498,71 +572,46 @@ void dataParser(){
     }
 
 
-
+    antiDiagNum = D_len + Q_len - 1;
     _counterMax = 0;
     _MAX_SIMILARITY=0;
 
-    //TODO HERE WE GO
-
-    /*
-     * Mutex Init should return zero. Otherwise print error message and exit
-     */
-
-    pthread_mutexattr_init(&mutexattr);
-    //pthread_mutexattr_settype(&mutexattr,PTHREAD_MUTEX_NORMAL);
-
-    if(pthread_mutex_init(&lock,&mutexattr) != 0){
-        printf("Error occured while trying to init mutexes. Exitiing...");
-        exit(-1);
-    }
-
-
-    pthread_t mthread[THREADS];
-
-    pthread_barrier_init(&barrier, NULL,THREADS);
-
-    antiDiagNum = D_len + Q_len  - 1;
 
     double cellTimeInit = gettime();
 
 
     printf("START SIMILARITY MATRIX\n");
 
-    /*
-     * Create the demanded number of threads on the beginning
-     */
-    //_td *tData;
-    int threadChecker;
-    for(long i = 0; i<THREADS; i++){
-        //TODO LAST PARAMETER CAN PASS ARGUMENTS.CHECK IF WE CAN USE THAT
-        /*
-         * NULL for attributes as we want to use default
-         */
-        //printf("MAIN : Creating thread %ld\n",i);
-        threadChecker = pthread_create(&mthread[i], NULL, calcSimilarity, (void *)i);
-        if(threadChecker){
-            printf("Thread creation failed.Exiting");
-            exit(-1);
-        }
+    for (int i = 1; i<=antiDiagNum; i++) {
+
+//        SerialFlag = 0;
+//        balanceCount = 0;
+
+        diaLen = antiDiagLength(i);
+        firstElementUpdater(i);
+
+        lenDiv = diaLen / THREADS;
+        modDiv = diaLen % THREADS;
+
+        finEleX = initX - ((THREADS * lenDiv) - 1);
+        finEleY = initY + ((THREADS * lenDiv) - 1);
+        printf("Check\n");
+        startFlag = 1;
 
 
-    }
-
-    /*
-     * After the parallel part is over join all the threads and move on
-     */
-
-    for(int i = 0; i<THREADS; i++){
-       // printf("MAIN : completed join with thread %d \n\n",tData[i].thread_id);
-        pthread_join(mthread[i], NULL);
 
     }
 
+
+
+    printf("DESSERT NOW\n");
+
+//
     double cellTimeFin = gettime();
     _totalCellTime+= (cellTimeFin-cellTimeInit);
-
-    pthread_barrier_destroy(&barrier);
-    pthread_mutex_destroy(&lock);
+//
+//    pthread_barrier_destroy(&barrier);
+//    pthread_mutex_destroy(&lock);
 
 
 
@@ -579,8 +628,6 @@ void dataParser(){
     printf("Similarity matrix done. Start backtracking\n");
 
 
-
-    //printf("MAX %d\n",_MAX_SIMILARITY);
 
     /*
      * FIND ALL MAX VALUES FOR BACKTRACKING
@@ -721,13 +768,13 @@ void dataParser(){
 
 
     //PRINTER OF THE  ARRAYS. USED FOR DEBBUGING PURPOSES ONLY
-//    for (int i = 0; i < Q_len + 1; i++){
-//        printf("\n");
-//        for (int j = 0; j < D_len + 1; j++){
-//            printf("%d\t",ScoreTable[i][j]);
-//        }
-//
-//    }
+    for (int i = 0; i < Q_len + 1; i++){
+        printf("\n");
+        for (int j = 0; j < D_len + 1; j++){
+            printf("%d\t",ScoreTable[i][j]);
+        }
+
+    }
 
 
     for(int i = 0; i< Q_len+1; i++) {
@@ -895,7 +942,7 @@ int main(int argc, char * argv[]) {
 
     FILE *fp;
 
-    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D6.txt","r");
+    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D1.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");
@@ -911,9 +958,12 @@ int main(int argc, char * argv[]) {
 //        exit(1);
 //    }
 
+    multithreadModifier(1);
+
     fileHeaderValues(fp);
     fileParser(fp);
 
+    multithreadModifier(-1);
 
     fclose(fp);
     //TODO ENABLE
