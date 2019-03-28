@@ -1,0 +1,3 @@
+/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/OpenMP_FineGrained/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/OpenMP_FineGrained/cmake-build-debug/CMakeFiles/OpenMpFine.dir
+/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/OpenMP_FineGrained/cmake-build-debug/CMakeFiles/edit_cache.dir
