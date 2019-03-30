@@ -12,13 +12,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="359a0084-2947-47ee-bca4-553f0e8c1234" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OpenMpFine" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/OpenMpFine" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Serial.cbp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Serial/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
@@ -41,12 +44,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="374" column="40" selection-start-line="374" selection-start-column="40" selection-end-line="374" selection-end-column="40" />
+            <state relative-caret-position="199">
+              <caret line="329" column="28" lean-forward="true" selection-start-line="329" selection-start-column="28" selection-end-line="329" selection-end-column="28" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#23650#23726#0" />
-                <element signature="e#29820#32315#0" />
               </folding>
             </state>
           </provider>
@@ -65,10 +66,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>diaLen</find>
-      <find>dial</find>
-      <find>Bala</find>
-      <find>balanceCount</find>
       <find>bal</find>
       <find>hello</find>
       <find>barrierCounter</find>
@@ -79,7 +76,6 @@
       <find>calc</find>
       <find>lock</find>
       <find>swmutex</find>
-      <find>initX</find>
       <find>_Max</find>
       <find>_MAX_SIMILARITY</find>
       <find>_cellVal</find>
@@ -92,9 +88,14 @@
       <find>calcSimilarity</find>
       <find>antiDiagNum</find>
       <find>pthread</find>
-      <find>updateScore</find>
-      <find>printf</find>
       <find>_totalTime</find>
+      <find>dummy</find>
+      <find>initX</find>
+      <find>omp</find>
+      <find>pragma</find>
+      <find>updateScore</find>
+      <find>update</find>
+      <find>printf</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,9 +110,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="57" />
+    <option name="x" value="988" />
     <option name="y" value="25" />
-    <option name="width" value="1863" />
+    <option name="width" value="932" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -120,7 +121,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -132,11 +132,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Pthread_FineGrained" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -189,12 +190,14 @@
       <workItem from="1553417750670" duration="30088000" />
       <workItem from="1553462155389" duration="20939000" />
       <workItem from="1553504928123" duration="6279000" />
-      <workItem from="1553716632028" duration="20318000" />
+      <workItem from="1553716632028" duration="20830000" />
+      <workItem from="1553760670066" duration="18556000" />
+      <workItem from="1553912817672" duration="1494000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113324000" />
+    <option name="totallyTimeSpent" value="133886000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -209,18 +212,18 @@
     <frame x="57" y="25" width="1863" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11447441" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11667584" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24986242" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3736501" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.24838012" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.50863934" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.24946004" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.37580994" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.5475162" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32829374" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32937366" />
@@ -306,12 +309,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="374" column="40" selection-start-line="374" selection-start-column="40" selection-end-line="374" selection-end-column="40" />
+        <state relative-caret-position="199">
+          <caret line="329" column="28" lean-forward="true" selection-start-line="329" selection-start-column="28" selection-end-line="329" selection-end-column="28" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#23650#23726#0" />
-            <element signature="e#29820#32315#0" />
           </folding>
         </state>
       </provider>

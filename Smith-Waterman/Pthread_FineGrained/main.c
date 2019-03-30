@@ -50,10 +50,12 @@ int finEleX;
 int finEleY;
 int initX;
 int initY;
+int tempAnti = 1;
 
 volatile int startFlag = 0;
 
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cv = PTHREAD_COND_INITIALIZER;
 pthread_mutexattr_t mutexattr;
 
 pthread_barrier_t barrier;
@@ -326,65 +328,239 @@ int updateScore(long long int x, long long int y){
     return tempCell;
 }
 
+void processAdiag(long tid,long startCase,long stopCase){
+    // start = startCase;
+    //long stop = stopCase;
+    printf("HI FROM %ld\n",tid);
+
+    while(1){
+        //long start = startCase;
+        if(SerialFlag == 1) break;
+        if(startCase!=1) {
+            printf("We are locked in here from %ld\n",tid);
+            pthread_barrier_wait(&barrier);
+        }
+        printf("UNLOCKED %ld\n",tid);
+        printf("DIALEN %d\n",diaLen);
+
+        pthread_barrier_wait(&barrier);
+        //start = 0;
+        if(tid == 0) return;
+    }
+
+    printf("BREAK %ld\n",tid);
+
+    return;
+
+//    while (1){
+//
+//        if(stop == 1) return;
+//        if(start != 1){
+//            printf("We are locked in here from %ld\n",tid);
+//        }
+//        printf("UNLOCKED %ld\n",tid);
+//        int initCompX = initX;
+//        int initCompY = initY;
+//
+//        printf("INIT X %d, INIT Y %d for id %ld\n",initX,initY,tid);
+//        for(long j=1;j<= (dLen/THREADS)+1;j++){
+//
+//            int dummyX = initCompX - tid;
+//            int dummyY = initCompY + tid;
+//            //printf("X %d, and Y %d for id %ld\n",dummyX,dummyY,tid);
+//            //printf("COMP X %d, and Y %d for id %ld\n",abs(initX - diaLen)+1,initY + diaLen -1,tid);
+//            if(dummyX >= ( abs(initX - diaLen)+1) && dummyY <=(initY + dLen -1)){
+//                initCompX = initCompX - THREADS;
+//                initCompY = initCompY + THREADS;
+//                updateScore(dummyX,dummyY);
+//            }else{
+//                //printf("You are not needed anymore id %ld\n",tid);
+//                break;
+//            }
+//        }
+        //printf("\n\n");
+//        pthread_barrier_wait(&barrier);
+//        start =  0;
+//        if(tid == 0) return;
+
+
+   // }
+}
+
+
 void *startProcess(void *threadArg){
 
     long tid;
     tid = (long)threadArg;
 
-    while(1){
-        printf("Getin stuck from %ld\n",tid);
-        //TODO: NOTE THIS COULD WORK WITH BOTH WHILE(1) or while flag with a barrier
-
-        if(startFlag == 1){
-            printf("UNSTUCK from %ld\n",tid);
-            int currX,currY;
-            int cellUp=0;
-            for(int j=1;j<=lenDiv;j++){
-                //printf("LEN UPDATE %lld\n", j);
-
-                currX = initX - tid;
-                currY = initY + tid;
-
-                //printf("BASIC _cellVAL %lu on x %lld and y %lld\n",_cellVal, currX, currY);
-                initX = initX - (THREADS);
-                initY = initY + (THREADS);
-                cellUp+=updateScore(currX, currY);
-
-
-            }
-
-//        pthread_mutex_lock(&lock);
-//        SerialFlag+=1;
-//        pthread_mutex_unlock(&lock);
-            if(lenDiv == 0 && tid ==0) {   //TODO works fine
-
-                for (int j = 0; j < diaLen; j++) {
-                    cellUp+=updateScore(initX - j, initY + j);
-
-                }
-
-            }else if( modDiv!=0 && tid < modDiv && lenDiv != 0){
-                cellUp+=updateScore(finEleX - (tid +1), finEleY + (tid+1));
-                //}
-
-
-            }
-
-
-
-            pthread_mutex_lock(&lock);
-            _cellVal += cellUp;
-            pthread_mutex_unlock(&lock);
-            pthread_barrier_wait(&barrier);
-
-            pthread_exit(NULL);
-        }
-
-        //break;
+    printf("HI everyone from %ld\n", tid);
+    if(tid!=0){
+        processAdiag(tid,0,0);
     }
 
 
+    pthread_exit(NULL);
+
 }
+
+
+
+
+void *calcSimilarity(void *threadArg){
+//    _td *tData;
+//    tData = (_td *)threadArg;
+
+
+    long tid;
+    tid = (long)threadArg;
+    int diaLen,initX,initY;
+
+    int currX, currY;
+    int cellUp=0;
+
+
+    //TODO THIS WORKS
+//    for (int i = 1; i<=antiDiagNum; i++){
+//        double tbStart = gettime();
+//        SerialFlag = 0;
+//        balanceCount = 0;
+//
+//        diaLen = antiDiagLength(i);
+//
+//        if(i <= Q_len){
+//            initX = i;
+//            initY = 1;
+//
+//        }else{
+//            initX = Q_len;
+//            initY = i - Q_len + 1;
+//
+//        }
+//
+//        int lenDiv = diaLen / THREADS;
+//        int modDiv = diaLen % THREADS;
+//
+//        int finEleX = initX - ((THREADS *lenDiv)-1);
+//        int finEleY = initY + ((THREADS *lenDiv)-1);
+//
+//
+//        for(int j=1;j<=lenDiv;j++){
+//
+//
+//            currX = initX - tid;
+//            currY = initY + tid;
+//
+//            initX = initX - (THREADS);
+//            initY = initY + (THREADS);
+//            cellUp+=updateScore(currX, currY);
+//
+//
+//        }
+//
+//
+//
+//        if(lenDiv == 0 && tid ==0) {   //TODO works fine
+//
+//            for (int j = 0; j < diaLen; j++) {
+//
+//                cellUp+=updateScore(initX - j, initY + j);
+//
+//            }
+//
+//
+//        }else if( modDiv!=0 && tid < modDiv && lenDiv != 0){
+//            cellUp+=updateScore(finEleX - (tid +1), finEleY + (tid+1));
+//
+//        }
+//
+//        pthread_barrier_wait(&barrier);
+//
+//    }
+//    pthread_mutex_lock(&lock);
+//    _cellVal += cellUp;
+//    pthread_mutex_unlock(&lock);
+
+    printf("D %d, Q %d\n",D_len,Q_len);
+    printf("EEE %ld\n",tid);
+
+
+    for ( int i = 1; i<=antiDiagNum; i++){
+
+
+        diaLen = antiDiagLength(i);
+
+        //printf("LEN %d for id %ld\n",diaLen,tid);
+
+//        for(int i=1;i< Q_len; i++){
+//            printf("INCR %d for id %ld ant %d\n",i,tid,diaLen);
+//        }
+//
+////        for(int i=diaLen;i=Q_len; i++){
+////
+////        }
+//
+//        for(int i=D_len - Q_len;i<=Q_len; i++){
+//            printf("DECR %d for id %ld ant %d\n",i,tid,diaLen);
+//        }
+        if(i <= Q_len){
+
+            initX = i;
+            initY = 1;
+
+        }else{
+            initX = Q_len;
+            initY = i - Q_len + 1;
+
+        }
+
+        int initCompX = initX;
+        int initCompY = initY;
+
+        if(diaLen<Q_len && tid ==0){
+            for(int j=0;j< diaLen;j++){
+                //printf("Hi from dialen %d\n",diaLen);
+//                int dummyX = initCompX - tid;
+//                int dummyY = initCompY + tid;
+//                //printf("X %d, and Y %d for id %ld\n",dummyX,dummyY,tid);
+//                //printf("COMP X %d, and Y %d for id %ld\n",abs(initX - diaLen)+1,initY + diaLen -1,tid);
+//                if(dummyX >= ( abs(initX - diaLen)+1) && dummyY <=(initY + diaLen -1)){
+//                    initCompX = initCompX - THREADS;
+//                    initCompY = initCompY + THREADS;
+                    updateScore(initCompX - j,initCompY+j);
+                continue;
+//                }else{
+//                    //printf("You are not needed anymore id %ld\n",tid);
+//                    break;
+//                }
+            }
+        }else if(diaLen>=Q_len) {
+            //printf("INIT X %d, INIT Y %d for id %ld\n",initX,initY,tid);
+
+            for(long j=1;j<= (diaLen/THREADS)+1;j++){
+
+                int dummyX = initCompX - tid;
+                int dummyY = initCompY + tid;
+                //printf("X %d, and Y %d for id %ld\n",dummyX,dummyY,tid);
+                //printf("COMP X %d, and Y %d for id %ld\n",abs(initX - diaLen)+1,initY + diaLen -1,tid);
+                if(dummyX >= ( abs(initX - diaLen)+1) && dummyY <=(initY + diaLen -1)){
+                    initCompX = initCompX - THREADS;
+                    initCompY = initCompY + THREADS;
+                    updateScore(dummyX,dummyY);
+                }else{
+                    //printf("You are not needed anymore id %ld\n",tid);
+                    break;
+                }
+            }
+        }
+
+        //printf("\n\n");
+        pthread_barrier_wait(&barrier);
+    }
+
+
+    pthread_exit(NULL);
+}
+
 
 //TODO ADD COMMENTS AND CHECK DESTROY CASE
 void multithreadModifier(short selector){
@@ -416,7 +592,7 @@ void multithreadModifier(short selector){
              * NULL for attributes as we want to use default
              */
 
-            threadChecker = pthread_create(&mthread[i], NULL, startProcess, (void *)i);
+            threadChecker = pthread_create(&mthread[i], NULL, calcSimilarity, (void *)i);
             if(threadChecker){
                 printf("Thread creation failed.Exiting");
                 exit(-1);
@@ -426,6 +602,7 @@ void multithreadModifier(short selector){
     }else if (selector == -1){
         printf("Joining Threads.\n");
         for(int i = 0; i<THREADS; i++){
+            //processAdiag(i,0,1);
             printf("MAIN : completed join with thread %d \n\n",i);
             pthread_join(mthread[i], NULL);
         }
@@ -438,92 +615,8 @@ void multithreadModifier(short selector){
 }
 
 
-void *calcSimilarity(void *threadArg){
-
-    long tid;
-    tid = (long)threadArg;
-    int diaLen,initX,initY;
-
-    int currX, currY;
-    int cellUp=0;
-    printf("START CALC\n");
 
 
-    for (int i = 1; i<=antiDiagNum; i++){
-        double tbStart = gettime();
-        SerialFlag = 0;
-        balanceCount = 0;
-
-        diaLen = antiDiagLength(i);
-
-
-        int lenDiv = diaLen / THREADS;
-        int modDiv = diaLen % THREADS;
-
-        int finEleX = initX - ((THREADS *lenDiv)-1);
-        int finEleY = initY + ((THREADS *lenDiv)-1);
-
-        //printf("calc X %lld,calc Y %lld and thread %d\n",tData[i].xCalc,tData[i].yCalc,tData->thread_id);
-        //printf("FIN X %lld,FIN Y %lld and thread %d\n",finEleX,finEleY,tData->thread_id);
-        //printf("DIV %lld, MOD %lld and %ld\n",lenDiv,modDiv,tid);
-        //printf("FIN X %lld,FIN Y %lld init X %lld initY %lld and thread %ld\n",finEleX,finEleY,initX,initY,tid);
-
-        //double tStart = gettime();
-        //printf("START CALCULATION\n");
-
-        for(int j=1;j<=lenDiv;j++){
-            //printf("LEN UPDATE %lld\n", j);
-
-            currX = initX - tid;
-            currY = initY + tid;
-
-            //printf("BASIC _cellVAL %lu on x %lld and y %lld\n",_cellVal, currX, currY);
-            initX = initX - (THREADS);
-            initY = initY + (THREADS);
-            cellUp+=updateScore(currX, currY);
-
-
-        }
-
-        double tFin = gettime();
-        //printf("TIME %lf %ld\n",tFin-tStart,tid);
-
-//        pthread_mutex_lock(&lock);
-//        SerialFlag+=1;
-//        pthread_mutex_unlock(&lock);
-        if(lenDiv == 0 && tid ==0) {   //TODO works fine
-
-                for (int j = 0; j < diaLen; j++) {
-                    cellUp+=updateScore(initX - j, initY + j);
-
-                }
-
-        }else if( modDiv!=0 && tid < modDiv && lenDiv != 0){
-                cellUp+=updateScore(finEleX - (tid +1), finEleY + (tid+1));
-            //}
-
-
-        }
-        double tbFin = gettime();
-        //printf("TIME ANTI %lf on %lld tid %ld\n",tbFin-tbStart, i,tid);
-
-
-
-
-
-        //printf("WAIT thread %d\n",tData->thread_id);
-        pthread_barrier_wait(&barrier);
-        //printf("WAIT thread %ld\n",tid);
-
-
-        //printf("\n");
-    }
-    pthread_mutex_lock(&lock);
-    _cellVal += cellUp;
-    pthread_mutex_unlock(&lock);
-
-    pthread_exit(NULL);
-}
 
 /*
  * This function is where the algorithm and the calculations take place.
@@ -582,29 +675,36 @@ void dataParser(){
 
     printf("START SIMILARITY MATRIX\n");
 
-    for (int i = 1; i<=antiDiagNum; i++) {
+    multithreadModifier(1);
 
-//        SerialFlag = 0;
-//        balanceCount = 0;
+    multithreadModifier(-1);
 
-        diaLen = antiDiagLength(i);
-        firstElementUpdater(i);
+//    for ( int i = 1; i<=antiDiagNum; i++){
+//
+//
+//        diaLen = antiDiagLength(i);
+//        if(i <= Q_len){
+//
+//            initX = i;
+//            initY = 1;
+//
+//        }else{
+//            initX = Q_len;
+//            initY = i - Q_len + 1;
+//
+//        }
+//        for(int k= 0; k<THREADS;k++){
+//            processAdiag(k,1,0);
+//        }
+//
+//        printf("\n\n");
+//    }
 
-        lenDiv = diaLen / THREADS;
-        modDiv = diaLen % THREADS;
+    SerialFlag = 1;
 
-        finEleX = initX - ((THREADS * lenDiv) - 1);
-        finEleY = initY + ((THREADS * lenDiv) - 1);
-        printf("Check\n");
-        startFlag = 1;
+    //processAdiag(0,0,1);
 
 
-
-    }
-
-
-
-    printf("DESSERT NOW\n");
 
 //
     double cellTimeFin = gettime();
@@ -768,13 +868,13 @@ void dataParser(){
 
 
     //PRINTER OF THE  ARRAYS. USED FOR DEBBUGING PURPOSES ONLY
-    for (int i = 0; i < Q_len + 1; i++){
-        printf("\n");
-        for (int j = 0; j < D_len + 1; j++){
-            printf("%d\t",ScoreTable[i][j]);
-        }
-
-    }
+//    for (int i = 0; i < Q_len + 1; i++){
+//        printf("\n");
+//        for (int j = 0; j < D_len + 1; j++){
+//            printf("%d\t",ScoreTable[i][j]);
+//        }
+//
+//    }
 
 
     for(int i = 0; i< Q_len+1; i++) {
@@ -942,7 +1042,7 @@ int main(int argc, char * argv[]) {
 
     FILE *fp;
 
-    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D1.txt","r");
+    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D7.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");
@@ -958,12 +1058,14 @@ int main(int argc, char * argv[]) {
 //        exit(1);
 //    }
 
-    multithreadModifier(1);
+    //multithreadModifier(1);
+
+    //printf("HELLO\n");
 
     fileHeaderValues(fp);
     fileParser(fp);
 
-    multithreadModifier(-1);
+    //multithreadModifier(-1);
 
     fclose(fp);
     //TODO ENABLE

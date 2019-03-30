@@ -393,9 +393,7 @@ void dataParser(char * Q, char * D){
     _totalTraceTime+=(traceTimeFin - traceTimeInit);
 
     //TODO DISABLE IT ON PRINT
-    for(int i = 0; i< Q_len+1; i++) {
-        free(ScoreTable[i]);
-    }
+
 
     //PRINTER OF THE  ARRAYS. USED FOR DEBBUGING PURPOSES ONLY
 //    for (int i = 0; i < Q_len + 1; i++){
@@ -405,7 +403,9 @@ void dataParser(char * Q, char * D){
 //        }
 //
 //    }
-
+    for(int i = 0; i< Q_len+1; i++) {
+        free(ScoreTable[i]);
+    }
 
 }
 /*
@@ -563,7 +563,7 @@ int main(int argc, char * argv[]) {
 
     FILE *fp;
 
-    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D1.txt","r");
+    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D7.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");
@@ -571,7 +571,7 @@ int main(int argc, char * argv[]) {
     }
 
     //TODO ENABLE
-    finFile = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/FINAL.txt","a");
+    finFile = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/Serial/D8.txt","a");
 
     if(finFile == NULL){
         printf("Error while opening write file!\n");

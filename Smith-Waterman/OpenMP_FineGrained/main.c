@@ -51,6 +51,7 @@ pthread_barrier_t barrier;
 //long long int antiDiagLen = 0;
 long long int antiDiagNum = 1 ;
 
+
 struct thread_data{
     long long int xCalc;
     long long int yCalc;
@@ -242,17 +243,17 @@ long long int * firstAntiElement(long long int currAnti, _td* tData){
 
 }
 
-void updateScore(long long int x, long long int y){
+void updateScore(int x, int y){
 
     //printf("x %lld, y %lld\t", x, y);
 
-    long long int up, left, diag;
+    int up, left, diag;
 
     up = ScoreTable[x-1][y] + GAP;
 
     left = ScoreTable[x][y-1] + GAP; //we want same row and one column left
 
-    long long int tempDiag,tempMax;
+    int tempDiag,tempMax;
 
 
     //TODO wrong while printing.Fix that
@@ -279,6 +280,7 @@ void updateScore(long long int x, long long int y){
     }
 
     ScoreTable[x][y] = tempMax;
+    //printf("SHOW MAX %d, _MAX %d, X %d, Y %d, tempMax %d\n",_counterMax,_MAX_SIMILARITY ,x,y,tempMax);
     //printf("MAX %lld\n",tempMax);
 
 
@@ -287,8 +289,9 @@ void updateScore(long long int x, long long int y){
         _MAX_SIMILARITY = tempMax;
     }else if(tempMax == _MAX_SIMILARITY && tempMax!=0){
         //pthread_mutex_lock(&lock);
+//#pragma atomic
         _counterMax++;
-        //printf("SHOW MAX %d, _MAX %d, X %lld, Y %lld\n",_counterMax,_MAX_SIMILARITY ,x,y);
+        //printf("SHOW MAX %d, _MAX %d, X %d, Y %d\n",_counterMax,_MAX_SIMILARITY ,x,y);
         //pthread_mutex_unlock(&lock);
     }
     //pthread_mutex_unlock(&lock);
@@ -369,16 +372,16 @@ void dataParser(){
     //TODO THE PARTY STARTS HERE
 
 
-    omp_set_num_threads(THREADS);
+    //omp_set_num_threads(THREADS);
 
 
-#pragma omp parallel num_threads(THREADS) shared(antiDiagNum)
+//#pragma omp parallel num_threads(THREADS) shared(antiDiagNum)
     {
-        int threadId,threadNum,diaLen,initX, initY;
+//        int threadId,threadNum,diaLen,initX, initY;
           //We already have that value.Add just in case
+        int diaLen,initX, initY = 0;
 
-        threadId = omp_get_thread_num();
-        threadNum = omp_get_num_threads();
+
         //printf("EEE %d\n",threadId);
 //#pragma omp for private(diaLen, initX, initY)
         for ( int i = 1; i<=antiDiagNum; i++){
@@ -394,39 +397,28 @@ void dataParser(){
                 initY = i - Q_len + 1;
 
             }
-            int initCompX = initX;
-            int initCompY = initY;
 
-
-//#pragma omp parallel shared(antiDiagNum,threadNum,diaLen,initX,initY) private(threadId,initCompX,initCompY,dummyX,dummyY)
-//            {
-
-
-
-//TODO ALSO TRIED with counter and for loop
-//#pragma omp for schedule(dynamic,1)
-            //long j =1;
-//#pragma omp for schedule(static,1)
-//#pragma omp for private
-            for(int j =1;j<= ((diaLen/threadNum)+1);j++){
-                //printf("NP %d\n",((diaLen/threadNum)+1));
-                int dummyX,dummyY = 0;
-                dummyX = initCompX - threadId;
-                dummyY = initCompY + threadId;
-                //printf("X %d, and Y %d for id %d\n",dummyX,dummyY,threadId);
-                //printf("COMP X %d, and Y %d for id %d\n",initCompX,initCompY,threadId);
-                if(dummyX >= ( abs(initX - diaLen)+1) && dummyY <=(initY + diaLen -1)){
-                    initCompX = initCompX - threadNum;
-                    initCompY = initCompY + threadNum;
-                    updateScore(dummyX,dummyY);
-                    //printf("Yes\n");
+            //TODO SEE WHAT WE CAN DO WITH THAT.BOTTLENECK
+            if(diaLen < Q_len){
+                //printf("HIIIS di %d",diaLen);
+                for(int k =0;k< diaLen;k++){
+                    updateScore(initX - k,initY + k);
                 }
+                continue;
             }
-            //printf("\n\n");
-            //pthread_barrier_wait(&barrier);
-#pragma omp barrier
-        }
 
+
+            int initCompX,initCompY;
+
+            int j=0;
+#pragma omp parallel for schedule(static) num_threads(THREADS) default(none)\
+            shared(initX,initY,diaLen,THREADS) private(j)
+                for(j =0;j< diaLen;j++){
+
+                        updateScore(initX - j,initY + j);
+                }
+
+            }
 
         }
 
@@ -552,21 +544,21 @@ void dataParser(){
      */
     //TODO IN THE END ENABLE BACKTRACKING AGAIN
 
-//    long xMax[_counterMax+1];
-//    long yMax[_counterMax+1];
-//    long _endKeeper[_counterMax+1];
-//
-//    int tempCount=0;
-//    for (int i = 0; i < Q_len + 1; i++){
-//        for (int j = 0; j < D_len + 1; j++){
-//            if(_MAX_SIMILARITY == ScoreTable[i][j]){
-//                _endKeeper[tempCount] = j;
-//                xMax[tempCount] = i;
-//                yMax[tempCount] = j;
-//                tempCount++;
-//            }
-//        }
-//    }
+    long xMax[_counterMax+1];
+    long yMax[_counterMax+1];
+    long _endKeeper[_counterMax+1];
+
+    int tempCount=0;
+    for (int i = 0; i < Q_len + 1; i++){
+        for (int j = 0; j < D_len + 1; j++){
+            if(_MAX_SIMILARITY == ScoreTable[i][j]){
+                _endKeeper[tempCount] = j;
+                xMax[tempCount] = i;
+                yMax[tempCount] = j;
+                tempCount++;
+            }
+        }
+    }
 
 
     /*
@@ -574,110 +566,110 @@ void dataParser(){
      */
 
     double traceTimeInit = gettime();
-//    for(int i = 0; i< _counterMax+1; i++){
-//
-//        long currXpos = xMax[i];
-//        long currYpos = yMax[i];
-//        char xElem = Q[currXpos];
-//        char yElem = D[currYpos];
-//        char currNode = ScoreTable[currXpos][currYpos];
-//
-//        char *_qOut = NULL;
-//
-//        _qOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)*sizeof(char));
-//        if(_qOut==NULL){
-//            printf("Error occured while trying to allocate memory for traceback.Terminating....");
-//            exit(-1);
-//        }
-//
-//        char *_dOut = NULL;
-//        _dOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)* sizeof(char));
-//        if(_dOut==NULL){
-//            printf("Error occured while trying to allocate memory for traceback.Terminating....");
-//            exit(-1);
-//        }
-//
-//        int lengthCount = 0;
-//
-//        //We initialize traceflag to zero when we want to find a new max value
-//        //Traceback until we reach zero. Added some cases to make it even more strict
-//        u_int8_t traceFlag = 0;
-//        while(traceFlag != 1){
-//            int up, left, diag;
-//
-//            up = ScoreTable[currXpos-1][currYpos];  //we want same column and one row up
-//            left = ScoreTable[currXpos][currYpos-1]; //we want same row and one column left
-//            diag = ScoreTable[currXpos - 1][currYpos - 1];
-//
-//            if(diag == 0 && ScoreTable[currXpos][currYpos] - MATCH == 0){
-//                traceFlag = 1;
-//                currYpos--;
-//                currXpos--;
-//                xElem = Q[currXpos];
-//                yElem = D[currYpos];
-//            }else{
-//                if( up > left && up > diag){
-//                    currXpos--;
-//                    xElem = Q[currXpos];
-//                    yElem = '-';
-//                }else if (left > up && left > diag){
-//                    currYpos--;
-//                    xElem = '-';
-//                    yElem = D[currYpos];
-//                }else if(diag >= up && diag >= left){
-//                    if(Q[currXpos-1] == D[currYpos-1] || (diag > up && diag > left) ){
-//                        currYpos--;
-//                        currXpos--;
-//                        xElem = Q[currXpos];
-//                        yElem = D[currYpos];
-//                    }else if(Q[currXpos-1] == D[currYpos]){
-//                        currXpos--;
-//                        xElem = Q[currXpos];
-//                        yElem = '-';
-//                    }else{
-//                        currYpos--;
-//                        xElem = '-';
-//                        yElem = D[currYpos];
-//                    }
-//
-//                }else{
-//                    if(Q[currXpos] == D[currYpos-1]){
-//                        currYpos--;
-//                        xElem = '-';
-//                        yElem = D[currYpos];
-//                    }else{
-//                        currXpos--;
-//                        xElem = Q[currXpos];
-//                        yElem = '-';
-//                    }
-//                }
-//
-//            }
-//            _traceSteps++;
-//            _qOut[lengthCount] = xElem;
-//            _dOut[lengthCount] = yElem;
-//            lengthCount++;
-//
-//        }
-//
-//        _qOut[lengthCount] = '\0';
-//        _dOut[lengthCount] = '\0';
-//
-//        _dOut = reverseArr(_dOut, strlen(_dOut));
-//        _qOut = reverseArr(_qOut, strlen(_qOut));
-//
-//        //printf("\nQ reversed %s and \nD reversed %s",_qOut,_dOut);
-//        /*
-//         * Write all the info demanded on an output file
-//         */
-//        //TODO ENABLE IT AT THE END
-//        fprintf(finFile, "\nMATCH %d [SCORE: %d,START: %ld,STOP: %ld]\n\tD: %s\n\tQ: %s\n", i+1, _MAX_SIMILARITY, (_endKeeper[i]-lengthCount) , _endKeeper[i]-1, _dOut, _qOut);
-//
-//        free(_qOut);
-//        free(_dOut);
-//
-//        //printf("\n\n");
-//    }
+    for(int i = 0; i< _counterMax+1; i++){
+
+        long currXpos = xMax[i];
+        long currYpos = yMax[i];
+        char xElem = Q[currXpos];
+        char yElem = D[currYpos];
+        char currNode = ScoreTable[currXpos][currYpos];
+
+        char *_qOut = NULL;
+
+        _qOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)*sizeof(char));
+        if(_qOut==NULL){
+            printf("Error occured while trying to allocate memory for traceback.Terminating....");
+            exit(-1);
+        }
+
+        char *_dOut = NULL;
+        _dOut = (char *)malloc((xMax[i]+1)*(yMax[i]+1)* sizeof(char));
+        if(_dOut==NULL){
+            printf("Error occured while trying to allocate memory for traceback.Terminating....");
+            exit(-1);
+        }
+
+        int lengthCount = 0;
+
+        //We initialize traceflag to zero when we want to find a new max value
+        //Traceback until we reach zero. Added some cases to make it even more strict
+        u_int8_t traceFlag = 0;
+        while(traceFlag != 1){
+            int up, left, diag;
+
+            up = ScoreTable[currXpos-1][currYpos];  //we want same column and one row up
+            left = ScoreTable[currXpos][currYpos-1]; //we want same row and one column left
+            diag = ScoreTable[currXpos - 1][currYpos - 1];
+
+            if(diag == 0 && ScoreTable[currXpos][currYpos] - MATCH == 0){
+                traceFlag = 1;
+                currYpos--;
+                currXpos--;
+                xElem = Q[currXpos];
+                yElem = D[currYpos];
+            }else{
+                if( up > left && up > diag){
+                    currXpos--;
+                    xElem = Q[currXpos];
+                    yElem = '-';
+                }else if (left > up && left > diag){
+                    currYpos--;
+                    xElem = '-';
+                    yElem = D[currYpos];
+                }else if(diag >= up && diag >= left){
+                    if(Q[currXpos-1] == D[currYpos-1] || (diag > up && diag > left) ){
+                        currYpos--;
+                        currXpos--;
+                        xElem = Q[currXpos];
+                        yElem = D[currYpos];
+                    }else if(Q[currXpos-1] == D[currYpos]){
+                        currXpos--;
+                        xElem = Q[currXpos];
+                        yElem = '-';
+                    }else{
+                        currYpos--;
+                        xElem = '-';
+                        yElem = D[currYpos];
+                    }
+
+                }else{
+                    if(Q[currXpos] == D[currYpos-1]){
+                        currYpos--;
+                        xElem = '-';
+                        yElem = D[currYpos];
+                    }else{
+                        currXpos--;
+                        xElem = Q[currXpos];
+                        yElem = '-';
+                    }
+                }
+
+            }
+            _traceSteps++;
+            _qOut[lengthCount] = xElem;
+            _dOut[lengthCount] = yElem;
+            lengthCount++;
+
+        }
+
+        _qOut[lengthCount] = '\0';
+        _dOut[lengthCount] = '\0';
+
+        _dOut = reverseArr(_dOut, strlen(_dOut));
+        _qOut = reverseArr(_qOut, strlen(_qOut));
+
+        //printf("\nQ reversed %s and \nD reversed %s",_qOut,_dOut);
+        /*
+         * Write all the info demanded on an output file
+         */
+        //TODO ENABLE IT AT THE END
+        //fprintf(finFile, "\nMATCH %d [SCORE: %d,START: %ld,STOP: %ld]\n\tD: %s\n\tQ: %s\n", i+1, _MAX_SIMILARITY, (_endKeeper[i]-lengthCount) , _endKeeper[i]-1, _dOut, _qOut);
+
+        free(_qOut);
+        free(_dOut);
+
+        //printf("\n\n");
+    }
 
     double traceTimeFin = gettime();
     _totalTraceTime+=(traceTimeFin - traceTimeInit);
@@ -686,20 +678,20 @@ void dataParser(){
 
 
     //PRINTER OF THE  ARRAYS. USED FOR DEBBUGING PURPOSES ONLY
-    for (int i = 0; i < Q_len + 1; i++){
-        printf("\n");
-        for (int j = 0; j < D_len + 1; j++){
-            printf("%d\t",ScoreTable[i][j]);
-        }
-
-    }
+//    for (int i = 0; i < Q_len + 1; i++){
+//        printf("\n");
+//        for (int j = 0; j < D_len + 1; j++){
+//            printf("%d\t",ScoreTable[i][j]);
+//        }
+//
+//    }
 
 
     for(int i = 0; i< Q_len+1; i++) {
         free(ScoreTable[i]);
     }
 
-    printf("MATRIX FREED");
+    //printf("MATRIX FREED");
 
 
 }
@@ -732,7 +724,7 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
     uint8_t qCount=0;
 
     size_t bufLen = strlen(buf);
-    printf("GO\n");
+    //printf("GO\n");
 
     if(compFlag == 1) return -1;
 
@@ -860,7 +852,7 @@ int main(int argc, char * argv[]) {
 
     FILE *fp;
 
-    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D1.txt","r");
+    fp = fopen("/home/stefanos/TUC_Projects/Datasets/D7.txt","r");
 
     if(fp == NULL){
         printf("Error opening file\n");
