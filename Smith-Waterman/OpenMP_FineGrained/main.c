@@ -202,9 +202,9 @@ void fileHeaderValues(FILE *fp){
  * -Case 2:Elements are decreasing when we reach the end of the table
  * -Case 3:Elements are stable(Happens only once if our table is symmetrical which is not our case so we have some more)
  */
-long long int antiDiagLength(long long int currAnti){
-    long int minFinder = D_len < Q_len ? D_len : Q_len; //Our bottleneck
-    long int maxFinder = D_len < Q_len ? Q_len : D_len;
+int antiDiagLength(int currAnti){
+    int minFinder = D_len < Q_len ? D_len : Q_len; //Our bottleneck
+    int maxFinder = D_len < Q_len ? Q_len : D_len;
 
     if(currAnti < D_len && currAnti < Q_len){
         //CASE 1
@@ -216,6 +216,18 @@ long long int antiDiagLength(long long int currAnti){
         //CASE 3
         return  minFinder;
     }
+
+
+//    if(currAnti < D_len && currAnti < Q_len){
+//        //CASE 1
+//        return currAnti;
+//    }else if(currAnti > D_len && currAnti > Q_len ){
+//        //CASE 2
+//        return Q_len  - (currAnti - D_len  ) ;
+//    }else{
+//        //CASE 3
+//        return  Q_len;
+//    }
 }
 
 long long int * firstAntiElement(long long int currAnti, _td* tData){
@@ -363,10 +375,6 @@ void dataParser(){
     double cellTimeInit = gettime();
 
 
-    double cellTimeFin = gettime();
-    _totalCellTime+= (cellTimeFin-cellTimeInit);
-
-
     printf("START SIMILARITY MATRIX\n");
 
     //TODO THE PARTY STARTS HERE
@@ -376,7 +384,7 @@ void dataParser(){
 
 
 //#pragma omp parallel num_threads(THREADS) shared(antiDiagNum)
-    {
+    //{
 //        int threadId,threadNum,diaLen,initX, initY;
           //We already have that value.Add just in case
         int diaLen,initX, initY = 0;
@@ -398,6 +406,8 @@ void dataParser(){
 
             }
 
+
+
             //TODO SEE WHAT WE CAN DO WITH THAT.BOTTLENECK
             if(diaLen < Q_len){
                 //printf("HIIIS di %d",diaLen);
@@ -408,7 +418,7 @@ void dataParser(){
             }
 
 
-            int initCompX,initCompY;
+            //int initCompX,initCompY;
 
             int j=0;
 #pragma omp parallel for schedule(static) num_threads(THREADS) default(none)\
@@ -420,7 +430,13 @@ void dataParser(){
 
             }
 
-        }
+       // }
+
+    double cellTimeFin = gettime();
+    _totalCellTime+= (cellTimeFin-cellTimeInit);
+
+
+
 
 
 
