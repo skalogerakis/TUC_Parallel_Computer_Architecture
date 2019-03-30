@@ -19,8 +19,6 @@ stdbool.h
 -
 stdint.h
 -
-pthread.h
--
 omp.h
 -
 

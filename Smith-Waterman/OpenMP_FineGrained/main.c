@@ -4,7 +4,7 @@
 #include <memory.h>
 #include <stdbool.h>
 #include <stdint.h>
-#include <pthread.h>
+//#include <pthread.h>
 #include <omp.h>
 
 
@@ -43,10 +43,10 @@ int qMin = -1;
 int qMax = -1;
 int dSize = -1;
 
-pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
-pthread_mutexattr_t mutexattr;
-//pthread_mutex_t *swmutex;
-pthread_barrier_t barrier;
+//pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+//pthread_mutexattr_t mutexattr;
+////pthread_mutex_t *swmutex;
+//pthread_barrier_t barrier;
 
 //long long int antiDiagLen = 0;
 long long int antiDiagNum = 1 ;
@@ -372,7 +372,7 @@ void dataParser(){
 
     antiDiagNum = D_len + Q_len  - 1;
 
-    double cellTimeInit = gettime();
+//    double cellTimeInit = gettime();
 
 
     printf("START SIMILARITY MATRIX\n");
@@ -392,7 +392,10 @@ void dataParser(){
 
         //printf("EEE %d\n",threadId);
 //#pragma omp for private(diaLen, initX, initY)
+
+
         for ( int i = 1; i<=antiDiagNum; i++){
+            //double cellInit = gettime();
             diaLen = antiDiagLength(i);
 
             if(i <= Q_len){
@@ -408,6 +411,7 @@ void dataParser(){
 
 
 
+
             //TODO SEE WHAT WE CAN DO WITH THAT.BOTTLENECK
             if(diaLen < Q_len){
                 //printf("HIIIS di %d",diaLen);
@@ -416,7 +420,10 @@ void dataParser(){
                 }
                 continue;
             }
+            //double cellFin = gettime();
+            //_totalCellTime+= (cellTimeFin-cellTimeInit);
 
+            //printf("TIME %lf\n",cellFin-cellInit);
 
             //int initCompX,initCompY;
 
@@ -432,8 +439,8 @@ void dataParser(){
 
        // }
 
-    double cellTimeFin = gettime();
-    _totalCellTime+= (cellTimeFin-cellTimeInit);
+//    double cellTimeFin = gettime();
+//    _totalCellTime+= (cellTimeFin-cellTimeInit);
 
 
 
