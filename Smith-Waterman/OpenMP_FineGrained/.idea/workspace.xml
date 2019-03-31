@@ -13,13 +13,13 @@
   <component name="ChangeListManager">
     <list default="true" id="359a0084-2947-47ee-bca4-553f0e8c1234" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/Serial" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/Serial" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/final.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,10 +34,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="864" lean-forward="true" selection-end-line="911" />
+            <state relative-caret-position="126">
+              <caret line="356" column="14" selection-start-line="356" selection-start-column="14" selection-end-line="361" selection-end-column="15" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#1469#2059#0" />
+                <element signature="e#1712#2190#0" />
+                <element signature="e#1712#3545#0" />
+                <element signature="e#3786#4111#0" />
+                <element signature="e#4113#4460#0" />
+                <element signature="e#4462#5055#0" />
+                <element signature="e#5058#6125#0" />
+                <element signature="e#5915#6991#0" />
+                <element signature="e#19305#21267#0" />
+                <element signature="e#21269#23764#0" />
               </folding>
             </state>
           </provider>
@@ -69,7 +79,6 @@
       <find>_MAX_SIMILARITY</find>
       <find>_cellVal</find>
       <find>_counterMax</find>
-      <find>print</find>
       <find>fileParser</find>
       <find>dataParser</find>
       <find>fillDataBuffer</find>
@@ -86,6 +95,7 @@
       <find>antiDiagLength</find>
       <find>update</find>
       <find>initX</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -99,10 +109,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="57" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="988" />
     <option name="y" value="25" />
-    <option name="width" value="1863" />
+    <option name="width" value="932" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -145,7 +155,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.OpenMpFine">
-    <configuration name="OpenMpFine" type="CMakeRunConfiguration" factoryName="Application" singleton="false" PROGRAM_PARAMS="-threads 2 -name ID -input IN -match 3 -mismatch -1 -gap -1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="OpenMpFine" TARGET_NAME="OpenMpFine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="OpenMpFine" RUN_TARGET_NAME="OpenMpFine">
+    <configuration name="OpenMpFine" type="CMakeRunConfiguration" factoryName="Application" singleton="false" PROGRAM_PARAMS="-threads 4 -mismatch -1 -match 3 -gap -1 -input $PROJECT_DIR$/../../../Datasets/D7.txt -name DTESTOMP " PASS_PARENT_ENVS_2="true" PROJECT_NAME="OpenMpFine" TARGET_NAME="OpenMpFine" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="OpenMpFine" RUN_TARGET_NAME="OpenMpFine">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -189,11 +199,12 @@
       <workItem from="1553973730009" duration="2888000" />
       <workItem from="1553983604626" duration="26000" />
       <workItem from="1553984501234" duration="2027000" />
+      <workItem from="1554001747777" duration="1848000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141555000" />
+    <option name="totallyTimeSpent" value="143403000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -208,18 +219,18 @@
     <frame x="57" y="25" width="1863" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.095762245" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.016510732" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24986242" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.41900647" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41900647" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24946004" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.5475162" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.29589632" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32829374" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32937366" />
@@ -298,10 +309,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="864" lean-forward="true" selection-end-line="911" />
+        <state relative-caret-position="126">
+          <caret line="356" column="14" selection-start-line="356" selection-start-column="14" selection-end-line="361" selection-end-column="15" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#1469#2059#0" />
+            <element signature="e#1712#2190#0" />
+            <element signature="e#1712#3545#0" />
+            <element signature="e#3786#4111#0" />
+            <element signature="e#4113#4460#0" />
+            <element signature="e#4462#5055#0" />
+            <element signature="e#5058#6125#0" />
+            <element signature="e#5915#6991#0" />
+            <element signature="e#19305#21267#0" />
+            <element signature="e#21269#23764#0" />
           </folding>
         </state>
       </provider>

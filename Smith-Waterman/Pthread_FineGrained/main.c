@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <sys/time.h>
 #include <stdlib.h>
@@ -15,6 +16,7 @@ double _totalCellTime = 0;
 double _totalTraceTime = 0;
 
 
+
 int _MAX_SIMILARITY;
 int _counterMax;
 
@@ -28,7 +30,6 @@ char *INPUT;
 char *REPORT;
 char cwd[512];
 
-
 bool nameBool, inputBool, matchBool, misBool, gapBool,threadBool = false;
 
 int pairs= -1;
@@ -36,13 +37,12 @@ int qMin = -1;
 int qMax = -1;
 int dSize = -1;
 
+//TODO CHECK VARIABLE TYPE
 int diaLen;
 int initX;
 int initY;
 
-/*
- * This is our spinlock flag.Make it volatile
- */
+
 volatile int startFlag = 0;
 
 pthread_t *mthread;
@@ -52,8 +52,8 @@ pthread_mutexattr_t mutexattr;
 
 pthread_barrier_t barrier;
 
-int antiDiagNum = 1 ;
-
+//long long int antiDiagLen = 0;
+long long int antiDiagNum = 1 ;
 
 FILE *finFile;
 
@@ -150,30 +150,6 @@ void commandChecker(int argc, char * argv[]){
 }
 
 /*
- * This function is responsible to create final path for output file.
- * Gets current directory and concats it with value from command line
- */
-void finFileDir(){
-    printf("INPUT %s\n",INPUT);
-
-    if(getcwd(cwd, sizeof(cwd))==NULL){
-
-        printf("Error while trying to get current directory");
-        exit(-1);
-    }
-    /*
-     * Here concat any strings you want to create your directory
-     */
-    strcat(cwd,"/");
-    strcat(cwd,REPORT);
-    strcat(cwd,".txt");
-
-
-
-}
-
-
-/*
  * This functions is used to check that all the criteria demanded from requirements
  * are met. In case we find an error terminate the program.
  */
@@ -198,6 +174,29 @@ char* reverseArr(char *str, size_t len) {
     return str;
 }
 
+
+/*
+ * This function is responsible to create final path for output file.
+ * Gets current directory and concats it with value from command line
+ */
+void finFileDir(){
+    printf("INPUT %s\n",INPUT);
+
+    if(getcwd(cwd, sizeof(cwd))==NULL){
+
+        printf("Error while trying to get current directory");
+        exit(-1);
+    }
+    /*
+     * Here concat any strings you want to create your directory
+     */
+    strcat(cwd,"/");
+    strcat(cwd,REPORT);
+    strcat(cwd,".txt");
+
+}
+
+
 /*
  * This function is responsible to update all header file value.
  * In case the format is not correct then we exit the program
@@ -212,6 +211,7 @@ void fileHeaderValues(FILE *fp){
     fscanf(fp, "Q_Sz_Max: %d\n", &qMax);
     ErrorCode(qMax);
 
+
     fscanf(fp, "D_Sz_All: %d\n", &dSize);
     ErrorCode(dSize);
 }
@@ -224,9 +224,9 @@ void fileHeaderValues(FILE *fp){
  * -Case 2:Elements are decreasing when we reach the end of the table
  * -Case 3:Elements are stable(Happens only once if our table is symmetrical which is not our case so we have some more)
  */
- int antiDiagLength(int currAnti){
-    long int minFinder = D_len < Q_len ? D_len : Q_len; //Our bottleneck
-    long int maxFinder = D_len < Q_len ? Q_len : D_len;
+int antiDiagLength( int currAnti){
+     int minFinder = D_len < Q_len ? D_len : Q_len; //Our bottleneck
+    int maxFinder = D_len < Q_len ? Q_len : D_len;
 
     if(currAnti < D_len && currAnti < Q_len){
         //CASE 1
@@ -239,6 +239,7 @@ void fileHeaderValues(FILE *fp){
         return  minFinder;
     }
 }
+
 
 /*
  * This function is responsible to track the coordinates of each antidiagonal
@@ -255,6 +256,7 @@ void firstElementUpdater(int i){
 
     }
 }
+
 
 /*
  * Function especially designed for threds and open mp parallel program that does all the calculations needed to apply
@@ -290,7 +292,7 @@ int updateScore(long long int x, long long int y){
             tempMax = diag;
         }
 
-            tempCell++;
+        tempCell++;
     }
 
     ScoreTable[x][y] = tempMax;
@@ -306,48 +308,33 @@ int updateScore(long long int x, long long int y){
     return tempCell;
 }
 
-/*
- * This process-function is the heart of our parallel implementation. We decided that we didn't want to create and
- * destroy threads all the time so we used spinlock method to keep threads occupied and getting called from master
- * thread when needed.
- */
-void processAdiag(long tid,long startCase,long stopCase){
+
+void *calcSimilarity(void *threadArg){
+
+    long tid;
+    tid = (long)threadArg;
+    //int diaLen,initX,initY;
+
+    int currX, currY;
 
 
 
-    while(1){
-
-
-        if(stopCase == 1){
-            pthread_mutex_lock(&lock);
-            startFlag = 1;
-            pthread_mutex_unlock(&lock);
-        }
-
-
-        if(startCase!=1) {
-            pthread_barrier_wait(&barrier);
-
-        }else{
-
-            pthread_barrier_wait(&barrier);
-        }
-
-
-        if(startFlag == 1){
-            /*
-             * bye,bye thread
-             */
-            pthread_barrier_wait(&barrier);
-            return;
-        }
-
-        /*
-         * In case we are unlocked and able to process data
-         */
+    for ( int i = 1; i<=antiDiagNum; i++){
         int cellUp=0;
+
+        diaLen = antiDiagLength(i);
+        firstElementUpdater(i);
+
         int initCompX = initX;
         int initCompY = initY;
+
+        if(diaLen<Q_len && tid ==0){
+            for(int j=0;j< diaLen;j++){
+                cellUp+=updateScore(initCompX - j,initCompY+j);
+                continue;
+
+            }
+        }else if(diaLen>=Q_len) {
 
             for(long j=1;j<= (diaLen/THREADS)+1;j++){
 
@@ -362,42 +349,25 @@ void processAdiag(long tid,long startCase,long stopCase){
                     break;
                 }
             }
+        }
+
 
         pthread_barrier_wait(&barrier);
         pthread_mutex_lock(&lock);
         _cellVal += cellUp;
         pthread_mutex_unlock(&lock);
-        if(tid == 0) return;
     }
 
 
-    return;
-
+    pthread_exit(NULL);
 }
 
-/*
- * This process-function executes while spawwning threads. It doesn't do much just calls the function above.
- */
-void *startProcess(void *threadArg){
 
-    long tid;
-    tid = (long)threadArg;
-
-    if(tid!=0){
-        processAdiag(tid,0,0);
-    }
-
-    pthread_exit(0);
-
-}
-
-/*
- * This function works as thread handler. Given the input it either creates or joins the threads.
- * Our design and implementation is based on the fact that these are executed only once on start and in the end
- */
+//TODO ADD COMMENTS AND CHECK DESTROY CASE
 void multithreadModifier(short selector){
 
     if(selector == 1){
+        printf("Creating Threads.\n");
         /*
      * Mutex Init should return zero. Otherwise print error message and exit
      */
@@ -422,8 +392,7 @@ void multithreadModifier(short selector){
              * NULL for attributes as we want to use default
              */
 
-            //threadChecker = pthread_create(&mthread[i], NULL, calcSimilarity, (void *)i);
-            threadChecker = pthread_create(&mthread[i], NULL, startProcess, (void *)i);
+            threadChecker = pthread_create(&mthread[i], NULL, calcSimilarity, (void *)i);
 
             if(threadChecker){
                 printf("Thread creation failed.Exiting");
@@ -432,7 +401,10 @@ void multithreadModifier(short selector){
 
         }
     }else if (selector == -1){
+
         for(long k = 0; k<THREADS; k++){
+            printf("THREADS %d and %ld\n",THREADS,k);
+            printf("MAIN : completed join with thread %ld \n\n",k);
             pthread_join(mthread[k], NULL);
         }
 
@@ -445,6 +417,9 @@ void multithreadModifier(short selector){
     }
 
 }
+
+
+
 
 
 /*
@@ -481,6 +456,7 @@ void dataParser(){
         }
     }
 
+    printf("Memory Allocated successfully for ScoreTable matrix.\n");
 
     //Initialize 2D array (We have one additional column and row)
 
@@ -500,29 +476,14 @@ void dataParser(){
 
     double cellTimeInit = gettime();
 
-    /*
-     * From here it starts the parallel implementation.
-     */
     startFlag = 0;
 
-    for ( int i = 1; i<=antiDiagNum; i++){
 
-        diaLen = antiDiagLength(i);
-        firstElementUpdater(i);
+    printf("START SIMILARITY MATRIX\n");
 
-        if(diaLen<Q_len) {
+    multithreadModifier(1);
 
-            for (int j = 0; j < diaLen; j++) {
-
-                _cellVal+=updateScore(initX - j, initY + j);
-                continue;
-
-            }
-        }else{
-                processAdiag(0,1,0);
-            }
-
-    }
+    multithreadModifier(-1);
 
     double cellTimeFin = gettime();
     _totalCellTime+= (cellTimeFin-cellTimeInit);
@@ -532,6 +493,8 @@ void dataParser(){
      * Similarity matrix calculations. We also find how many
      * max values we have in each matrix
      */
+
+    printf("Similarity matrix done. Start backtracking\n");
 
 
 
@@ -654,6 +617,7 @@ void dataParser(){
         _dOut = reverseArr(_dOut, strlen(_dOut));
         _qOut = reverseArr(_qOut, strlen(_qOut));
 
+        //printf("\nQ reversed %s and \nD reversed %s",_qOut,_dOut);
         /*
          * Write all the info demanded on an output file
          */
@@ -663,12 +627,10 @@ void dataParser(){
         free(_qOut);
         free(_dOut);
 
-        //printf("\n\n");
     }
 
     double traceTimeFin = gettime();
     _totalTraceTime+=(traceTimeFin - traceTimeInit);
-
 
 
 
@@ -686,6 +648,7 @@ void dataParser(){
         free(ScoreTable[i]);
     }
 
+    printf("MATRIX FREED");
 
 
 }
@@ -862,15 +825,10 @@ int main(int argc, char * argv[]) {
         exit(1);
     }
 
-    multithreadModifier(1);
-
 
     fileHeaderValues(fp);
     fileParser(fp);
 
-    processAdiag(0,1,1);
-
-    multithreadModifier(-1);
 
     fclose(fp);
     //TODO ENABLE
@@ -884,5 +842,3 @@ int main(int argc, char * argv[]) {
     return 0;
 
 }
-
-
