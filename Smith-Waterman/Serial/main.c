@@ -4,21 +4,14 @@
 #include <memory.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <unistd.h>
 
 
 u_int64_t _cellVal = 0;
 u_int64_t _traceSteps = 0;
 double _totalTime = 0;
-double timeTotal=0;
 double _totalCellTime = 0;
 double _totalTraceTime = 0;
-double _CUPSTotal = 0;
-double _CUPSCell = 0;
-
-static char const UPCODE = 'U';
-static char const LEFTCODE = 'L';
-static char const DIAGCODE = 'D';
-static char const ZEROCODE = 'Z';
 
 
 int _MAX_SIMILARITY;
@@ -28,7 +21,9 @@ int Q_len = 0, D_len = 0 ;
 int MATCH;
 int MISMATCH;
 int GAP;
-
+char *INPUT;
+char *REPORT;
+char cwd[512];
 bool nameBool, inputBool, matchBool, misBool, gapBool = false;
 
 int pairs= -1;
@@ -71,6 +66,29 @@ double gettime(void)
 }
 
 /*
+ * This function is responsible to create final path for output file.
+ * Gets current directory and concats it with value from command line
+ */
+void finFileDir(){
+    printf("INPUT %s\n",INPUT);
+
+    if(getcwd(cwd, sizeof(cwd))==NULL){
+        //printf("Current directory %s\n",cwd);
+    //}else{
+        printf("Error while trying to get current directory");
+        exit(-1);
+    }
+    /*
+     * Here concat any strings you want to create your directory
+     */
+    strcat(cwd,"/");
+    strcat(cwd,REPORT);
+    strcat(cwd,".txt");
+
+
+}
+
+/*
  * This function is responsible to check parameters from command line.
  * In case, the demanded criteria are not met then the program terminates.
  * NOTE: This function takes into consideration only the flags and takes as
@@ -84,9 +102,19 @@ void commandChecker(int argc, char * argv[]){
      */
     for (uint8_t i = 0; i < argc; i++) {
         if(strcmp(argv[i],inVariable[0]) == 0){
+            REPORT = argv[++i];
             nameBool = true;
         }
         if(strcmp(argv[i],inVariable[1]) == 0){
+            INPUT = argv[++i];
+
+            /*
+             * We check that our input path end in .txt
+             */
+            if(strcmp(&INPUT[strlen(INPUT)-4],".txt")!=0){
+                printf("Your input path does not end in .txt . Exiting.\n");
+                exit(-9);
+            }
             inputBool = true;
         }
         if(strcmp(argv[i],inVariable[2]) == 0) {
@@ -143,20 +171,16 @@ char* reverseArr(char *str, size_t len) {
 void fileHeaderValues(FILE *fp){
     fscanf(fp, "Pairs: %d\n", &pairs);
     ErrorCode(pairs);
-    //printf("\t\tNUMBER OF Q-D PAIRS: %d\n", pairs);
 
     fscanf(fp, "Q_Sz_Min: %d\n", &qMin);
     ErrorCode(qMin);
-    //printf("Show pairs %d\n", qMin);
 
     fscanf(fp, "Q_Sz_Max: %d\n", &qMax);
     ErrorCode(qMax);
-    //printf("Show pairs %d\n", qMax);
 
 
     fscanf(fp, "D_Sz_All: %d\n", &dSize);
     ErrorCode(dSize);
-    //printf("Show pairs %d\n", dSize);
 }
 
 /*
@@ -187,7 +211,7 @@ void dataParser(char * Q, char * D){
             exit(-2);
         }
     }
-    printf("Memory Allocated successfully for ScoreTable matrix.\n");
+    //printf("Memory Allocated successfully for ScoreTable matrix.\n");
 
     //Initialize 2D array (We have one additional column and row)
 
@@ -200,7 +224,7 @@ void dataParser(char * Q, char * D){
     }
 
 
-    printf("START SIMILARITY MATRIX\n");
+    //printf("START SIMILARITY MATRIX\n");
 
     /*
      * Similarity matrix calculations. We also find how many
@@ -254,10 +278,6 @@ void dataParser(char * Q, char * D){
 
     double cellTimeFin = gettime();
     _totalCellTime+= (cellTimeFin-cellTimeInit);
-
-    printf("Similarity matrix done. Start backtracking\n");
-
-    //printf("MAX %d\n",_MAX_SIMILARITY);
 
     /*
      * We find all max value we need to backtrack
@@ -394,15 +414,14 @@ void dataParser(char * Q, char * D){
 
     //TODO DISABLE IT ON PRINT
 
-
     //PRINTER OF THE  ARRAYS. USED FOR DEBBUGING PURPOSES ONLY
-//    for (int i = 0; i < Q_len + 1; i++){
-//        printf("\n");
-//        for (int j = 0; j < D_len + 1; j++){
-//            printf("%d\t",ScoreTable[i][j]);
-//        }
-//
-//    }
+    for (int i = 0; i < Q_len + 1; i++){
+        printf("\n");
+        for (int j = 0; j < D_len + 1; j++){
+            printf("%d\t",ScoreTable[i][j]);
+        }
+
+    }
     for(int i = 0; i< Q_len+1; i++) {
         free(ScoreTable[i]);
     }
@@ -559,19 +578,22 @@ int main(int argc, char * argv[]) {
 
     commandChecker(argc, argv);
 
+
     printf("STARTING EXECUTION....\n");
 
     FILE *fp;
 
-    fp = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/D7.txt","r");
+    fp = fopen(INPUT,"r");
 
     if(fp == NULL){
-        printf("Error opening file\n");
+        printf("Error opening file.Check your input file.\n");
         exit(-9);
     }
 
+    finFileDir();
+
     //TODO ENABLE
-    finFile = fopen("/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Smith-Waterman/MyDocs/Serial/D8.txt","a");
+    finFile = fopen(cwd,"a");
 
     if(finFile == NULL){
         printf("Error while opening write file!\n");
@@ -583,7 +605,7 @@ int main(int argc, char * argv[]) {
 
 
     fclose(fp);
-    //TODO ENABLE
+    //TODO ENABLE AT THE END
     fclose(finFile);
 
     double timeFinTotal = gettime();

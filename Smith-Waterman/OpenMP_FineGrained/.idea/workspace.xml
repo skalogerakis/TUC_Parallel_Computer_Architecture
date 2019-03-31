@@ -13,18 +13,13 @@
   <component name="ChangeListManager">
     <list default="true" id="359a0084-2947-47ee-bca4-553f0e8c1234" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OpenMpFine" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/OpenMpFine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/Serial" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/Serial" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/final.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="880" column="30" selection-start-line="880" selection-start-column="30" selection-end-line="880" selection-end-column="30" />
+            <state relative-caret-position="214">
+              <caret line="864" lean-forward="true" selection-end-line="911" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -105,10 +100,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="105" />
-    <option name="y" value="27" />
-    <option name="width" value="1853" />
-    <option name="height" value="789" />
+    <option name="x" value="57" />
+    <option name="y" value="25" />
+    <option name="width" value="1863" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -192,11 +187,13 @@
       <workItem from="1553917017010" duration="795000" />
       <workItem from="1553948218644" duration="636000" />
       <workItem from="1553973730009" duration="2888000" />
+      <workItem from="1553983604626" duration="26000" />
+      <workItem from="1553984501234" duration="2027000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139502000" />
+    <option name="totallyTimeSpent" value="141555000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -209,8 +206,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="25" width="1863" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.093560815" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.095762245" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24986242" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -298,20 +296,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="864" lean-forward="true" selection-end-line="911" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="880" column="30" selection-start-line="880" selection-start-column="30" selection-end-line="880" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
