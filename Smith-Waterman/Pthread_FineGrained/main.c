@@ -29,6 +29,7 @@ int THREADS;
 char *INPUT;
 char *REPORT;
 char cwd[512];
+char threadC[2];
 
 bool nameBool, inputBool, matchBool, misBool, gapBool,threadBool = false;
 
@@ -136,6 +137,7 @@ void commandChecker(int argc, char * argv[]){
         }
         //THREAD CHECKER
         if(strcmp(argv[i],inVariable[5]) == 0) {
+            //threadC = argv[++i];
             THREADS = atoi(argv[++i]);
             threadBool = true;
         }
@@ -144,8 +146,6 @@ void commandChecker(int argc, char * argv[]){
     if( !nameBool | !inputBool | !matchBool | !misBool | !gapBool | !threadBool){
         printf("NOT ALL DEMANDED INPUT VARIABLES WERE GIVEN IN COMMAND LINE. EXITING.......");
         exit(-10);
-    }else{
-        printf("COMMAND LINE VARIABLES AS DEMANDED. CONTINUE\n");
     }
 }
 
@@ -180,7 +180,7 @@ char* reverseArr(char *str, size_t len) {
  * Gets current directory and concats it with value from command line
  */
 void finFileDir(){
-    printf("INPUT %s\n",INPUT);
+    //printf("INPUT %s\n",INPUT);
 
     if(getcwd(cwd, sizeof(cwd))==NULL){
 
@@ -190,8 +190,11 @@ void finFileDir(){
     /*
      * Here concat any strings you want to create your directory
      */
-    strcat(cwd,"/");
+    sprintf(threadC,"%d",THREADS);
+    strcat(cwd,"/Report_");
     strcat(cwd,REPORT);
+    strcat(cwd,"_PTH_");
+    strcat(cwd,threadC);
     strcat(cwd,".txt");
 
 }
@@ -367,7 +370,7 @@ void *calcSimilarity(void *threadArg){
 void multithreadModifier(short selector){
 
     if(selector == 1){
-        printf("Creating Threads.\n");
+        //printf("Creating Threads.\n");
         /*
      * Mutex Init should return zero. Otherwise print error message and exit
      */
@@ -403,8 +406,8 @@ void multithreadModifier(short selector){
     }else if (selector == -1){
 
         for(long k = 0; k<THREADS; k++){
-            printf("THREADS %d and %ld\n",THREADS,k);
-            printf("MAIN : completed join with thread %ld \n\n",k);
+            //printf("THREADS %d and %ld\n",THREADS,k);
+            //printf("MAIN : completed join with thread %ld \n\n",k);
             pthread_join(mthread[k], NULL);
         }
 
@@ -456,7 +459,6 @@ void dataParser(){
         }
     }
 
-    printf("Memory Allocated successfully for ScoreTable matrix.\n");
 
     //Initialize 2D array (We have one additional column and row)
 
@@ -479,8 +481,6 @@ void dataParser(){
     startFlag = 0;
 
 
-    printf("START SIMILARITY MATRIX\n");
-
     multithreadModifier(1);
 
     multithreadModifier(-1);
@@ -493,8 +493,6 @@ void dataParser(){
      * Similarity matrix calculations. We also find how many
      * max values we have in each matrix
      */
-
-    printf("Similarity matrix done. Start backtracking\n");
 
 
 
@@ -617,7 +615,6 @@ void dataParser(){
         _dOut = reverseArr(_dOut, strlen(_dOut));
         _qOut = reverseArr(_qOut, strlen(_qOut));
 
-        //printf("\nQ reversed %s and \nD reversed %s",_qOut,_dOut);
         /*
          * Write all the info demanded on an output file
          */
@@ -647,8 +644,6 @@ void dataParser(){
     for(int i = 0; i< Q_len+1; i++) {
         free(ScoreTable[i]);
     }
-
-    printf("MATRIX FREED");
 
 
 }
@@ -681,7 +676,7 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
     uint8_t qCount=0;
 
     size_t bufLen = strlen(buf);
-    printf("GO\n");
+    //printf("GO\n");
 
     if(compFlag == 1) return -1;
 
@@ -700,7 +695,7 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
 
                 //dataParser(Q, D);
                 dataParser();
-                printf("RETURN FROM PARSING\n\n");
+                //printf("RETURN FROM PARSING\n\n");
                 free(Q);
                 free(D);
                 return index;
@@ -726,7 +721,7 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
 
     //dataParser(Q, D);
     dataParser();
-    printf("RETURN FROM PARSING\n\n");
+    //printf("RETURN FROM PARSING\n\n");
     free(Q);
     free(D);
     return bufLen;
@@ -751,7 +746,7 @@ void fileParser(FILE *fp){
 
     do
     {
-        printf("BUFFER FILLING\n\n");
+        //printf("BUFFER FILLING\n\n");
         // Read next block from file and save into buf, right after the
         // "left over" buffer
         numbytes = fread(buf+sizeLeftover, 1, sizeof(buf)-1-sizeLeftover, fp);
@@ -806,7 +801,7 @@ int main(int argc, char * argv[]) {
     commandChecker(argc, argv);
     finFileDir();
 
-    printf("STARTING EXECUTION....\n");
+    //printf("STARTING EXECUTION....\n");
 
     FILE *fp;
 

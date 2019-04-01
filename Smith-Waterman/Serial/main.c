@@ -81,7 +81,7 @@ void finFileDir(){
     /*
      * Here concat any strings you want to create your directory
      */
-    strcat(cwd,"/");
+    strcat(cwd,"/Report_");
     strcat(cwd,REPORT);
     strcat(cwd,".txt");
 
@@ -134,8 +134,6 @@ void commandChecker(int argc, char * argv[]){
     if( !nameBool | !inputBool | !matchBool | !misBool | !gapBool){
         printf("NOT ALL DEMANDED INPUT VARIABLES WERE GIVEN IN COMMAND LINE. EXITING.......");
         exit(-10);
-    }else{
-        printf("COMMAND LINE VARIABLES AS DEMANDED. CONTINUE\n");
     }
 }
 
@@ -211,7 +209,6 @@ void dataParser(char * Q, char * D){
             exit(-2);
         }
     }
-    //printf("Memory Allocated successfully for ScoreTable matrix.\n");
 
     //Initialize 2D array (We have one additional column and row)
 
@@ -224,7 +221,6 @@ void dataParser(char * Q, char * D){
     }
 
 
-    //printf("START SIMILARITY MATRIX\n");
 
     /*
      * Similarity matrix calculations. We also find how many
@@ -396,7 +392,6 @@ void dataParser(char * Q, char * D){
         _dOut = reverseArr(_dOut, strlen(_dOut));
         _qOut = reverseArr(_qOut, strlen(_qOut));
 
-        //printf("\nQ reversed %s and \nD reversed %s",_qOut,_dOut);
         /*
          * Write all the info demanded on an output file
          */
@@ -415,13 +410,13 @@ void dataParser(char * Q, char * D){
     //TODO DISABLE IT ON PRINT
 
     //PRINTER OF THE  ARRAYS. USED FOR DEBBUGING PURPOSES ONLY
-    for (int i = 0; i < Q_len + 1; i++){
-        printf("\n");
-        for (int j = 0; j < D_len + 1; j++){
-            printf("%d\t",ScoreTable[i][j]);
-        }
-
-    }
+//    for (int i = 0; i < Q_len + 1; i++){
+//        printf("\n");
+//        for (int j = 0; j < D_len + 1; j++){
+//            printf("%d\t",ScoreTable[i][j]);
+//        }
+//
+//    }
     for(int i = 0; i< Q_len+1; i++) {
         free(ScoreTable[i]);
     }
@@ -578,8 +573,6 @@ int main(int argc, char * argv[]) {
 
     commandChecker(argc, argv);
 
-
-    printf("STARTING EXECUTION....\n");
 
     FILE *fp;
 

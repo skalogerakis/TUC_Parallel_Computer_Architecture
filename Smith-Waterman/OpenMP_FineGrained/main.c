@@ -33,6 +33,7 @@ int qMax = -1;
 int dSize = -1;
 char *INPUT;
 char *REPORT;
+char threadC[2];
 char cwd[512];
 
 
@@ -91,8 +92,11 @@ void finFileDir(){
     /*
      * Here concat any strings you want to create your directory
      */
-    strcat(cwd,"/");
+    sprintf(threadC,"%d",THREADS);
+    strcat(cwd,"/Report_");
     strcat(cwd,REPORT);
+    strcat(cwd,"_OMP_");
+    strcat(cwd,threadC);
     strcat(cwd,".txt");
 
 }
@@ -610,7 +614,7 @@ long fillDataBuffer(char * buf, long bytereader ,int compFlag){
 
     //dataParser(Q, D);
     dataParser();
-    printf("RETURN FROM PARSING\n\n");
+    //printf("RETURN FROM PARSING\n\n");
     free(Q);
     free(D);
     return bufLen;
@@ -688,8 +692,6 @@ int main(int argc, char * argv[]) {
 
     commandChecker(argc, argv);
     finFileDir();
-
-    printf("STARTING EXECUTION OF OPEN MP FINE GRAINED....\n");
 
     FILE *fp;
 

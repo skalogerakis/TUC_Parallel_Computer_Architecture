@@ -1,0 +1,27 @@
+#!/bin/bash
+
+echo -e "MAKING ALL FILES"
+#make the all at first
+gcc ./Serial/main.c -o ./Serial/Serial
+gcc -fopenmp ./OpenMP_FineGrained/main.c -o ./OpenMP_FineGrained/FineOMP
+gcc ./Pthread_FineGrained/main.c -o ./Pthread_FineGrained/threadFine -lpthread 
+
+echo  -e "\nGIVING PERMISSIONS"
+#give permissions for everything read write execute
+chmod 755 ./Serial/Serial
+chmod 755 ./OpenMP_FineGrained/FineOMP
+chmod 755 ./Pthread_FineGrained/threadFine
+
+#run all available implementations for a text of our choice. Choose something
+#from datasets
+
+echo -e "\nSTART EXECUTING"
+
+echo -e "\nSTART SERIAL IMPLEMENTATION"
+./Serial/Serial -mismatch -1 -match 3 -gap -1 -input ./MyDocs/D6.txt -name D6
+
+echo -e "\nSTART OMP FINE GRAINED IMPLEMENTATION"
+./OpenMP_FineGrained/FineOMP -threads 4 -mismatch -1 -match 3 -gap -1 -input ./MyDocs/D6.txt -name D6
+
+echo -e "\nSTART PTHREDS FINE GRAINED IMPLEMENTATION"
+./Pthread_FineGrained/threadFine -threads 4 -mismatch -1 -match 3 -gap -1 -input ./MyDocs/D6.txt -name D6

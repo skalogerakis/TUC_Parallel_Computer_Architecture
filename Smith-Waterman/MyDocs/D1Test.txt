@@ -1,7 +1,0 @@
-Pairs:		1
-Q_Sz_Min:	10
-Q_Sz_Max:	15
-D_Sz_All:	30
-
-Q:	abc
-D:	xxxabxcxxxaabbcc

@@ -13,14 +13,16 @@
   <component name="ChangeListManager">
     <list default="true" id="359a0084-2947-47ee-bca4-553f0e8c1234" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/CMakeFiles/OpenMpFine.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/CMakeFiles/OpenMpFine.dir/C.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/DTESTOMP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/DTESTOMP.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/OpenMpFine" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/OpenMpFine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Pthread_FineGrained" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Pthread_FineGrained" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_app" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/my_app" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,16 +37,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="243" lean-forward="true" selection-start-line="243" selection-end-line="257" selection-end-column="1" />
+            <state relative-caret-position="189">
+              <caret line="192" column="4" lean-forward="true" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="34" />
               <folding>
-                <element signature="e#444#462#0" expanded="true" />
-                <element signature="e#2092#2682#0" />
-                <element signature="e#2684#2899#0" />
-                <element signature="e#4736#5083#0" />
-                <element signature="e#5681#6494#0" />
-                <element signature="e#25818#27778#0" />
-                <element signature="e#27780#30275#0" />
+                <element signature="e#1#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+            <state relative-caret-position="60">
+              <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -63,11 +59,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Ad</find>
-      <find>startFlag</find>
       <find>HELLI</find>
       <find>BYE</find>
-      <find>printf</find>
       <find>printf(&quot;\</find>
       <find>print</find>
       <find>Adia</find>
@@ -93,6 +86,9 @@
       <find>update</find>
       <find>updateScore</find>
       <find>_cell</find>
+      <find>printf</find>
+      <find>THREADS</find>
+      <find>INPUT</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -107,10 +103,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="988" />
-    <option name="y" value="25" />
-    <option name="width" value="932" />
-    <option name="height" value="1055" />
+    <option name="x" value="57" />
+    <option name="y" value="27" />
+    <option name="width" value="1853" />
+    <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -118,6 +114,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -134,7 +131,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -199,11 +195,14 @@
       <workItem from="1553965772915" duration="458000" />
       <workItem from="1553973656773" duration="70000" />
       <workItem from="1553994335875" duration="8133000" />
+      <workItem from="1554016862850" duration="1548000" />
+      <workItem from="1554073563169" duration="77000" />
+      <workItem from="1554074468131" duration="430000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188772000" />
+    <option name="totallyTimeSpent" value="190827000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -215,25 +214,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="988" y="25" width="932" height="1055" extended-state="4" />
-    <editor active="true" />
+    <frame x="57" y="27" width="1853" height="1053" extended-state="4" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08577878" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08854455" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24986242" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36717063" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.42099568" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.41900647" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.3736501" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.53896105" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3275862" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32937366" />
-      <window_info anchor="bottom" id="CMake" order="12" weight="0.32937366" />
+      <window_info anchor="bottom" id="CMake" order="12" weight="0.32829374" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -339,29 +337,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/D1Pthreads.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="243" lean-forward="true" selection-start-line="243" selection-end-line="257" selection-end-column="1" />
+        <state relative-caret-position="189">
+          <caret line="192" column="4" lean-forward="true" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="34" />
           <folding>
-            <element signature="e#444#462#0" expanded="true" />
-            <element signature="e#2092#2682#0" />
-            <element signature="e#2684#2899#0" />
-            <element signature="e#4736#5083#0" />
-            <element signature="e#5681#6494#0" />
-            <element signature="e#25818#27778#0" />
-            <element signature="e#27780#30275#0" />
+            <element signature="e#1#19#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
         </state>
       </provider>
     </entry>

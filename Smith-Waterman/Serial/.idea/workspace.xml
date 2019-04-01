@@ -13,17 +13,14 @@
   <component name="ChangeListManager">
     <list default="true" id="f1b5cdd3-fc45-4b0c-abf7-ef5a043dd675" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/DTESTOMP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/DTESTOMP.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/OpenMpFine" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/OpenMpFine" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/my_app" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Serial" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Serial" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/final.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="417" selection-start-line="417" selection-end-line="423" selection-end-column="5" />
+            <state relative-caret-position="-127">
+              <caret line="88" column="1" lean-forward="true" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -114,9 +111,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="988" />
+    <option name="x" value="67" />
     <option name="y" value="27" />
-    <option name="width" value="912" />
+    <option name="width" value="1853" />
     <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -131,7 +128,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Pthread_FineGrained" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="CPPToolchains" />
@@ -201,11 +198,14 @@
       <workItem from="1553983634646" duration="10180000" />
       <workItem from="1553996573081" duration="32000" />
       <workItem from="1553996641954" duration="32000" />
+      <workItem from="1554018996624" duration="86000" />
+      <workItem from="1554073641802" duration="38000" />
+      <workItem from="1554074373903" duration="93000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143459000" />
+    <option name="totallyTimeSpent" value="143676000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -217,10 +217,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="988" y="27" width="912" height="1053" extended-state="4" />
-    <editor active="true" />
+    <frame x="67" y="27" width="1853" height="1053" extended-state="4" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09006929" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09297178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -335,8 +334,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="417" selection-start-line="417" selection-end-line="423" selection-end-column="5" />
+        <state relative-caret-position="-127">
+          <caret line="88" column="1" lean-forward="true" selection-start-line="88" selection-start-column="1" selection-end-line="88" selection-end-column="1" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

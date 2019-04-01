@@ -13,13 +13,18 @@
   <component name="ChangeListManager">
     <list default="true" id="359a0084-2947-47ee-bca4-553f0e8c1234" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/DTESTOMP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DTESTOMP.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OpenMpFine" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/OpenMpFine" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/my_app" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/my_app" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,20 +39,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="356" column="14" selection-start-line="356" selection-start-column="14" selection-end-line="361" selection-end-column="15" />
+            <state relative-caret-position="191">
+              <caret line="146" column="48" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#1469#2059#0" />
-                <element signature="e#1712#2190#0" />
-                <element signature="e#1712#3545#0" />
-                <element signature="e#3786#4111#0" />
-                <element signature="e#4113#4460#0" />
-                <element signature="e#4462#5055#0" />
-                <element signature="e#5058#6125#0" />
-                <element signature="e#5915#6991#0" />
-                <element signature="e#19305#21267#0" />
-                <element signature="e#21269#23764#0" />
               </folding>
             </state>
           </provider>
@@ -66,9 +61,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hello</find>
-      <find>barrierCounter</find>
-      <find>bala</find>
       <find>barrier</find>
       <find>bar</find>
       <find>Q</find>
@@ -90,12 +82,15 @@
       <find>dummy</find>
       <find>omp</find>
       <find>pragma</find>
-      <find>updateScore</find>
       <find>printf</find>
       <find>antiDiagLength</find>
       <find>update</find>
       <find>initX</find>
       <find>print</find>
+      <find>Score</find>
+      <find>updateScore</find>
+      <find>REPORT</find>
+      <find>threadC</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,11 +104,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="988" />
-    <option name="y" value="25" />
-    <option name="width" value="932" />
-    <option name="height" value="1055" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="57" />
+    <option name="y" value="99" />
+    <option name="width" value="1863" />
+    <option name="height" value="789" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -199,12 +194,16 @@
       <workItem from="1553973730009" duration="2888000" />
       <workItem from="1553983604626" duration="26000" />
       <workItem from="1553984501234" duration="2027000" />
-      <workItem from="1554001747777" duration="1848000" />
+      <workItem from="1554001747777" duration="2954000" />
+      <workItem from="1554019084032" duration="623000" />
+      <workItem from="1554067293846" duration="4120000" />
+      <workItem from="1554073146533" duration="413000" />
+      <workItem from="1554074900078" duration="199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143403000" />
+    <option name="totallyTimeSpent" value="149864000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -216,15 +215,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="57" y="25" width="1863" height="1055" extended-state="6" />
-    <editor active="true" />
+    <frame x="57" y="99" width="1863" height="789" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.016510732" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24986242" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.41900647" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41900647" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.24946004" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -309,20 +307,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="356" column="14" selection-start-line="356" selection-start-column="14" selection-end-line="361" selection-end-column="15" />
+        <state relative-caret-position="191">
+          <caret line="146" column="48" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="48" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#1469#2059#0" />
-            <element signature="e#1712#2190#0" />
-            <element signature="e#1712#3545#0" />
-            <element signature="e#3786#4111#0" />
-            <element signature="e#4113#4460#0" />
-            <element signature="e#4462#5055#0" />
-            <element signature="e#5058#6125#0" />
-            <element signature="e#5915#6991#0" />
-            <element signature="e#19305#21267#0" />
-            <element signature="e#21269#23764#0" />
           </folding>
         </state>
       </provider>
