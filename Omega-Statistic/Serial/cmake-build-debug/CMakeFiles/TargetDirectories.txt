@@ -1,0 +1,3 @@
+/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/Serial/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/Serial/cmake-build-debug/CMakeFiles/Serial.dir
+/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/Serial/cmake-build-debug/CMakeFiles/edit_cache.dir

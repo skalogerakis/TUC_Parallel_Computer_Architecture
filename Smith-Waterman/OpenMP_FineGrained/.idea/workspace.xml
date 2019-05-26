@@ -11,21 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="359a0084-2947-47ee-bca4-553f0e8c1234" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/DTESTOMP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DTESTOMP.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/OpenMpFine" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/OpenMpFine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/CMakeFiles/Pthread_FineGrained.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/cmake-build-debug/Pthread_FineGrained" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Pthread_FineGrained/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Pthread_FineGrained/my_app" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/my_app" beforeDir="false" />
-    </list>
+    <list default="true" id="359a0084-2947-47ee-bca4-553f0e8c1234" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -104,9 +90,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="57" />
-    <option name="y" value="99" />
+    <option name="y" value="27" />
     <option name="width" value="1863" />
     <option name="height" value="789" />
   </component>
@@ -199,11 +185,12 @@
       <workItem from="1554067293846" duration="4120000" />
       <workItem from="1554073146533" duration="413000" />
       <workItem from="1554074900078" duration="199000" />
+      <workItem from="1556645894837" duration="685000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149864000" />
+    <option name="totallyTimeSpent" value="150549000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -215,7 +202,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="57" y="99" width="1863" height="789" extended-state="0" />
+    <frame x="57" y="25" width="1863" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.016510732" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24986242" />
