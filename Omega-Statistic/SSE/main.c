@@ -134,6 +134,18 @@ int main(int argc, char ** argv)
     const __m128 __temp_one = _mm_set1_ps(0.01f);
     const __m128 temp_two = _mm_set1_ps(2.0f);
 
+    /*
+     * List of instructions used as found from Intrinsics Guide. All the instructions
+     * we use are based on float as these are demanded
+     *
+     * -addps - Adds 4 single-precision (32bit) floating-point values to 4 other single-precision floating-point values
+     * -subps - Subtracts 4 single-precision floating-point values from 4 other single-precision floating-point values
+     * -mulps - Multiplies 4 single-precision floating-point values with 4 other single-precision values.
+     * -divps - Divides 4 single-precision floating-point values by 4 other single-precision floating-point values.
+     * -maxps - Returns maximum of 2 values in each of 4 single-precision values.
+     * -minps - Returns minimum of 2 values in each of 4 single-precision values.
+     *
+     */
     double timeOmegaTotalStart = gettime();
     for(unsigned int j=0;j<iters;j++)
     {
@@ -142,21 +154,19 @@ int main(int argc, char ** argv)
         minF = FLT_MAX;
         for(unsigned int i=0; i<N/4 ;i++)
         {
+            //Replace each statement step by step using the instructions as mentioned before
+
             //float num_0 = LVec[i] + RVec[i];
             temp_num_0 = _mm_add_ps(LVec_ptr[i],RVec_ptr[i]);
 
             //float num_1 = mVec[i]*(mVec[i]-1.0f)/2.0f;
             temp_num_1 = _mm_sub_ps(mVec_ptr[i], temp_one);
-//            temp_num_1 = _mm_div_ps(temp_num_1, twov);
-//            temp_num_1 = _mm_mul_ps(temp_num_1, mVec_ptr[i]);
             temp_num_1 = _mm_mul_ps(mVec_ptr[i], temp_num_1);
             temp_num_1 = _mm_div_ps(temp_num_1, temp_two);
 
 
             //float num_2 = nVec[i]*(nVec[i]-1.0f)/2.0f;
             temp_num_2 = _mm_sub_ps(nVec_ptr[i], temp_one);
-//            temp_num_2 = _mm_div_ps(temp_num_2, twov);
-//            temp_num_2 = _mm_mul_ps(temp_num_2, nVec_ptr[i]);
             temp_num_2 = _mm_mul_ps(nVec_ptr[i], temp_num_2);
             temp_num_2 = _mm_div_ps(temp_num_2, temp_two);
 
@@ -180,10 +190,13 @@ int main(int argc, char ** argv)
 
             //maxF = FVec[i]>maxF?FVec[i]:maxF;
             maxF_vec = _mm_max_ps(FVec_ptr[i], maxF_vec);
-            minF_vec = _mm_min_ps(FVec_ptr[i], minF_vec);
-            avgF_vec = _mm_add_ps(avgF_vec, FVec_ptr[i]);
+
             //minF = FVec[i]<minF?FVec[i]:minF;
+            minF_vec = _mm_min_ps(FVec_ptr[i], minF_vec);
+
             //avgF += FVec[i];
+            avgF_vec = _mm_add_ps(avgF_vec, FVec_ptr[i]);
+
         }
 
         //_mm_store_ps(max, _maxF);
@@ -192,17 +205,11 @@ int main(int argc, char ** argv)
         maxF = maxCalc(maxF_vec[1],maxF);
         maxF = maxCalc(maxF_vec[2],maxF);
         maxF = maxCalc(maxF_vec[3],maxF);
-//        maxF = maxF_vec[1]>maxF?maxF_vec[1]:maxF;
-//        maxF = maxF_vec[2]>maxF?maxF_vec[2]:maxF;
-//        maxF = maxF_vec[3]>maxF?maxF_vec[3]:maxF;
 
         minF = minF_vec[0];
         minF = minCalc(minF_vec[1],minF);
         minF = minCalc(minF_vec[2],minF);
         minF = minCalc(minF_vec[3],minF);
-//        minF = minF_vec[1]<minF?minF_vec[1]:minF;
-//        minF = minF_vec[2]<minF?minF_vec[2]:minF;
-//        minF = minF_vec[3]<minF?minF_vec[3]:minF;
 
         avgF = avgF_vec[0]+avgF_vec[1]+avgF_vec[2]+avgF_vec[3];
 

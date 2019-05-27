@@ -13,13 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="574afd91-b297-41f5-a5d1-127f7ff92b81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../SSE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE/cmake-build-debug/CMakeFiles/SSE.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/cmake-build-debug/CMakeFiles/SSE.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE/cmake-build-debug/SSE" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/cmake-build-debug/SSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Serial" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Serial" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,12 +111,12 @@
       <option name="presentableId" value="Default" />
       <updated>1558884349115</updated>
       <workItem from="1558884358772" duration="1644000" />
-      <workItem from="1558910220344" duration="4718000" />
+      <workItem from="1558910220344" duration="4936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6362000" />
+    <option name="totallyTimeSpent" value="6580000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="988" y="25" width="932" height="1055" extended-state="4" />
