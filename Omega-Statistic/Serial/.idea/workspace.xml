@@ -13,7 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="574afd91-b297-41f5-a5d1-127f7ff92b81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../SSE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE/cmake-build-debug/SSE" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/cmake-build-debug/SSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="93" column="12" selection-start-line="93" selection-start-column="12" selection-end-line="94" selection-end-column="28" />
+            <state relative-caret-position="124">
+              <caret line="48" column="23" lean-forward="true" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -60,7 +63,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="988" />
+    <option name="x" value="57" />
     <option name="y" value="25" />
     <option name="width" value="932" />
     <option name="height" value="1055" />
@@ -71,8 +74,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -94,7 +97,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Serial" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="1000000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Serial" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Serial">
+    <configuration name="Serial" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="10000000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Serial" TARGET_NAME="Serial" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Serial" RUN_TARGET_NAME="Serial">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -112,14 +115,17 @@
       <updated>1558884349115</updated>
       <workItem from="1558884358772" duration="1644000" />
       <workItem from="1558910220344" duration="4936000" />
+      <workItem from="1558962289068" duration="2208000" />
+      <workItem from="1558994881866" duration="71000" />
+      <workItem from="1558995057282" duration="58000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6580000" />
+    <option name="totallyTimeSpent" value="8917000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="988" y="25" width="932" height="1055" extended-state="4" />
+    <frame x="57" y="25" width="932" height="1055" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.033860046" />
@@ -127,7 +133,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32829374" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32829374" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -153,8 +159,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="93" column="12" selection-start-line="93" selection-start-column="12" selection-end-line="94" selection-end-column="28" />
+        <state relative-caret-position="124">
+          <caret line="48" column="23" lean-forward="true" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
