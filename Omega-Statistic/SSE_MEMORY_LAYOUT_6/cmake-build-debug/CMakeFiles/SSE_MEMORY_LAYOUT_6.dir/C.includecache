@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/SSE_MEMORY_LAYOUT_6/main.c
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+sys/time.h
+-
+assert.h
+-
+float.h
+-
+xmmintrin.h
+-
+

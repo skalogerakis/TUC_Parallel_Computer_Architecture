@@ -15,15 +15,7 @@
       <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT_3.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT_3.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE/cmake-build-debug/SSE" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/cmake-build-debug/SSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -44,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="66" column="22" lean-forward="true" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
+            <state relative-caret-position="-112">
+              <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -132,15 +124,15 @@
       <workItem from="1559166169885" duration="43000" />
       <workItem from="1559166248359" duration="57000" />
       <workItem from="1559209851987" duration="86000" />
-      <workItem from="1559211392708" duration="2230000" />
+      <workItem from="1559211392708" duration="2828000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15965000" />
+    <option name="totallyTimeSpent" value="16563000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="57" y="25" width="932" height="1055" extended-state="4" />
+    <frame x="57" y="25" width="932" height="1055" extended-state="5" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.033860046" />
@@ -174,8 +166,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="66" column="22" lean-forward="true" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
+        <state relative-caret-position="-112">
+          <caret line="77" column="5" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

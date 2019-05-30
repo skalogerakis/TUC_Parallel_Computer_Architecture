@@ -15,15 +15,7 @@
       <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT_3.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT_3.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SSE" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/SSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -44,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+            <state relative-caret-position="-2187">
+              <caret line="96" column="8" lean-forward="true" selection-start-line="96" selection-start-column="8" selection-end-line="101" selection-end-column="63" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#253#388#0" />
@@ -80,10 +72,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="5">
-    <option name="x" value="988" />
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="x" value="993" />
     <option name="y" value="27" />
-    <option name="width" value="912" />
+    <option name="width" value="907" />
     <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -98,7 +90,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Serial" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -116,7 +108,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="SSE" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="10000000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SSE" TARGET_NAME="SSE" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="SSE" RUN_TARGET_NAME="SSE">
+    <configuration name="SSE" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="1000000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SSE" TARGET_NAME="SSE" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="SSE" RUN_TARGET_NAME="SSE">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -139,18 +131,18 @@
       <workItem from="1559166220222" duration="68000" />
       <workItem from="1559166308261" duration="7442000" />
       <workItem from="1559206116078" duration="3225000" />
-      <workItem from="1559209939253" duration="3140000" />
+      <workItem from="1559209939253" duration="8360000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41904000" />
+    <option name="totallyTimeSpent" value="47124000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="988" y="27" width="912" height="1053" extended-state="4" />
+    <frame x="993" y="27" width="907" height="1053" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.04734411" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.04761905" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -181,8 +173,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+        <state relative-caret-position="-2187">
+          <caret line="96" column="8" lean-forward="true" selection-start-line="96" selection-start-column="8" selection-end-line="101" selection-end-column="63" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#253#388#0" />
