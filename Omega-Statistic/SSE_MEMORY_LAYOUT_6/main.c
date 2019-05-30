@@ -61,7 +61,9 @@ int main(int argc, char ** argv)
 
     srand(1);
 
-
+    /*
+     * Only one malloc in this memory layout
+     */
     float * LRCmnFVec = (float*)_mm_malloc(sizeof(float)*6*N,16);
     assert(LRCmnFVec!=NULL);
 
@@ -107,7 +109,7 @@ int main(int argc, char ** argv)
 
     __m128 maxF_vec = _mm_setzero_ps();
     __m128 avgF_vec = _mm_setzero_ps();
-    __m128 minF_vec = _mm_set_ps1(FLT_MAX); //TODO CHANGE THAT
+    __m128 minF_vec = _mm_set_ps1(FLT_MAX);
 
 
 
@@ -206,7 +208,6 @@ int main(int argc, char ** argv)
 
             //avgF += FVec[i];
             avgF_vec = _mm_add_ps(LRCmnFVec_ptr[i+5], avgF_vec );
-            //printf("HU %e, %e, %e, %e\n",(double)avgF_vec[0], (double)avgF_vec[1], (double)avgF_vec[2], (double)avgF_vec[3]);
         }
 
         /*
@@ -230,7 +231,6 @@ int main(int argc, char ** argv)
          * is left to compute. This code is added for generalization purposes
          * so that we have a correct result for a different N
          */
-        //TODO ADD THAT
         for (int j = ((6 * N) - (6 *N % 4)); j < 6 * N; j++) {
             float num_0 = LRCmnFVec[j] + LRCmnFVec[j+1];
             float num_1 = LRCmnFVec[j+3] * (LRCmnFVec[j+3] - 1.0f) / 2.0f;
@@ -255,5 +255,8 @@ int main(int argc, char ** argv)
            timeOmegaTotal/iters, timeTotalMainStop-timeTotalMainStart, (double)minF, (double)maxF,
            (double)avgF/N);
 
+    /*
+     * Free everything
+     */
     _mm_free(LRCmnFVec);
 }

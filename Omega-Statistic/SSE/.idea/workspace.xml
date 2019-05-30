@@ -15,8 +15,24 @@
       <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT_3.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT_3.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SSE" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/SSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE_MEMORY_LAYOUT_6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE_MEMORY_LAYOUT_6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE_MEMORY_LAYOUT_6/cmake-build-debug/CMakeFiles/SSE_MEMORY_LAYOUT_6.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE_MEMORY_LAYOUT_6/cmake-build-debug/CMakeFiles/SSE_MEMORY_LAYOUT_6.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE_MEMORY_LAYOUT_6/cmake-build-debug/SSE_MEMORY_LAYOUT_6" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE_MEMORY_LAYOUT_6/cmake-build-debug/SSE_MEMORY_LAYOUT_6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE_MEMORY_LAYOUT_6/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE_MEMORY_LAYOUT_6/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/Serial" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/Serial" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Smith-Waterman/Pthread_FineGrained/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Smith-Waterman/Pthread_FineGrained/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2187">
-              <caret line="96" column="8" lean-forward="true" selection-start-line="96" selection-start-column="8" selection-end-line="101" selection-end-column="63" />
+            <state relative-caret-position="138">
+              <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#253#388#0" />
@@ -72,11 +88,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="993" />
-    <option name="y" value="27" />
-    <option name="width" value="907" />
-    <option name="height" value="1053" />
+  <component name="ProjectFrameBounds" extendedState="5">
+    <option name="x" value="988" />
+    <option name="y" value="25" />
+    <option name="width" value="932" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -131,29 +147,29 @@
       <workItem from="1559166220222" duration="68000" />
       <workItem from="1559166308261" duration="7442000" />
       <workItem from="1559206116078" duration="3225000" />
-      <workItem from="1559209939253" duration="8360000" />
+      <workItem from="1559209939253" duration="9515000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47124000" />
+    <option name="totallyTimeSpent" value="48279000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="993" y="27" width="907" height="1053" extended-state="4" />
+    <frame x="988" y="25" width="932" height="1055" extended-state="5" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.04761905" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.046275396" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32467532" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32397407" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32467532" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32397407" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -173,8 +189,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2187">
-          <caret line="96" column="8" lean-forward="true" selection-start-line="96" selection-start-column="8" selection-end-line="101" selection-end-column="63" />
+        <state relative-caret-position="138">
+          <caret line="227" lean-forward="true" selection-start-line="227" selection-end-line="227" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#253#388#0" />

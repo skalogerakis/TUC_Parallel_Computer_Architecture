@@ -12,17 +12,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="359a0084-2947-47ee-bca4-553f0e8c1234" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/CMakeFiles/OpenMpFine.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/DTESTOMP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/DTESTOMP.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/OpenMpFine" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/cmake-build-debug/OpenMpFine" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OpenMP_FineGrained/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../OpenMP_FineGrained/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT-3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT-3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT-3/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT_3.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT-3/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT_3.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT-3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT-3/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE/cmake-build-debug/SSE" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE/cmake-build-debug/SSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE_MEMORY_LAYOUT_6/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE_MEMORY_LAYOUT_6/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE_MEMORY_LAYOUT_6/cmake-build-debug/CMakeFiles/SSE_MEMORY_LAYOUT_6.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE_MEMORY_LAYOUT_6/cmake-build-debug/CMakeFiles/SSE_MEMORY_LAYOUT_6.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE_MEMORY_LAYOUT_6/cmake-build-debug/SSE_MEMORY_LAYOUT_6" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE_MEMORY_LAYOUT_6/cmake-build-debug/SSE_MEMORY_LAYOUT_6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/SSE_MEMORY_LAYOUT_6/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/SSE_MEMORY_LAYOUT_6/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/Serial/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/Serial/cmake-build-debug/Serial" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/Serial/cmake-build-debug/Serial" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Omega-Statistic/Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../../Omega-Statistic/Serial/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_app" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/my_app" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="192" column="4" lean-forward="true" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="34" />
+            <state relative-caret-position="150">
+              <caret line="136" column="9" lean-forward="true" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
               <folding>
                 <element signature="e#1#19#0" expanded="true" />
               </folding>
@@ -50,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+              <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -102,11 +111,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="57" />
-    <option name="y" value="27" />
-    <option name="width" value="1853" />
-    <option name="height" value="1053" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="77" />
+    <option name="y" value="141" />
+    <option name="width" value="1843" />
+    <option name="height" value="789" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -114,7 +123,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -131,11 +139,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../OpenMP_FineGrained" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -198,11 +207,13 @@
       <workItem from="1554016862850" duration="1548000" />
       <workItem from="1554073563169" duration="77000" />
       <workItem from="1554074468131" duration="430000" />
+      <workItem from="1559255024531" duration="371000" />
+      <workItem from="1559255747422" duration="48000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190827000" />
+    <option name="totallyTimeSpent" value="191246000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -214,9 +225,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="57" y="27" width="1853" height="1053" extended-state="4" />
+    <frame x="77" y="141" width="1843" height="789" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08854455" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09126322" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24986242" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -342,8 +354,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="192" column="4" lean-forward="true" selection-start-line="192" selection-start-column="4" selection-end-line="192" selection-end-column="34" />
+        <state relative-caret-position="150">
+          <caret line="136" column="9" lean-forward="true" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
           <folding>
             <element signature="e#1#19#0" expanded="true" />
           </folding>
@@ -353,7 +365,7 @@
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="47" />
         </state>
       </provider>
     </entry>

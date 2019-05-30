@@ -254,7 +254,6 @@ int main(int argc, char ** argv)
             avgF += FVec[j];
         }
 
-
     }
     double timeOmegaTotal = gettime()-timeOmegaTotalStart;
     double timeTotalMainStop = gettime();

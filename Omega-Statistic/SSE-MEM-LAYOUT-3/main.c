@@ -55,18 +55,26 @@ int main(int argc, char ** argv)
 
     srand(1);
 
+    /*
+     * Two malloc used in this memory layout. We merged arrays L,R,C and m,n,F from the initial code
+     */
     float * LRCVec = (float*)_mm_malloc(sizeof(float)*3*N,16);
     assert(LRCVec!=NULL);
 
     float * mnFVec = (float*)_mm_malloc(sizeof(float)*3*N,16);
     assert(mnFVec!=NULL);
 
+    /*
+     * Initialize all variables. Initialization changed for different layout implementation
+     */
     unsigned int i=0;
     while(i < 3 * N){
 
+        /*
+         * When we reach each time the fourth element jump 12 positions so that you do not overwrite anything else
+         */
         if((i+8)%12 == 0){
             i = i+8;
-
             continue;
         }else{
             mnFVec[i] = (float)(MINSNPS_B+rand()%MAXSNPS_E); //mVec
@@ -77,6 +85,13 @@ int main(int argc, char ** argv)
 
             LRCVec[i+8] = randpval()*mnFVec[i]*mnFVec[i+4];  //CVec
             mnFVec[i+8] = 0.0; //Fvec
+
+            assert(mnFVec[i]>=MINSNPS_B && mnFVec[i]<=(MINSNPS_B+MAXSNPS_E));
+            assert(mnFVec[i+4]>=MINSNPS_B && mnFVec[i+4]<=(MINSNPS_B+MAXSNPS_E));
+            //Modified initial assignment as advised
+            assert(LRCVec[i]>=0.0f && LRCVec[i]<=1.0f*mnFVec[i]);
+            assert(LRCVec[i+4]>=0.0f && LRCVec[i+4]<=1.0f*mnFVec[i+4]);
+            assert(LRCVec[i+8]>=0.0f && LRCVec[i+8]<=1.0f*mnFVec[i]*mnFVec[i+4]);
         }
 
         i++;
@@ -88,13 +103,12 @@ int main(int argc, char ** argv)
 
     //Implementation with pointers.
 
+    __m128 *mnFVec_ptr = (__m128 *) mnFVec;
+    __m128 *LRCVec_ptr = (__m128 *) LRCVec;
 
     __m128 maxF_vec = _mm_setzero_ps();
     __m128 avgF_vec = _mm_setzero_ps();
-    __m128 minF_vec = _mm_set_ps1(FLT_MAX); //TODO CHANGE THAT
-
-    __m128 *mnFVec_ptr = (__m128 *) mnFVec;
-    __m128 *LRCVec_ptr = (__m128 *) LRCVec;
+    __m128 minF_vec = _mm_set_ps1(FLT_MAX);
 
 
     __m128 temp_num_0;
@@ -138,6 +152,15 @@ int main(int argc, char ** argv)
         {
             //Replace each statement step by step using the instructions as mentioned before
 
+            /*
+             * Unrolling and jamming not shown step by step by the idea is the following:
+             * SSE works with vectors of 4 elements. So every operation needs four elements.
+             * ex. when we add LVec_ptr[i] and RVec_ptr[i] sse adds the elements
+             * LVec_ptr[i+0]+RVec_ptr[i+0], LVec_ptr[i+1]+RVec_ptr[i+1], LVec_ptr[i+2]+RVec_ptr[i+2],
+             * LVec_ptr[i+3]+RVec_ptr[i+3]. That's why we use division by 4(every i corresponds to 4
+             * elements). We see first the referrence code in comment and sse implementation follows
+             */
+
             //float num_0 = LVec[i] + RVec[i];
             temp_num_0 = _mm_add_ps(LRCVec_ptr[i],LRCVec_ptr[i+1]);
 
@@ -145,7 +168,6 @@ int main(int argc, char ** argv)
             temp_num_1 = _mm_sub_ps(mnFVec_ptr[i], temp_one);
             temp_num_1 = _mm_mul_ps(mnFVec_ptr[i], temp_num_1);
             temp_num_1 = _mm_div_ps(temp_num_1, temp_two);
-
 
 
             //float num_2 = nVec[i]*(nVec[i]-1.0f)/2.0f;
@@ -162,15 +184,8 @@ int main(int argc, char ** argv)
             temp_den_0 = _mm_sub_ps(LRCVec_ptr[i+2], LRCVec_ptr[i]);
             temp_den_0 = _mm_sub_ps(temp_den_0, LRCVec_ptr[i+1]);
 
-            //TODO SOMETHING IS WRONG
-
-//            if( i< 50 ){
-//                printf("%d %f,%f\n", (int)i, FCVec[i+1], mnVec[i+1]);
-//            }
-
             //float den_1 = mVec[i]*nVec[i];
             temp_den_1 = _mm_mul_ps(mnFVec_ptr[i], mnFVec_ptr[i+1]);
-
 
 
             //float den = den_0/den_1;
@@ -181,7 +196,6 @@ int main(int argc, char ** argv)
             mnFVec_ptr[i+2] = _mm_div_ps(temp_num, temp_fvec);
 
 
-
             //maxF = FVec[i]>maxF?FVec[i]:maxF;
             maxF_vec = _mm_max_ps(mnFVec_ptr[i+2], maxF_vec);
 
@@ -190,9 +204,12 @@ int main(int argc, char ** argv)
 
             //avgF += FVec[i];
             avgF_vec = _mm_add_ps(mnFVec_ptr[i+2], avgF_vec );
-            //printf("HU %e, %e, %e, %e\n",(double)avgF_vec[0], (double)avgF_vec[1], (double)avgF_vec[2], (double)avgF_vec[3]);
+
         }
 
+        /*
+         * Prefer not to use for loop but unrolled version, so access all the values hardcoded
+         */
         maxF = maxF_vec[0];
         maxF = maxCalc(maxF_vec[1],maxF);
         maxF = maxCalc(maxF_vec[2],maxF);
@@ -204,23 +221,29 @@ int main(int argc, char ** argv)
         minF = minCalc(minF_vec[3],minF);
 
         avgF =  avgF_vec[0] + avgF_vec[1] + avgF_vec[2] + avgF_vec[3];
-        //TODO ADD THAT
-//        for (int j = (2 * N - 2 * N % 8); j < N; j+=2) {
-//            printf("HIII\n");
-//            // Scalar computation of whatever its left
-////            float num_0 = LVec[j] + RVec[j];
-////            float num_1 = mVec[j] * (mVec[j] - 1.0f) / 2.0f;
-////            float num_2 = nVec[j] * (nVec[j] - 1.0f) / 2.0f;
-////            float num = num_0 / (num_1 + num_2);
-////            float den_0 = CVec[j] - LVec[j] - RVec[j];
-////            float den_1 = mVec[j] * nVec[j];
-////            float den = den_0 / den_1;
-////
-////            FVec[j] = num / (den + 0.01f);
-////            maxF = FVec[j] > maxF ? FVec[j] : maxF;
-////            minF = FVec[j]<minF?FVec[j]:minF;
-////            avgF += FVec[j];
-//        }
+
+        /*
+         * Use a simple scalar computation to find whatever is left to compute.
+         * NOTE: In our we use N = 10000000 so it is divisable by 4 and nothing
+         * is left to compute. This code is added for generalization purposes
+         * so that we have a correct result for a different N
+         */
+
+        for (int j = ((3 * N) - (3 * N % 4)); j < 3 * N; j++) {
+
+            float num_0 = LRCVec[j] + LRCVec[j+1];
+            float num_1 = mnFVec[j] * (mnFVec[j] - 1.0f) / 2.0f;
+            float num_2 = mnFVec[j+1] * ( mnFVec[j+1] - 1.0f) / 2.0f;
+            float num = num_0 / (num_1 + num_2);
+            float den_0 = LRCVec[j+2] - LRCVec[j] - LRCVec[j+1];
+            float den_1 =  mnFVec[j] *  mnFVec[j+1];
+            float den = den_0 / den_1;
+
+            mnFVec[j+2] = num / (den + 0.01f);
+            maxF = mnFVec[j+2] > maxF ? mnFVec[j+2] : maxF;
+            minF = mnFVec[j+2]<minF?mnFVec[j+2]:minF;
+            avgF += mnFVec[j+2];
+        }
 
 
     }
@@ -231,6 +254,9 @@ int main(int argc, char ** argv)
            timeOmegaTotal/iters, timeTotalMainStop-timeTotalMainStart, (double)minF, (double)maxF,
            (double)avgF/N);
 
+    /*
+     * Free everything
+     */
     _mm_free(mnFVec);
     _mm_free(LRCVec);
 }
