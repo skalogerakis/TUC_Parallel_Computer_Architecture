@@ -94,6 +94,7 @@ int main(int argc, char ** argv)
             minF = FVec[i]<minF?FVec[i]:minF;
             avgF += FVec[i];
         }
+        printf("%e\n",(double)avgF);
     }
     double timeOmegaTotal = gettime()-timeOmegaTotalStart;
     double timeTotalMainStop = gettime();

@@ -1,0 +1,1 @@
+mpicc -g   CMakeFiles/SEE_PTHREADS_MPI.dir/main.c.o  -o SEE_PTHREADS_MPI 
