@@ -27,7 +27,9 @@ float randpval (void)
     assert(r>=0.0f && r<=1.00001f);
     return r;
 }
-
+/*
+ * Finds the max value between two values. No need for ready function
+ */
 float maxCalc(float x, float y){
     if(x > y){
         return x;
@@ -35,12 +37,16 @@ float maxCalc(float x, float y){
     return y;
 }
 
+/*
+ * Finds the min value between two values. No need for ready function
+ */
 float minCalc(float x, float y){
     if(x < y){
         return x;
     }
     return y;
 }
+
 
 int main(int argc, char ** argv)
 {
@@ -73,7 +79,9 @@ int main(int argc, char ** argv)
     float * FVec = (float*)_mm_malloc(sizeof(float)*N,16);
     assert(FVec!=NULL);
 
-
+    /*
+     * Initialize all variables
+     */
     for(unsigned int i=0;i<N;i++)
     {
         mVec[i] = (float)(MINSNPS_B+rand()%MAXSNPS_E);
@@ -85,12 +93,6 @@ int main(int argc, char ** argv)
         CVec[i] = randpval()*mVec[i]*nVec[i];
         FVec[i] = 0.0;
 
-//        if( i< 25 ){
-//            printf("%f,%f\n",CVec[i], FVec[i]);
-//        }
-//        if( i< 25 ){
-//            printf("%f,%f\n",CVec[i], FVec[i]);
-//        }
 
         assert(mVec[i]>=MINSNPS_B && mVec[i]<=(MINSNPS_B+MAXSNPS_E));
         assert(nVec[i]>=MINSNPS_B && nVec[i]<=(MINSNPS_B+MAXSNPS_E));
@@ -105,35 +107,27 @@ int main(int argc, char ** argv)
      */
 
     //Implementation with pointers.
-
     __m128 *mVec_ptr = (__m128 *) mVec;
     __m128 *nVec_ptr = (__m128 *) nVec;
     __m128 *LVec_ptr = (__m128 *) LVec;
     __m128 *RVec_ptr = (__m128 *) RVec;
     __m128 *CVec_ptr = (__m128 *) CVec;
     __m128 *FVec_ptr = (__m128 *) FVec;
+
     __m128 maxF_vec = _mm_setzero_ps();
     __m128 avgF_vec = _mm_setzero_ps();
     __m128 minF_vec = _mm_set_ps1(FLT_MAX); //TODO CHANGE THAT
-    //__m128 *maxv__m128 = (__m128 *) maxv;
 
 
 
-    __m128 temp_num_0;
-    __m128 temp_num_1;
-    __m128 temp_num_2;
-    __m128 temp_num;
-    __m128 temp_den_0;
-    __m128 temp_den_1;
-    __m128 temp_den;
+    __m128 temp_num_0 = _mm_setzero_ps();
+    __m128 temp_num_1 = _mm_setzero_ps();
+    __m128 temp_num_2 = _mm_setzero_ps();
+    __m128 temp_num = _mm_setzero_ps();
+    __m128 temp_den_0 = _mm_setzero_ps();
+    __m128 temp_den_1 = _mm_setzero_ps();
+    __m128 temp_den = _mm_setzero_ps();
 
-    __m128 vec_num;
-    __m128 vec_num_0;
-    __m128 vec_num_1;
-    __m128 vec_num_2;
-    __m128 vec_den;
-    __m128 vec_den_0;
-    __m128 vec_den_1;
 
     /*
      * We prefer to declare the follow const values as __m128 and
@@ -158,25 +152,34 @@ int main(int argc, char ** argv)
     double timeOmegaTotalStart = gettime();
     for(unsigned int j=0;j<iters;j++)
     {
+        //Re-initialize in each iteration.
         avgF = 0.0f;
         maxF = 0.0f;
         minF = FLT_MAX;
         avgF_vec = _mm_setzero_ps();
+        maxF_vec = _mm_setzero_ps();
+        minF_vec = _mm_set_ps1(FLT_MAX);
         for(unsigned int i=0; i<N/4 ;i++)
         {
             //Replace each statement step by step using the instructions as mentioned before
 
+            /*
+             * Unrolling and jamming not shown step by step by the idea is the following:
+             * SSE works with vectors of 4 elements. So every operation needs four elements.
+             * ex. when we add LVec_ptr[i] and RVec_ptr[i] sse adds the elements
+             * LVec_ptr[i+0]+RVec_ptr[i+0], LVec_ptr[i+1]+RVec_ptr[i+1], LVec_ptr[i+2]+RVec_ptr[i+2],
+             * LVec_ptr[i+3]+RVec_ptr[i+3]. That's why we use division by 4(every i corresponds to 4
+             * elements). We see first the referrence code in comment and sse implementation follows
+             */
+
             //float num_0 = LVec[i] + RVec[i];
             temp_num_0 = _mm_add_ps(LVec_ptr[i],RVec_ptr[i]);
-
 
 
             //float num_1 = mVec[i]*(mVec[i]-1.0f)/2.0f;
             temp_num_1 = _mm_sub_ps(mVec_ptr[i], temp_one);
             temp_num_1 = _mm_mul_ps(mVec_ptr[i], temp_num_1);
             temp_num_1 = _mm_div_ps(temp_num_1, temp_two);
-
-
 
 
             //float num_2 = nVec[i]*(nVec[i]-1.0f)/2.0f;
@@ -193,15 +196,8 @@ int main(int argc, char ** argv)
             temp_den_0 = _mm_sub_ps(CVec_ptr[i], LVec_ptr[i]);
             temp_den_0 = _mm_sub_ps(temp_den_0, RVec_ptr[i]);
 
-
-//            if( i< 25 ){
-//                printf("%d %f,%f\n",(int)i,CVec[i], nVec[i]);
-//            }
-
             //float den_1 = mVec[i]*nVec[i];
             temp_den_1 = _mm_mul_ps(mVec_ptr[i], nVec_ptr[i]);
-
-
 
             //float den = den_0/den_1;
             temp_den = _mm_div_ps(temp_den_0, temp_den_1);
@@ -222,8 +218,9 @@ int main(int argc, char ** argv)
             //printf("HU %e, %e, %e, %e\n",(double)avgF_vec[0], (double)avgF_vec[1], (double)avgF_vec[2], (double)avgF_vec[3]);
         }
 
-        //_mm_store_ps(max, _maxF);
-        //_mm_store_ps(max, maxFV);
+        /*
+         * Prefer not to use for loop but unrolled version, so access all the values hardcoded
+         */
         maxF = maxF_vec[0];
         maxF = maxCalc(maxF_vec[1],maxF);
         maxF = maxCalc(maxF_vec[2],maxF);
@@ -236,8 +233,13 @@ int main(int argc, char ** argv)
 
         avgF =  avgF_vec[0] + avgF_vec[1] + avgF_vec[2] + avgF_vec[3];
 
+        /*
+         * Use a simple scalar computation to find whatever is left to compute.
+         * NOTE: In our we use N = 10000000 so it is divisable by 4 and nothing
+         * is left to compute. This code is added for generalization purposes
+         * so that we have a correct result for a different N
+         */
         for (int j = (N - N % 4); j < N; j++) {
-            // Scalar computation of whatever its left
             float num_0 = LVec[j] + RVec[j];
             float num_1 = mVec[j] * (mVec[j] - 1.0f) / 2.0f;
             float num_2 = nVec[j] * (nVec[j] - 1.0f) / 2.0f;

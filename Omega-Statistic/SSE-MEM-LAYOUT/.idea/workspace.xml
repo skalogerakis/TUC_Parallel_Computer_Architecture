@@ -12,54 +12,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81dfea2b-55be-40f9-bcd0-d0a590c7f950" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/.idea/SEE-PTHREADS-MPI.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/3.13.2/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/3.13.2/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/3.13.2/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/3.13.2/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/3.13.2/CompilerIdC/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/SEE_PTHREADS_MPI.dir/C.includecache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/SEE_PTHREADS_MPI.dir/DependInfo.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/SEE_PTHREADS_MPI.dir/build.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/SEE_PTHREADS_MPI.dir/cmake_clean.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/SEE_PTHREADS_MPI.dir/depend.internal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/SEE_PTHREADS_MPI.dir/depend.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/SEE_PTHREADS_MPI.dir/flags.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/SEE_PTHREADS_MPI.dir/link.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/SEE_PTHREADS_MPI.dir/main.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/SEE_PTHREADS_MPI.dir/progress.make" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/feature_tests.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/feature_tests.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/SEE_PTHREADS_MPI" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/SEE_PTHREADS_MPI.cbp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SEE-PTHREADS-MPI/main.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT_3.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT_3.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE-MEM-LAYOUT-3/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/SSE_MEM_LAYOUT.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/SSE_MEM_LAYOUT" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/SSE_MEM_LAYOUT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/cmake-build-debug/CMakeFiles/SSE.dir/main.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE/cmake-build-debug/SSE" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/cmake-build-debug/SSE" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSE/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/CMakeFiles/Serial.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/cmake-build-debug/Serial" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/cmake-build-debug/Serial" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Serial/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../Serial/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,8 +44,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+            <state relative-caret-position="198">
+              <caret line="215" column="41" lean-forward="true" selection-start-line="215" selection-start-column="41" selection-end-line="215" selection-end-column="41" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -107,7 +72,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="57" />
+    <option name="x" value="24" />
     <option name="y" value="27" />
     <option name="width" value="931" />
     <option name="height" value="1053" />
@@ -158,15 +123,15 @@
       <option name="presentableId" value="Default" />
       <updated>1559166289516</updated>
       <workItem from="1559166291258" duration="11137000" />
-      <workItem from="1559206116653" duration="1687000" />
+      <workItem from="1559206116653" duration="4325000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12824000" />
+    <option name="totallyTimeSpent" value="15462000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="57" y="27" width="931" height="1053" extended-state="4" />
+    <frame x="24" y="27" width="931" height="1053" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25310734" />
@@ -174,7 +139,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32900432" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -199,17 +164,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.c</url>
-          <line>227</line>
+          <line>183</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.c</url>
-          <line>219</line>
+          <line>175</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.c</url>
-          <line>222</line>
+          <line>178</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -228,8 +193,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+        <state relative-caret-position="198">
+          <caret line="215" column="41" lean-forward="true" selection-start-line="215" selection-start-column="41" selection-end-line="215" selection-end-column="41" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

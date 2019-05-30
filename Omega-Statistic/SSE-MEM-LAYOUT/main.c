@@ -55,25 +55,6 @@ int main(int argc, char ** argv)
 
     srand(1);
 
-//    float * mVec = (float*)_mm_malloc(sizeof(float)*N,16);
-//    assert(mVec!=NULL);
-//
-//    float * nVec = (float*)_mm_malloc(sizeof(float)*N,16);
-//    assert(nVec!=NULL);
-//
-//    float * LVec = (float*)_mm_malloc(sizeof(float)*N,16);
-//    assert(LVec!=NULL);
-//
-//    float * RVec = (float*)_mm_malloc(sizeof(float)*N,16);
-//    assert(RVec!=NULL);
-//
-//    float * CVec = (float*)_mm_malloc(sizeof(float)*N,16);
-//    assert(CVec!=NULL);
-//
-//    float * FVec = (float*)_mm_malloc(sizeof(float)*N,16);
-//    assert(FVec!=NULL);
-
-
 
     float * LRVec = (float*)_mm_malloc(sizeof(float)*2*N,16);
     assert(LRVec!=NULL);
@@ -84,47 +65,28 @@ int main(int argc, char ** argv)
     float * FCVec = (float*)_mm_malloc(sizeof(float)*2*N,16);
     assert(FCVec!=NULL);
 
-//    for(unsigned int i=0;i<N;i++)
-//    {
-//        mVec[i] = (float)(MINSNPS_B+rand()%MAXSNPS_E);
-//        nVec[i] = (float)(MINSNPS_B+rand()%MAXSNPS_E);
-//        LVec[i] = randpval()*mVec[i];
-//        RVec[i] = randpval()*nVec[i];
-//        CVec[i] = randpval()*mVec[i]*nVec[i];
-//        FVec[i] = 0.0;
-//
-//        assert(mVec[i]>=MINSNPS_B && mVec[i]<=(MINSNPS_B+MAXSNPS_E));
-//        assert(nVec[i]>=MINSNPS_B && nVec[i]<=(MINSNPS_B+MAXSNPS_E));
-//        //Modified initial assignment as advised
-//        assert(LVec[i]>=0.0f && LVec[i]<=1.0f*mVec[i]);
-//        assert(RVec[i]>=0.0f && RVec[i]<=1.0f*nVec[i]);
-//        assert(CVec[i]>=0.0f && CVec[i]<=1.0f*mVec[i]*nVec[i]);
-//    }
+    /*
+     * Changed the initialization process. Elements are saved
+     */
+    unsigned int i=0;
+    while(i < 2 * N){
 
-    for(unsigned int i=0;i < 2 * N; i+=2)
-    {
+        if((i+4)%8 == 0){
+            i = i+4;
 
-        mnVec[i] = (float)(MINSNPS_B+rand()%MAXSNPS_E); //mVec
-        mnVec[i+1] = (float)(MINSNPS_B+rand()%MAXSNPS_E);   //nVec
+            continue;
+        }else{
+            mnVec[i] = (float)(MINSNPS_B+rand()%MAXSNPS_E); //mVec
+            mnVec[i+4] = (float)(MINSNPS_B+rand()%MAXSNPS_E);   //nVec
 
 
-        LRVec[i] = randpval()*mnVec[i];  //LVec
-        LRVec[i+1] = randpval()*mnVec[i+1]; //RVec
+            LRVec[i] = randpval()*mnVec[i];  //LVec
+            LRVec[i+4] = randpval()*mnVec[i+4]; //RVec
 
-        FCVec[i+1] = randpval()*mnVec[i]*mnVec[i+1];  //CVec
-        FCVec[i] = 0.0; //Fvec
-
-//        if( i< 50 ){
-//            printf("%f,%f\n",FCVec[i+1], FCVec[i]);
-//        }
-//
-
-        assert(mnVec[i]>=MINSNPS_B && mnVec[i]<=(MINSNPS_B+MAXSNPS_E));
-        assert(mnVec[i+1]>=MINSNPS_B && mnVec[i+1]<=(MINSNPS_B+MAXSNPS_E));
-        //Modified initial assignment as advised
-        assert(LRVec[i]>=0.0f && LRVec[i]<=1.0f*mnVec[i]);
-        assert(LRVec[i+1]>=0.0f && LRVec[i+1]<=1.0f*mnVec[i+1]);
-        assert(FCVec[i+1]>=0.0f && FCVec[i+1]<=1.0f*mnVec[i]*mnVec[i+1]);
+            FCVec[i+4] = randpval()*mnVec[i]*mnVec[i+4];  //CVec
+            FCVec[i] = 0.0; //Fvec
+        }
+        i++;
     }
 
     /*
@@ -133,16 +95,10 @@ int main(int argc, char ** argv)
 
     //Implementation with pointers.
 
-//    __m128 *mVec_ptr = (__m128 *) mVec;
-//    __m128 *nVec_ptr = (__m128 *) nVec;
-//    __m128 *LVec_ptr = (__m128 *) LVec;
-//    __m128 *RVec_ptr = (__m128 *) RVec;
-//    __m128 *CVec_ptr = (__m128 *) CVec;
-//    __m128 *FVec_ptr = (__m128 *) FVec;
+
     __m128 maxF_vec = _mm_setzero_ps();
     __m128 avgF_vec = _mm_setzero_ps();
     __m128 minF_vec = _mm_set_ps1(FLT_MAX); //TODO CHANGE THAT
-    //__m128 *maxv__m128 = (__m128 *) maxv;
 
 
     __m128 *mnVec_ptr = (__m128 *) mnVec;
@@ -291,14 +247,6 @@ int main(int argc, char ** argv)
     printf("Omega time %fs - Total time %fs - Min %e - Max %e - Avg %e\n",
            timeOmegaTotal/iters, timeTotalMainStop-timeTotalMainStart, (double)minF, (double)maxF,
            (double)avgF/N);
-
-//    free(mVec);
-//    free(nVec);
-//    free(LVec);
-//    free(RVec);
-//    free(CVec);
-//    free(FVec);
-
 
     _mm_free(mnVec);
     _mm_free(LRVec);
