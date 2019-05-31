@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="SSE" targetName="SSE" />
+      <config projectName="pthread_test" targetName="pthread_test" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -11,8 +11,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7ed70c6f-30ac-4d39-b004-596adc5dc415" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="da74b350-742a-4b8e-8620-88d95bb42b65" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../SSE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSE/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,16 +26,21 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="47" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="222" column="11" selection-start-line="222" selection-start-column="11" selection-end-line="222" selection-end-column="11" />
+            <state relative-caret-position="84">
+              <caret line="168" column="50" lean-forward="true" selection-start-line="168" selection-start-column="50" selection-end-line="168" selection-end-column="50" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#208#228#0" expanded="true" />
                 <element signature="e#253#388#0" />
                 <element signature="e#390#547#0" />
                 <element signature="e#548#712#0" />
@@ -49,13 +54,13 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>maxF_vec</find>
-      <find>testVec</find>
-      <find>avgF_vec</find>
-      <find>vec_num</find>
-      <find>vec_den</find>
-      <find>avgv__m128</find>
-      <find>maxv</find>
+      <find>asser</find>
+      <find>workerThread</find>
+      <find>malloc</find>
+      <find>threadData</find>
+      <find>avgF</find>
+      <find>initializeThreadData</find>
+      <find>thread</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -64,32 +69,35 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/main.c" />
       </list>
     </option>
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="988" />
-    <option name="y" value="27" />
-    <option name="width" value="912" />
-    <option name="height" value="1053" />
+    <option name="x" value="57" />
+    <option name="y" value="25" />
+    <option name="width" value="932" />
+    <option name="height" value="1055" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SSE" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -104,7 +112,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="SSE" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="1000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SSE" TARGET_NAME="SSE" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="SSE" RUN_TARGET_NAME="SSE">
+    <configuration name="pthread_test" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="1000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pthread_test" TARGET_NAME="pthread_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="pthread_test" RUN_TARGET_NAME="pthread_test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -115,43 +123,35 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7ed70c6f-30ac-4d39-b004-596adc5dc415" name="Default Changelist" comment="" />
-      <created>1558886011051</created>
+      <changelist id="da74b350-742a-4b8e-8620-88d95bb42b65" name="Default Changelist" comment="" />
+      <created>1559258919982</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1558886011051</updated>
-      <workItem from="1558886012615" duration="13112000" />
-      <workItem from="1558962343884" duration="3356000" />
-      <workItem from="1558994880796" duration="172000" />
-      <workItem from="1559028844581" duration="11389000" />
-      <workItem from="1559166220222" duration="68000" />
-      <workItem from="1559166308261" duration="7442000" />
-      <workItem from="1559206116078" duration="3225000" />
-      <workItem from="1559209939253" duration="10466000" />
-      <workItem from="1559302080880" duration="25000" />
-      <workItem from="1559311551880" duration="783000" />
+      <updated>1559258919982</updated>
+      <workItem from="1559258921442" duration="2745000" />
+      <workItem from="1559302065560" duration="6018000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50038000" />
+    <option name="totallyTimeSpent" value="8763000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="988" y="27" width="912" height="1053" extended-state="4" />
+    <frame x="57" y="25" width="932" height="1055" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.04734411" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.033860046" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32359308" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.49352053" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32359308" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32829374" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -167,14 +167,19 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="47" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="222" column="11" selection-start-line="222" selection-start-column="11" selection-end-line="222" selection-end-column="11" />
+        <state relative-caret-position="84">
+          <caret line="168" column="50" lean-forward="true" selection-start-line="168" selection-start-column="50" selection-end-line="168" selection-end-column="50" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#208#228#0" expanded="true" />
             <element signature="e#253#388#0" />
             <element signature="e#390#547#0" />
             <element signature="e#548#712#0" />
