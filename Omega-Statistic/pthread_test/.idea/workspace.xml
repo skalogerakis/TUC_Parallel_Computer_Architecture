@@ -40,15 +40,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="236" column="5" lean-forward="true" selection-start-line="236" selection-start-column="5" selection-end-line="236" selection-end-column="5" />
+            <state relative-caret-position="334">
+              <caret line="463" column="24" lean-forward="true" selection-start-line="463" selection-start-column="24" selection-end-line="463" selection-end-column="24" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#208#228#0" expanded="true" />
+                <element signature="e#433#653#0" />
+                <element signature="e#684#825#0" />
                 <element signature="e#253#388#0" />
                 <element signature="e#390#547#0" />
                 <element signature="e#548#712#0" />
                 <element signature="e#714#878#0" />
+                <element signature="e#2584#3360#0" />
+                <element signature="e#6430#6710#0" />
               </folding>
             </state>
           </provider>
@@ -63,7 +67,6 @@
       <find>malloc</find>
       <find>threadData</find>
       <find>avgF</find>
-      <find>initializeThreadData</find>
       <find>thread</find>
       <find>threadOPERATION</find>
       <find>COMPUTE_ANTIDIAGONAL</find>
@@ -74,6 +77,11 @@
       <find>GL_minF</find>
       <find>min</find>
       <find>max</find>
+      <find>threadBARRIER</find>
+      <find>initializeThreadData</find>
+      <find>Ome</find>
+      <find>create</find>
+      <find>startThreadOperations</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -89,7 +97,7 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="57" />
+    <option name="x" value="988" />
     <option name="y" value="25" />
     <option name="width" value="932" />
     <option name="height" value="1055" />
@@ -125,7 +133,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="pthread_test" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="1000000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pthread_test" TARGET_NAME="pthread_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="pthread_test" RUN_TARGET_NAME="pthread_test">
+    <configuration name="pthread_test" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="10000000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="pthread_test" TARGET_NAME="pthread_test" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="pthread_test" RUN_TARGET_NAME="pthread_test">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -142,15 +150,15 @@
       <option name="presentableId" value="Default" />
       <updated>1559258919982</updated>
       <workItem from="1559258921442" duration="2745000" />
-      <workItem from="1559302065560" duration="13126000" />
+      <workItem from="1559302065560" duration="17563000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15871000" />
+    <option name="totallyTimeSpent" value="20308000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="57" y="25" width="932" height="1055" extended-state="4" />
+    <frame x="988" y="25" width="932" height="1055" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.033860046" />
@@ -188,15 +196,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="236" column="5" lean-forward="true" selection-start-line="236" selection-start-column="5" selection-end-line="236" selection-end-column="5" />
+        <state relative-caret-position="334">
+          <caret line="463" column="24" lean-forward="true" selection-start-line="463" selection-start-column="24" selection-end-line="463" selection-end-column="24" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#208#228#0" expanded="true" />
+            <element signature="e#433#653#0" />
+            <element signature="e#684#825#0" />
             <element signature="e#253#388#0" />
             <element signature="e#390#547#0" />
             <element signature="e#548#712#0" />
             <element signature="e#714#878#0" />
+            <element signature="e#2584#3360#0" />
+            <element signature="e#6430#6710#0" />
           </folding>
         </state>
       </provider>

@@ -36,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1908">
-              <caret line="222" column="11" selection-start-line="222" selection-start-column="11" selection-end-line="222" selection-end-column="11" />
+            <state relative-caret-position="363">
+              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#253#388#0" />
@@ -73,10 +73,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="988" />
-    <option name="y" value="27" />
-    <option name="width" value="912" />
-    <option name="height" value="1053" />
+    <option name="x" value="57" />
+    <option name="y" value="25" />
+    <option name="width" value="932" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -108,7 +108,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="SSE" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="1000000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SSE" TARGET_NAME="SSE" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="SSE" RUN_TARGET_NAME="SSE">
+    <configuration name="SSE" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="10000000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SSE" TARGET_NAME="SSE" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="SSE" RUN_TARGET_NAME="SSE">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -133,29 +133,29 @@
       <workItem from="1559206116078" duration="3225000" />
       <workItem from="1559209939253" duration="10466000" />
       <workItem from="1559302080880" duration="25000" />
-      <workItem from="1559311551880" duration="1073000" />
+      <workItem from="1559311551880" duration="4260000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50328000" />
+    <option name="totallyTimeSpent" value="53515000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="988" y="27" width="912" height="1053" extended-state="4" />
+    <frame x="57" y="25" width="932" height="1055" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.04734411" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.046275396" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32359308" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32289416" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32359308" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32289416" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -175,8 +175,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1908">
-          <caret line="222" column="11" selection-start-line="222" selection-start-column="11" selection-end-line="222" selection-end-column="11" />
+        <state relative-caret-position="363">
+          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#253#388#0" />
