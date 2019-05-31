@@ -13,6 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7ed70c6f-30ac-4d39-b004-596adc5dc415" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pthread_test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pthread_test/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pthread_test/cmake-build-debug/CMakeFiles/pthread_test.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/../pthread_test/cmake-build-debug/CMakeFiles/pthread_test.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pthread_test/cmake-build-debug/pthread_test" beforeDir="false" afterPath="$PROJECT_DIR$/../pthread_test/cmake-build-debug/pthread_test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pthread_test/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/../pthread_test/main.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,7 +36,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
+            <state relative-caret-position="1908">
               <caret line="222" column="11" selection-start-line="222" selection-start-column="11" selection-end-line="222" selection-end-column="11" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -104,7 +108,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="SSE" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="1000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SSE" TARGET_NAME="SSE" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="SSE" RUN_TARGET_NAME="SSE">
+    <configuration name="SSE" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="1000000" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SSE" TARGET_NAME="SSE" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="SSE" RUN_TARGET_NAME="SSE">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -129,12 +133,12 @@
       <workItem from="1559206116078" duration="3225000" />
       <workItem from="1559209939253" duration="10466000" />
       <workItem from="1559302080880" duration="25000" />
-      <workItem from="1559311551880" duration="783000" />
+      <workItem from="1559311551880" duration="1073000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50038000" />
+    <option name="totallyTimeSpent" value="50328000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="988" y="27" width="912" height="1053" extended-state="4" />
@@ -171,7 +175,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
+        <state relative-caret-position="1908">
           <caret line="222" column="11" selection-start-line="222" selection-start-column="11" selection-end-line="222" selection-end-column="11" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
