@@ -1,0 +1,64 @@
+
+
+
+---------------------- Building everything ------------------------------
+
+
+---------------------- Giving permissions -------------------------------
+
+
+---------------------- Reference Code Ν:10000000-------------------------
+Omega time 0.177147s - Total time 2.829882s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.529043e-01
+
+
+
+---------------------- SSE Ν:10000000------------------------------------
+Omega time 0.106534s - Total time 2.149127s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.348448e-01
+
+
+
+-------------- SSE-PTHREADS Ν:10000000, PTHREADS:2-----------------------
+Omega time 0.053595s - Total time 2.226116s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.332115e-01
+
+
+--------------- SSE-PTHREADS Ν:10000000, PTHREADS:4----------------------
+Omega time 0.044613s - Total time 2.552894s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.323332e-01
+
+
+
+-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:2, PROCESSES:2------------
+Omega time 0.041026s - Total time 2.108915s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.323332e-01
+
+
+-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:4, PROCESSES:2------------
+Omega time 0.040200s - Total time 4.056555s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.323262e-01
+
+
+-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:2, PROCESSES:4------------
+Omega time 0.028752s - Total time 4.942250s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.323262e-01
+
+
+-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:4, PROCESSES:4------------
+Omega time 0.033914s - Total time 8.615657s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.321101e-01
+
+
+
+----------------------- Bonus -------------------------------------------
+
+
+---------------------- SSE Ν:10000000(AGAIN)-----------------------------
+Omega time 0.108413s - Total time 2.189199s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.348448e-01
+
+
+------------ SSE Ν:10000000, SSE_MEM_LAYOUT 3 vectors--------------------
+Omega time 0.105147s - Total time 2.193838s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.348448e-01
+
+
+------------ SSE Ν:10000000, SSE_MEM_LAYOUT 2 vectors--------------------
+Omega time 0.104894s - Total time 2.180221s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.348448e-01
+
+
+------------ SSE Ν:10000000, SSE_MEM_LAYOUT 1 vector --------------------
+Omega time 0.104966s - Total time 2.203330s - Min -2.711918e+06 - Max 6.048419e+05 - Avg -6.348448e-01
+
+

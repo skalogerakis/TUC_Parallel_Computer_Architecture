@@ -3,13 +3,13 @@
 
 echo  "\n\n"
 echo  "---------------------- Building everything ------------------------------"
-cmake --build ./Serial/cmake-build-debug/ --target Serial -- -j 2
-cmake --build ./SSE/cmake-build-debug/ --target SSE -- -j 2
-cmake --build ./SSE-MEM-LAYOUT/cmake-build-debug/ --target SSE_MEM_LAYOUT -- -j 2
-cmake --build ./SSE-MEM-LAYOUT-3/cmake-build-debug/ --target SSE_MEM_LAYOUT_3 -- -j 2
-cmake --build ./SSE-PTHREADS/cmake-build-debug/ --target SSE_PTHREADS -- -j 2
-cmake --build ./SSE-PTHREADS-MPI/cmake-build-debug/ --target SSE_PTHREADS_MPI -- -j 2
-cmake --build ./SSE_MEM_LAYOUT_6/cmake-build-debug/ --target SSE_MEM_LAYOUT_6 -- -j 2
+cmake --build ./Serial/cmake-build-debug --target Serial -- -j 2
+cmake --build ./SSE/cmake-build-debug --target SSE -- -j 2
+cmake --build ./SSE-MEM-LAYOUT/cmake-build-debug --target SSE_MEM_LAYOUT -- -j 2
+cmake --build ./SSE-MEM-LAYOUT-3/cmake-build-debug --target SSE_MEM_LAYOUT_3 -- -j 2
+cmake --build ./SSE-PTHREADS/cmake-build-debug --target SSE_PTHREADS -- -j 2
+cmake --build ./SSE-PTHREADS-MPI/cmake-build-debug --target SSE_PTHREADS_MPI -- -j 2
+cmake --build ./SSE_MEMORY_LAYOUT_6/cmake-build-debug --target SSE_MEMORY_LAYOUT_6 -- -j 2
 
 echo  "\n"
 echo  "---------------------- Giving permissions -------------------------------"
@@ -73,3 +73,5 @@ echo  "------------ SSE Ν:10000000, SSE_MEM_LAYOUT 2 vectors-------------------
 echo  "\n"
 echo  "------------ SSE Ν:10000000, SSE_MEM_LAYOUT 1 vector --------------------"
 ./SSE_MEMORY_LAYOUT_6/cmake-build-debug/SSE_MEMORY_LAYOUT_6 10000000
+
+echo  "\n"
