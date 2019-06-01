@@ -1,27 +1,75 @@
-#!/bin/bash
 
-echo -e "MAKING ALL FILES"
-#make the all at first
-gcc ./Serial/main.c -o ./Serial/Serial
-gcc -fopenmp ./OpenMP_FineGrained/main.c -o ./OpenMP_FineGrained/FineOMP
-gcc ./Pthread_FineGrained/main.c -o ./Pthread_FineGrained/threadFine -lpthread 
+#!/bin/sh
 
-echo  -e "\nGIVING PERMISSIONS"
-#give permissions for everything read write execute
-chmod 755 ./Serial/Serial
-chmod 755 ./OpenMP_FineGrained/FineOMP
-chmod 755 ./Pthread_FineGrained/threadFine
+echo  "\n\n"
+echo  "---------------------- Building everything ------------------------------"
+cmake --build ./Serial/cmake-build-debug/ --target Serial -- -j 2
+cmake --build ./SSE/cmake-build-debug/ --target SSE -- -j 2
+cmake --build ./SSE-MEM-LAYOUT/cmake-build-debug/ --target SSE_MEM_LAYOUT -- -j 2
+cmake --build ./SSE-MEM-LAYOUT-3/cmake-build-debug/ --target SSE_MEM_LAYOUT_3 -- -j 2
+cmake --build ./SSE-PTHREADS/cmake-build-debug/ --target SSE_PTHREADS -- -j 2
+cmake --build ./SSE-PTHREADS-MPI/cmake-build-debug/ --target SSE_PTHREADS_MPI -- -j 2
+cmake --build ./SSE_MEM_LAYOUT_6/cmake-build-debug/ --target SSE_MEM_LAYOUT_6 -- -j 2
 
-#run all available implementations for a text of our choice. Choose something
-#from datasets
+echo  "\n"
+echo  "---------------------- Giving permissions -------------------------------"
+chmod 755 ./Serial/cmake-build-debug/Serial
+chmod 755 ./SSE/cmake-build-debug/SSE
+chmod 755 ./SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT
+chmod 755 ./SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3
+chmod 755 ./SSE-PTHREADS/cmake-build-debug/SSE_PTHREADS
+chmod 755 ./SSE-PTHREADS-MPI/cmake-build-debug/SSE_PTHREADS_MPI
+chmod 755 ./SSE_MEMORY_LAYOUT_6/cmake-build-debug/SSE_MEMORY_LAYOUT_6
 
-echo -e "\nSTART EXECUTING"
 
-echo -e "\nSTART SERIAL IMPLEMENTATION"
-./Serial/Serial -mismatch -1 -match 3 -gap -1 -input ./MyDocs/D6.txt -name D6
+echo  "\n"
+echo  "---------------------- Reference Code Ν:10000000-------------------------"
+./Serial/cmake-build-debug/Serial 10000000
 
-echo -e "\nSTART OMP FINE GRAINED IMPLEMENTATION"
-./OpenMP_FineGrained/FineOMP -threads 4 -mismatch -1 -match 3 -gap -1 -input ./MyDocs/D6.txt -name D6
 
-echo -e "\nSTART PTHREDS FINE GRAINED IMPLEMENTATION"
-./Pthread_FineGrained/threadFine -threads 4 -mismatch -1 -match 3 -gap -1 -input ./MyDocs/D6.txt -name D6
+echo  "\n\n"
+echo  "---------------------- SSE Ν:10000000------------------------------------"
+./SSE/cmake-build-debug/SSE 10000000
+
+echo  "\n\n"
+echo  "-------------- SSE-PTHREADS Ν:10000000, PTHREADS:2-----------------------"
+./SSE-PTHREADS/cmake-build-debug/SSE_PTHREADS 10000000 2
+
+echo  "\n"
+echo  "--------------- SSE-PTHREADS Ν:10000000, PTHREADS:4----------------------"
+./SSE-PTHREADS/cmake-build-debug/SSE_PTHREADS 10000000 4
+
+echo  "\n\n"
+echo  "-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:2, PROCESSES:2------------"
+mpiexec -n 2 ./SSE-PTHREADS-MPI/cmake-build-debug/SSE_PTHREADS_MPI 10000000 2
+
+echo  "\n"
+echo  "-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:4, PROCESSES:2------------"
+mpiexec -n 2 ./SSE-PTHREADS-MPI/cmake-build-debug/SSE_PTHREADS_MPI 10000000 4
+
+echo  "\n"
+echo  "-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:2, PROCESSES:4------------"
+mpiexec -n 4 ./SSE-PTHREADS-MPI/cmake-build-debug/SSE_PTHREADS_MPI 10000000 2
+
+echo  "\n"
+echo  "-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:4, PROCESSES:4------------"
+mpiexec -n 4 ./SSE-PTHREADS-MPI/cmake-build-debug/SSE_PTHREADS_MPI 10000000 4
+
+echo  "\n\n"
+echo  "----------------------- Bonus -------------------------------------------"
+
+echo  "\n"
+echo  "---------------------- SSE Ν:10000000(AGAIN)-----------------------------"
+./SSE/cmake-build-debug/SSE 10000000
+
+echo  "\n"
+echo  "------------ SSE Ν:10000000, SSE_MEM_LAYOUT 3 vectors--------------------"
+./SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT 10000000
+
+echo  "\n"
+echo  "------------ SSE Ν:10000000, SSE_MEM_LAYOUT 2 vectors--------------------"
+./SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3 10000000
+
+echo  "\n"
+echo  "------------ SSE Ν:10000000, SSE_MEM_LAYOUT 1 vector --------------------"
+./SSE_MEMORY_LAYOUT_6/cmake-build-debug/SSE_MEMORY_LAYOUT_6 10000000
