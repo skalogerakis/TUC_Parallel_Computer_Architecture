@@ -57,6 +57,7 @@ static pthread_barrier_t barrier;
 double gettime(void);
 float randpval (void);
 
+
 double gettime(void)
 {
     struct timeval ttime;
@@ -150,19 +151,13 @@ static inline void computeOmega (threadData_t * threadData)
     const __m128 temp_two = _mm_set1_ps(2.0f);
 
 
-    int N_proc = (N / world_size)/4;    //Compute the number of processes in a world
-    int N_start = world_rank * N_proc;  //Find the starting point of each node
+    int MPI_proc = (N / world_size)/4;    //Compute the number of processes in a world
+    int MPI_start = world_rank * MPI_proc;  //Find the starting point of each node
 
+    int tasksPerThread = MPI_proc/totalThreads;
 
-//    int tasksPerThread = (N_proc/4)/totalThreads;
-//
-//    int start = world_rank*tasksPerThread * threadID;
-//    int stop = start+tasksPerThread-1;
-
-    int tasksPerThread = N_proc/totalThreads;
-
-    int start = N_start + tasksPerThread * threadID;
-    int stop = (N_start + tasksPerThread * threadID)+tasksPerThread-1;
+    int start = MPI_start + tasksPerThread * threadID;
+    int stop = (MPI_start + tasksPerThread * threadID)+tasksPerThread-1;
 
     /*
      * List of instructions used as found from Intrinsics Guide. All the instructions
@@ -323,19 +318,23 @@ void * thread (void * x)
 
 int main(int argc, char ** argv)
 {
-    assert(argc==2);
+    assert(argc==3);
 
-    /*
-     * MPI CODE ADDED HERE
-     */
+    //Init MPI process
     MPI_Init(NULL, NULL);
 
+    /*
+     * Variables world_size,world_rank made global, so that other
+     * functions can view them. These variables have assigned values
+     * here and will not change again throughout runtime.
+     * (Each thread can have access to these value but since they just need
+     * to read them this will not impact perfomance further )
+     */
+
     // Get the number of processes
-    //int world_size;
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
     // Get the rank of the process
-    //int world_rank;
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
 
 
@@ -346,10 +345,8 @@ int main(int argc, char ** argv)
     unsigned int N = (unsigned int)atoi(argv[1]);
     unsigned int iters = 10;
 
-
-    //TODO TAKE AS ARGUMENT
-    int threads = 2;
-
+    int threads = (int)atoi(argv[2]);;
+    assert(threads>0);  //make sure that threads given are positive value
 
     srand(1);
 
@@ -391,6 +388,9 @@ int main(int argc, char ** argv)
     assert(s == 0);
 
 
+    /*
+     * Allocate memory for our worker threads
+     */
     workerThread = NULL;
     workerThread = (pthread_t *) malloc (sizeof(pthread_t)*((unsigned long)(threads-1)));
 
@@ -452,9 +452,13 @@ int main(int argc, char ** argv)
          * is left to compute. This code is added for generalization purposes
          * so that we have a correct result for a different N
          */
-        //No need for every node to execute that
+
+    int MPI_proc = (N / world_size)/4;    //Compute the number of processes in a world
+    int MPI_start = world_rank * MPI_proc;  //Find the starting point of each node
+
+        //No need for every node to execute that. The remaining elements can be computed with scalar way
         if(world_rank == 0){
-            for (int j = (N - N % 4); j < N; j++) {
+            for (int j = (N / world_size)/4 - (N / world_size)% 4; j < (N / world_size)/4; j++) {
                 float num_0 = LVec[j] + RVec[j];
                 float num_1 = mVec[j] * (mVec[j] - 1.0f) / 2.0f;
                 float num_2 = nVec[j] * (nVec[j] - 1.0f) / 2.0f;
@@ -479,17 +483,11 @@ int main(int argc, char ** argv)
             GL_avgF += threadData[i].arrayCalc.avgF;
             GL_maxF = maxCalc(GL_maxF,threadData[i].arrayCalc.maxF);
             GL_minF = minCalc(GL_minF,threadData[i].arrayCalc.minF);
-            //printf("MES from %d with min %e\n",world_rank,GL_minF);
         }
 
 
     double timeOmegaTotal = gettime()-timeOmegaTotalStart;
     double timeTotalMainStop = gettime();
-
-//    printf("Omega time %fs - Total time %fs - Min %e - Max %e - Avg %e\n",
-//           timeOmegaTotal/iters, timeTotalMainStop-timeTotalMainStart, (double)GL_minF, (double)GL_maxF,
-//           (double)GL_avgF/N);
-
 
     float *max_results = NULL;
     float *min_results = NULL;
@@ -516,12 +514,12 @@ int main(int argc, char ** argv)
     //Gather all avg results
     MPI_Gather(&GL_avgF, 1, MPI_FLOAT, avg_results, 1, MPI_FLOAT, 0, MPI_COMM_WORLD);
 
-    //MPI ADDED
-    MPI_Barrier(MPI_COMM_WORLD);
-    MPI_Finalize();
 
     /*
-     * Join all threads in the end, destroy barriers, and free memory to prevent memory leaks
+     * Join all threads in the end, destroy barriers, and free memory to prevent memory leaks.
+     * Destroy them here their use has ended. Note: Given our structures it is important
+     * to kill all threads only before mpi is finalized.Also if we have a loop make sure
+     * that you will not kill the threads before all loops have completed
      */
     terminateWorkerThreads(workerThread,threadData);
     pthread_barrier_destroy(&barrier);
@@ -539,20 +537,23 @@ int main(int argc, char ** argv)
             global_maxF = maxCalc(max_results[i], global_maxF);
             global_minF = minCalc(min_results[i], global_minF);
             global_avgF += avg_results[i];
-//            printf("Omega time %fs - Total time %fs - Min %e - Max %e - Avg %e\n",
-//                   timeOmegaTotal, timeTotalMainStop-timeTotalMainStart, (double)global_minF, (double)global_maxF,
-//                   (double)global_avgF/N);
         }
+
+        //we can free these now
+        free(max_results);
+        free(min_results);
+        free(avg_results);
 
         printf("Omega time %fs - Total time %fs - Min %e - Max %e - Avg %e\n",
                timeOmegaTotal, timeTotalMainStop-timeTotalMainStart, (double)global_minF, (double)global_maxF,
                (double)global_avgF/N);
-        //printf("\nTime %f Max %f\n", timeTotal / iters, global_maxF);
     }
 
-    free(max_results);
-    free(min_results);
-    free(avg_results);
+    //Finalize MPI environment.
+    MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Finalize();
+
+
 
     _mm_free(mVec);
     _mm_free(nVec);

@@ -306,7 +306,7 @@ void * thread (void * x)
 
 int main(int argc, char ** argv)
 {
-    assert(argc==2);
+    assert(argc==3);
 
     double timeTotalMainStart = gettime();
     float GL_avgF = 0.0f;
@@ -316,8 +316,8 @@ int main(int argc, char ** argv)
     unsigned int iters = 10;
 
 
-    //TODO TAKE AS ARGUMENT
-    int threads = 4;
+    int threads = (int)atoi(argv[2]);;
+    assert(threads>0);  //make sure that threads given are positive value
 
 
     srand(1);
