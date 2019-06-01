@@ -1,4 +1,4 @@
-# Install script for directory: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test
+# Install script for directory: /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/SSE-PTHREADS
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/SSE-PTHREADS/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

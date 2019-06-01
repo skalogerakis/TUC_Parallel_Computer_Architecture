@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/pthread_test.iml" filepath="$PROJECT_DIR$/.idea/pthread_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SSE-PTHREADS.iml" filepath="$PROJECT_DIR$/.idea/SSE-PTHREADS.iml" />
     </modules>
   </component>
 </project>

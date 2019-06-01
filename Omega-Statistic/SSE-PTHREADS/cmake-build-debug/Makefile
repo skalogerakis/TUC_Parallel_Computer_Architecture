@@ -48,10 +48,10 @@ RM = /opt/clion-2018.3.4/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test
+CMAKE_SOURCE_DIR = /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/SSE-PTHREADS
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test/cmake-build-debug
+CMAKE_BINARY_DIR = /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/SSE-PTHREADS/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test/cmake-build-debug/CMakeFiles /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/SSE-PTHREADS/cmake-build-debug/CMakeFiles /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/SSE-PTHREADS/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/SSE-PTHREADS/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named pthread_test
+# Target rules for targets named SSE_PTHREADS
 
 # Build rule for target.
-pthread_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pthread_test
-.PHONY : pthread_test
+SSE_PTHREADS: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 SSE_PTHREADS
+.PHONY : SSE_PTHREADS
 
 # fast build rule for target.
-pthread_test/fast:
-	$(MAKE) -f CMakeFiles/pthread_test.dir/build.make CMakeFiles/pthread_test.dir/build
-.PHONY : pthread_test/fast
+SSE_PTHREADS/fast:
+	$(MAKE) -f CMakeFiles/SSE_PTHREADS.dir/build.make CMakeFiles/SSE_PTHREADS.dir/build
+.PHONY : SSE_PTHREADS/fast
 
 main.o: main.c.o
 
@@ -129,7 +129,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) -f CMakeFiles/pthread_test.dir/build.make CMakeFiles/pthread_test.dir/main.c.o
+	$(MAKE) -f CMakeFiles/SSE_PTHREADS.dir/build.make CMakeFiles/SSE_PTHREADS.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -138,7 +138,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles/pthread_test.dir/build.make CMakeFiles/pthread_test.dir/main.c.i
+	$(MAKE) -f CMakeFiles/SSE_PTHREADS.dir/build.make CMakeFiles/SSE_PTHREADS.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -147,7 +147,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles/pthread_test.dir/build.make CMakeFiles/pthread_test.dir/main.c.s
+	$(MAKE) -f CMakeFiles/SSE_PTHREADS.dir/build.make CMakeFiles/SSE_PTHREADS.dir/main.c.s
 .PHONY : main.c.s
 
 # Help Target
@@ -157,7 +157,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... pthread_test"
+	@echo "... SSE_PTHREADS"
 	@echo "... edit_cache"
 	@echo "... main.o"
 	@echo "... main.i"

@@ -1,1 +1,1 @@
-mpicc -g   CMakeFiles/SSE_PTHREADS_MPI.dir/main.c.o  -o SSE_PTHREADS_MPI 
+mpicc  -pthread -g   CMakeFiles/SSE_PTHREADS_MPI.dir/main.c.o  -o SSE_PTHREADS_MPI 

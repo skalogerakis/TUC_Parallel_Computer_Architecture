@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test/main.c
+/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/SSE-PTHREADS/main.c
 stdio.h
 -
 stdlib.h

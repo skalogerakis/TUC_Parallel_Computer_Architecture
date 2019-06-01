@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test/main.c" "/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test/cmake-build-debug/CMakeFiles/pthread_test.dir/main.c.o"
+  "/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/SSE-PTHREADS/main.c" "/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/SSE-PTHREADS/cmake-build-debug/CMakeFiles/SSE_PTHREADS.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

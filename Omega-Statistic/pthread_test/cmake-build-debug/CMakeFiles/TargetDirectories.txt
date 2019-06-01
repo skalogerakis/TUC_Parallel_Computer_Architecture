@@ -1,3 +1,0 @@
-/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test/cmake-build-debug/CMakeFiles/pthread_test.dir
-/home/stefanos/TUC_Projects/TUC_Parallel_Computer_Architecture/Omega-Statistic/pthread_test/cmake-build-debug/CMakeFiles/edit_cache.dir

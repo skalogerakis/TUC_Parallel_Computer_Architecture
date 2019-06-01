@@ -23,6 +23,10 @@ xmmintrin.h
 -
 mpi.h
 -
+pthread.h
+-
+unistd.h
+-
 
 /usr/lib/x86_64-linux-gnu/openmpi/include/mpi.h
 stddef.h
