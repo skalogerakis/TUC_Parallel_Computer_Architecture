@@ -42,7 +42,7 @@
 %----------------------------------------------------------------------------------------
 
 \section{Υλοποίηση} % Numbered section
-Για τον σειριακό υπολογισμό του ω \eng{statistic}, χρησιμοποιήσαμε αυτούσιο τον \eng{reference code}χωρίς να πραγματοποίησουμε αλλαγές και για αυτό δεν γίνεται κάποια παραπάνω αναφορά. Παρακάτω γίνεται ανάλυση όλων των μεθόδων παραλληλοποίησης που μελετήθηκαν στα πλαίσια αυτού του πρότζεκτ.\\
+Για τον σειριακό υπολογισμό του ω \eng{statistic}, χρησιμοποιήσαμε αυτούσιο τον \eng{reference code} χωρίς να πραγματοποίησουμε αλλαγές και για αυτό δεν γίνεται κάποια παραπάνω αναφορά. Παρακάτω γίνεται ανάλυση όλων των μεθόδων παραλληλοποίησης που μελετήθηκαν στα πλαίσια αυτού του πρότζεκτ.\\
 
 \subsection{\eng{SSE} Εντολές}
 
@@ -159,28 +159,227 @@ for (int j = (N - N % 4); j < N; j++) {
 }
 \end{lstlisting}
 \selectlanguage{greek}
+Το παραπάνω κομμάτι κώδικα θα χρησιμοποιηθεί όταν υπάρχουν σαν υπόλοιπο λιγότερα απο 4 στοιχεία όπου δεν μπορεί να εφαρμοστεί το \eng{SSE} και γίνεται ένας απλός σειριακός υπολογισμός. Σε όλες τις παράλληλες υλοποιήσεις έχει εισαχθεί αντίστοιχο κομμάτι κώδικα που απευθύνεται σε όλα τα στοιχεία που υλοποιούνται σειριακά και δεν μπορούν να παραλληλοποιηθούν με βάση τους διαχωρισμούς που πραγματοποιούμε.
+
 %------------------------------------------------
 
 \subsection{\eng{SSE} Εντολές και \eng{Pthreads} }
 
-Στο δέυτερο μέρος έπρεπε να παραλληλοποιήσουμε το \eng{reference code} συνδιαστικά, με \eng{SSE} Εντολές και \eng{Pthreads}. 
-Τα \eng{Pthreads} δημιουργούνται στην αρχή της \eng{main} και γίνονται \eng{join} πριν την επιστροφή της. Στην υλοποίηση μας όσο το \eng{master thread} αρχικοποιεί τις μεταβλητές μας, τα \eng{worker threads} είναι σε κατάσταση \eng{busy wait} και έπειτα σε κάθε \eng{iteration} του \eng{for-loop} το \eng{master} μοιράζει στα \eng{worker threads} τους υπολογισμούς. Ο συγχρονισμός των \eng{Pthreads} σε κάθε \eng{iteration} επιτυγχάνεται με τη χρήση \eng{barrier}.
+Στο δέυτερο μέρος έπρεπε να παραλληλοποιήσουμε το \eng{reference code} συνδιαστικά, με \eng{SSE} Εντολές και \eng{Pthreads}. Τα \eng{Pthreads} βασίζονται στo μοντέλο \eng{master-worker} , δημιουργούνται στην αρχή της \eng{main} και γίνονται \eng{join} πριν την επιστροφή της. Στην υλοποίηση μας όσο το \eng{master thread} αρχικοποιεί τις μεταβλητές μας, τα \eng{worker threads} είναι σε κατάσταση \eng{busy wait} και έπειτα  το \eng{master} μοιράζει στα \eng{worker threads} τους υπολογισμούς. Ο συγχρονισμός των \eng{Pthreads} σε κάθε \eng{iteration} του \eng{for loop} επιτυγχάνεται με τη χρήση \eng{barrier}.\\
 
+Στον υπάρχον κώδικα, πραγματοποιήθηκαν αρκετές αλλαγές προκειμένου να προστεθούν και τα \eng{worker threads} και να πετύχουμε την λειτουργία που επιθυμούμε.\\ 
+\vspace{5mm}
+Συγκεκριμένα, προσθέσαμε τις συναρτήσεις:\\
+- \eng{\textbf{initializeThreadData}}: Yπεύθυνη για αρχικοποίηση των δεδομένων του κάθε \eng{thread}.\\
+- \eng{\textbf{computeOmega}}: Υπεύθυνη για την ενεργοποίηση των \eng{threads} απο \eng{busy-wait} σε ενεργή κατάσταση.\\
+- \eng{\textbf{terminateWorkerThreads}}: Υπέυθυνη για τον τερματισμό των \eng{worker threads} και ένωση με το \eng{master thread}.\\
+- \eng{\textbf{threads}}: Υπεύθυνη για την διατήρηση των \eng{worker threads} σε \eng{busy wait} κατάσταση κατά σειρά που φαίνονται στο αρχείο.\\
+
+Ενδεικτικά, παραθέτουμε την συνάρτηση \eng{threads} που είναι ιδιαίτερα σημαντική για την υλοποίηση των \eng{worker threads}.\\
+
+\selectlanguage{english}
+\begin{lstlisting}
+void * thread (void * x)
+{
+    threadData_t * currentThread = (threadData_t *) x;
+
+    int tid = currentThread->threadID;
+
+    int threads = currentThread->threadTOTAL;
+    while(1)
+    {
+        __sync_synchronize();
+
+        /*
+         * When we receive exit signal we return to terminate everything
+         */
+        if(currentThread->threadOPERATION==EXIT)
+            return NULL;
+
+        /*
+         * All threads except master thread have access here, 
+         * and when all the calculations are done go back 
+         * on BUSYWAIT CONDITION
+         */
+        if(currentThread->threadOPERATION==COMPUTE_OMEGA)
+        {
+            computeOmega (currentThread);
+
+            currentThread->threadOPERATION=BUSYWAIT;
+
+            pthread_barrier_wait(&barrier);
+
+        }
+    }
+
+    return NULL;
+}
+\end{lstlisting}
+\selectlanguage{greek}
+
+Επιπρόσθετα, στο κομμάτι των υπολογισμών οφείλαμε να προσαρμόσουμε το κάθε \eng{thread} έτσι ώστε να πραγματοποιεί υπολογισμούς ανεξέρτητα χωρίς να υπάρχουν \eng{conflicts} και περιττοί υπολογισμοί. Όπως και στο πρώτο ερώτημα, όλα τα δεδομένα, ήταν οργανωμένα σε τετράδες για να λειτουργήσει το μοντέλο του \eng{SSE}. 
+
+\selectlanguage{english}
+\begin{lstlisting}
+int tasksPerThread = (N/4)/totalThreads;
+
+int start = tasksPerThread * threadID;
+int stop = tasksPerThread * threadID+tasksPerThread-1;
+\end{lstlisting}
+\selectlanguage{greek}
+
+\begin{warn}[Επισήμανση:\\] % Information block
+  Οι εντολές \eng{start} και \eng{stop} οριοθετούν το \eng{range} των υπολογισμών για το εκάστοτε \eng{thread}.
+\end{warn}
+Τέλος, διαφοροποιήσαμε και τα ορίσματα που δέχεται το εκτελέσιμο αρχείο αφού δίνουμε σαν δεύτερο όρισμα τον αριθμό των \eng{threads} που επιθυμούμε.
 
 \subsection{\eng{SSE} Εντολές, \eng{Pthreads} και \eng{MPI} }
 
-In malesuada ullamcorper urna, sed dapibus diam sollicitudin non. Donec elit odio, accumsan ac nisl a, tempor imperdiet eros. Donec porta tortor eu risus consequat, a pharetra tortor tristique. Morbi sit amet laoreet erat. Morbi et luctus diam, quis porta ipsum. Quisque libero dolor, suscipit id facilisis eget, sodales volutpat dolor. Nullam vulputate interdum aliquam. Mauris id convallis erat, ut vehicula neque. Sed auctor nibh et elit fringilla, nec ultricies dui sollicitudin. Vestibulum vestibulum luctus metus venenatis facilisis. Suspendisse iaculis augue at vehicula ornare. Sed vel eros ut velit fermentum porttitor sed sed massa. Fusce venenatis, metus a rutrum sagittis, enim ex maximus velit, id semper nisi velit eu purus.
+Σε συνέχεια του προηγούμενου ερωτήματος, χρειάστηκε να προσθέσουμε κώδικα ώστε να επιτυγχαεται η δημιουργία \eng{processes} και να ανταλλάσονται πληροφορίες μεταξύ τους με την χρήση του πρωτόκολλου \eng{MPI(Message Passing Interface)} . Σκοπός μας και πάλι είναι να επιτυγχάνεται ακόμα μεγαλύτερη ταχύτητα στους υπολογισμούς.\\
 
+Στην αρχή του κώδικα, για την επιτυχή εκτέλεση και αρχικοποίηση του \eng{MPI}, χρησιμοποιήθηκαν οι παρακάτω εντολές:
+
+\selectlanguage{english}
+\begin{lstlisting}
+//Init MPI process
+MPI_Init(NULL, NULL);
+ 
+// Get the number of processes
+    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
+// Get the rank of the process
+MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+\end{lstlisting}
+\selectlanguage{greek}
+
+Με αυτόν τον τρόπο δημιουργούμε \eng{processes} και ενημερώνονται οι βασικές μεταβλητές \eng{world\textunderscore size}(αριθμός \eng{processes}) και \eng{world\textunderscore rank(id} του εκάστοτε \eng{process}) που χρειαζόμαστε στην συνέχεια.  Να σημειώσουμε ότι το \eng{world\textunderscore size} το περνάμε κατά την εκτέλεση του κώδικα με την εντολή \eng{mpiexec}.\\
+
+Η δομή του κώδικα, είναι σε πολύ μεγάλο βαθμό ίδια με την προηγούμενη υλοποίηση με λίγες επιμέρους αλλαγές προκειμένου να ενσωματωθεί το \eng{MPI}. Αυτό οφείλεται και στο γεγονός ότι όλα τα \eng{processes} μπορούν να αποθηκεύουν όλα τα δεδομένα ένω το κάθε process χρησιμοποιεί τον ίδιο αριθμό απο \eng{threads} .Μια σημαντική αλλαγή αφορά και πάλι στον διαχωρισμό των δεδομένων καθώς οφείλαμε να προχωρήσουμε στην ομοιόμορφη κατανομή τους.
+\vspace{10mm}
+\selectlanguage{english}
+\begin{lstlisting}
+int MPI_proc = (N / world_size)/4;    //Compute the number of 
+                                      //processes in a world
+int MPI_start = world_rank * MPI_proc;  //Find the starting point
+                                        //of each node
+int tasksPerThread = MPI_proc/totalThreads;
+
+int start = MPI_start + tasksPerThread * threadID;
+int stop = (MPI_start + tasksPerThread * threadID)+tasksPerThread-1;
+\end{lstlisting}
+\selectlanguage{greek}
+\vspace{10mm}
+Οι μεταβλητές \eng{MPI\textunderscore proc}, \eng{MPI\textunderscore start} είναι υπεύθυνες για τον υπολογισμό των στοιχείων προς υπολογισμό βάσει των \eng{processes} και το σημείο εκκίνησης του κάθε process. Οι μεταβλητές \eng{start} και \eng{stop} λειτουργούν με την λογική του προηγούμενου ερωτήματος με τον διαχωρισμό για \eng{pthreads}, ενώ προστίθεται και ενα \eng{offset(MPI\textunderscore start)} για την κατανομή σε όλα τα \eng{processes}.\\
+\newpage
+Μετά το τέλος των υπολογισμών, το κάθε \eng{process} έχει υπολογίσει επιμέρους τις τιμές που μας ενδιαφέρουν(\eng{min, max, avg}) ενώ σαν τελευταίο βήμα μένει η σύγκριση με τα άλλα \eng{processes} και ο υπολογισμός \eng{global min, max} και \eng{avg.} Δεσμεύουμε λοιπόν, τον απαραίτητο χώρο στην μνήμη και με χρήση της εντολής \eng{MPI\textunderscore Gather} συλλέγουμε συγκεντρωτικά δεδομένα απο όλα τα processes και προχωράμε σε αυτήν την σύγκριση. Να επισημάνουμε ότι οι μέθοδοι υπολογισμού είναι ίδιοι με το προηγούμενο ερώτημα. 
+
+\vspace{13mm}
+\selectlanguage{english}
+\begin{lstlisting}
+if (world_rank == 0) {
+        //Allocate space for everything we will need
+        max_results = (float *) malloc(world_size * sizeof(float));
+        assert(max_results != NULL);
+
+        min_results = (float *) malloc(world_size * sizeof(float));
+        assert(min_results != NULL);
+
+        avg_results = (float *) malloc(world_size * sizeof(float));
+        assert(avg_results != NULL);
+}
+
+//Gather all max results
+MPI_Gather(&GL_maxF, 1, MPI_FLOAT, max_results, 1, MPI_FLOAT, 0, MPI_COMM_WORLD);
+
+//Gather all min results
+MPI_Gather(&GL_minF, 1, MPI_FLOAT, min_results, 1, MPI_FLOAT, 0, MPI_COMM_WORLD);
+
+//Gather all avg results
+MPI_Gather(&GL_avgF, 1, MPI_FLOAT, avg_results, 1, MPI_FLOAT, 0, MPI_COMM_WORLD);
+\end{lstlisting}
+\selectlanguage{greek}
+
+
+%--------------------------------------------------------
 \newpage
 \subsection{\eng{BONUS}: Υλοποίηση διαφορετικών \eng{memory layout} για τη βελτιστοποίηση της παραλληλοποίησης με \eng{SSE} Εντολές }
 
-In malesuada ullamcorper urna, sed dapibus diam sollicitudin non. Donec elit odio, accumsan ac nisl a, tempor imperdiet eros. Donec porta tortor eu risus consequat, a pharetra tortor tristique. Morbi sit amet laoreet erat. Morbi et luctus diam, quis porta ipsum. Quisque libero dolor, suscipit id facilisis eget, sodales volutpat dolor. Nullam vulputate interdum aliquam. Mauris id convallis erat, ut vehicula neque. Sed auctor nibh et elit fringilla, nec ultricies dui sollicitudin. Vestibulum vestibulum luctus metus venenatis facilisis. Suspendisse iaculis augue at vehicula ornare. Sed vel eros ut velit fermentum porttitor sed sed massa. Fusce venenatis, metus a rutrum sagittis, enim ex maximus velit, id semper nisi velit eu purus.
+Σαν τελευταίο κομμάτι στα πλαίσια του προτζεκτ, ζητήθηκε να μελετήσουμε την χρήση εντολών \eng{SSE} για διαφορετικό \eng{memory layout}.  
+Για την καλύτερη μελέτη των διαφορετικών \eng{layout}, προχωρήσαμε σε τρεις διαφορετικές υλοποιήσεις, οι οποίες βρίσκονται στα αρχεία:\\
+\eng{- SSE-MEM-LAYOUT\\
+- SSE-MEM-LAYOUT-3\\
+- SSE\textunderscore MEMORY\textunderscore LAYOUT\textunderscore 6}\\
 
+Τα διαφορετικά \eng{memory layout} αποσκοπούν στην αποφυγή των \eng{cache misses} που αναπόφευκτα συμβαίνουν όταν έχουμε δεδομένα σε πολλούς διαφορετικούς πίνακες αποθηκευμένους σε διαφορετικές θέσεις μνήμης. Στον αρχικό μας κώδικα, έχουμε 6 διαφορετικά \eng{malloc}, ένα για τον κάθε πίνακα που χρειαζόμαστε. Σε κάθε μια απο τις υλοποιήσεις, διαφοροποίησαμε τον αριθμό απο πίνακες, με σκοπό να δούμε τι βελτίωση θα επιφέρει η κάθε περίπτωση.\\
+
+Στην περίπτωση του αρχείου \eng{SSE-MEM-LAYOUT} χρησιμοποιήσαμε 3 \eng{malloc}, για να δεσμεύσουμε χώρο στην μνήμη για τους πίνακες \eng{LRVec, mnVec, FCVec}. Η ονοματολογία των πινάκων είναι ανάλογα με τους πίνακες που έχουν γίνει \eng{merge} σε κάθε περίπτωση. Αντίστοιχα, στο αρχείο \eng{SSE-MEM-LAYOUT-3} χρειαστήκαμε 2 \eng{malloc}, για τους πίνακες \eng{LRCVec}, και \eng{mnFVec}, ενώ στο αρχείο \eng{SSE\textunderscore MEMORY\textunderscore LAYOUT\textunderscore 6} χρειαστήκαμε 1 \eng{malloc}, ενώνοντας όλους τους πίνακες σε έναν. Στα πρώτα δύο αρχεία το κριτήριο για την ένωση των πινάκων ήταν η συσχέτιση τους κατά την πραγματοποίηση υπολογισμών.\\
+
+Μετά την δέσμευση μνήμης σε κάθε περίπτωση, γεμίζουμε τους πίνακες με δεδομένα ανά τετράδες όπως φαίνεται παρακάτω στην εικόνα για μπορέσουμε 
+να αξιοποιήσουμε τις εντολές τύπου \eng{SSE}.
+\vspace{19mm}
 \begin{figure}[h!]
 \centering
   \includegraphics[width=0.8\linewidth]{SCHEME.png}
-  \caption{\eng{Comment}}
+  \caption{Σχέδιο Υλοποίησης}
 \end{figure}
+\newpage
+Στην συνέχεια, ανάλογα με τον πίνακα και το στοιχείο που επιθυμούμε πρόσβαση αλλάζουμε θέση στον στοιχείο του πίνακα. Παρακάτω δείχνουμε ένα ενδεικτικό κομμάτι κώδικα με τους υπολογισμούς απο την υλοποίηση με 3 \eng{malloc(SSE-MEM-LAYOUT).}
+
+
+\selectlanguage{english}
+\begin{lstlisting}
+for(unsigned int i=0; i< 2*N/4 ;i+=2)
+{
+            //Replace each statement step by step 
+            //using the instructions as mentioned before
+
+            //float num_0 = LVec[i] + RVec[i];
+            temp_num_0 = _mm_add_ps(LRVec_ptr[i],LRVec_ptr[i+1]);
+
+            //float num_1 = mVec[i]*(mVec[i]-1.0f)/2.0f;
+            temp_num_1 = _mm_sub_ps(mnVec_ptr[i], temp_one);
+            temp_num_1 = _mm_mul_ps(mnVec_ptr[i], temp_num_1);
+            temp_num_1 = _mm_div_ps(temp_num_1, temp_two);
+
+
+            //float num_2 = nVec[i]*(nVec[i]-1.0f)/2.0f;
+            temp_num_2 = _mm_sub_ps(mnVec_ptr[i+1], temp_one);
+            temp_num_2 = _mm_mul_ps(mnVec_ptr[i+1], temp_num_2);
+            temp_num_2 = _mm_div_ps(temp_num_2, temp_two);
+
+
+            //float num = num_0/(num_1+num_2);
+            temp_num = _mm_add_ps(temp_num_1,temp_num_2);
+            temp_num = _mm_div_ps(temp_num_0, temp_num);
+
+            //float den_0 = CVec[i]-LVec[i]-RVec[i];
+            temp_den_0 = _mm_sub_ps(FCVec_ptr[i+1], LRVec_ptr[i]);
+            temp_den_0 = _mm_sub_ps(temp_den_0, LRVec_ptr[i+1]);
+
+
+            //float den_1 = mVec[i]*nVec[i];
+            temp_den_1 = _mm_mul_ps(mnVec_ptr[i], mnVec_ptr[i+1]);
+
+            //float den = den_0/den_1;
+            temp_den = _mm_div_ps(temp_den_0, temp_den_1);
+
+            //FVec[i] = num/(den+0.01f);
+            temp_fvec = _mm_add_ps(temp_den, __temp_one);
+            FCVec_ptr[i] = _mm_div_ps(temp_num, temp_fvec);
+
+            //maxF = FVec[i]>maxF?FVec[i]:maxF;
+            maxF_vec = _mm_max_ps(FCVec_ptr[i], maxF_vec);
+
+            //minF = FVec[i]<minF?FVec[i]:minF;
+            minF_vec = _mm_min_ps(FCVec_ptr[i], minF_vec);
+
+            //avgF += FVec[i];
+            avgF_vec = _mm_add_ps(FCVec_ptr[i], avgF_vec );
+
+
+}
+\end{lstlisting}
+\selectlanguage{greek}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 \newpage
@@ -285,8 +484,8 @@ Max 6.048419e+05 - Avg -6.348448e-01
 \section{Συμπεράσματα}
 
 Απεικονίζοντας τους παραπάνω χρόνους μπορούμε να εξάγουμε πολύτιμα συμπεράσματα για τις υλοποιήσεις μας, υπολογίζοντας το \eng{speedup} που έχουμε στην εκάστοτε περίπτωση.\\
-Το \eng{speedup} υπολογίζεται με τον ακόλουθο τύπο:
-
+Μπορούμε να υπολογίσουμε το \eng{speedup} με τον ακόλουθο τύπο:
+\vspace{12mm}
 \selectlanguage{english}
 \begin{equation}
      Speedup = \dfrac{Serial Code Execution Time}{Parallelized Code Execution Time}
@@ -296,8 +495,9 @@ Max 6.048419e+05 - Avg -6.348448e-01
 
 \subsection{\eng{SSE} Εντολές}
 
-In malesuada ullamcorper urna, sed dapibus diam sollicitudin non. Donec elit odio, accumsan ac nisl a, tempor imperdiet eros. Donec porta tortor eu risus consequat, a pharetra tortor tristique. Morbi sit amet laoreet erat. Morbi et luctus diam, quis porta ipsum. Quisque libero dolor, suscipit id facilisis eget, sodales volutpat dolor. Nullam vulputate interdum aliquam. Mauris id convallis erat, ut vehicula neque. Sed auctor nibh et elit fringilla, nec ultricies dui sollicitudin. Vestibulum vestibulum luctus metus venenatis facilisis. Suspendisse iaculis augue at vehicula ornare. Sed vel eros ut velit fermentum porttitor sed sed massa. Fusce venenatis, metus a rutrum sagittis, enim ex maximus velit, id semper nisi velit eu purus.
-
+Στην πρώτη περίπτωση, στην παραλληλοποίηση του \eng{reference code} με \eng{SSE} εντολές παρατηρούμε αμέσως καλύτερη απόδοση, αρκετά χαμηλότερο όμως απο το θεωρητικό 
+\eng{speedup} το οποίο είναι ίσο με 4. Πιο συγκεκριμένα έχουμε $Speedup = 1.66$.\\
+\vspace{12mm}
 \begin{figure}[h!]
 \centering
   \includegraphics[width=0.8\linewidth]{SSE.jpeg}
@@ -307,8 +507,9 @@ In malesuada ullamcorper urna, sed dapibus diam sollicitudin non. Donec elit odi
 \newpage
 \subsection{\eng{SSE} Εντολές, \eng{Pthreads}}
 
-In malesuada ullamcorper urna, sed dapibus diam sollicitudin non. Donec elit odio, accumsan ac nisl a, tempor imperdiet eros. Donec porta tortor eu risus consequat, a pharetra tortor tristique. Morbi sit amet laoreet erat. Morbi et luctus diam, quis porta ipsum. Quisque libero dolor, suscipit id facilisis eget, sodales volutpat dolor. Nullam vulputate interdum aliquam. Mauris id convallis erat, ut vehicula neque. Sed auctor nibh et elit fringilla.
-
+Στην δεύτερη περίπτωση, στην παραλληλοποίηση του \eng{reference code} με \eng{SSE} εντολές σε συνδιασμό με \eng{Pthreads}  παρατηρούμε ακόμα καλύτερη απόδοση σε σχέση τόσο με το σειριακό, όσο και με την παραλληλοποίηση μόνο με \eng{SSE} εντολές, με την περίπτωση των τεσσάρων \eng{threads} να είναι καλύτερη απο την περίπτωση των δύο.\\
+Πιο συγκεκριμένα, στην περίπτωση των 2 \eng{threads} έχουμε $Speedup = 3.3$, και στην περίπτωση των 4 \eng{threads} $Speedup = 3.97$\\
+\vspace{12mm}
 \begin{figure}[h!]
 \centering
   \includegraphics[width=0.8\linewidth]{SSE_PTHREADS.jpeg}
@@ -318,7 +519,7 @@ In malesuada ullamcorper urna, sed dapibus diam sollicitudin non. Donec elit odi
 \newpage
 \subsection{\eng{SSE} Εντολές, \eng{Pthreads} και \eng{MPI} }
 
-Στην περίπτωση παραλληλοποίησης του κώδικα με \eng{MPI} δε μας ζητήθηκε να αξιολογήσουμε την απόδοση και το \eng{speedup}. Ακολουθούν ενδεικτικά τα διαγράμματα με τους χρόνους που 
+Στην περίπτωση παραλληλοποίησης του κώδικα με \eng{MPI} δε μας ζητήθηκε να αξιολογήσουμε την απόδοση και το \eng{speedup}. Άλλωστε δεν θα είχε ιδιαίτερο νόημα να αξιολογηθεί διότι τρέχουμε τον κώδικα τοπικά και όχι σε κάποιο \eng{cluster}. Ακολουθούν ενδεικτικά τα διαγράμματα με τους χρόνους που 
 λάβαμε:
 \vspace{5mm}
 \begin{figure}[h!]
@@ -338,14 +539,15 @@ In malesuada ullamcorper urna, sed dapibus diam sollicitudin non. Donec elit odi
 \subsection{\eng{BONUS}: \eng{SSE Memory Layouts}}
 % Math equation/formula
 
-In malesuada ullamcorper urna, sed dapibus diam sollicitudin non. Donec elit odio, accumsan ac nisl a, tempor imperdiet eros. Donec porta tortor eu risus consequat, a pharetra tortor tristique. Morbi sit amet laoreet erat. Morbi et luctus diam, quis porta ipsum. Quisque libero dolor, suscipit id facilisis eget, sodales volutpat dolor. Nullam vulputate interdum aliquam. Mauris id convallis erat, ut vehicula neque. Sed auctor nibh et elit fringilla, nec ultricies dui sollicitudin. Vestibulum vestibulum luctus metus venenatis facilisis. Suspendisse iaculis augue at vehicula ornare. Sed vel eros ut velit fermentum porttitor sed sed massa. Fusce venenatis, metus a rutrum sagittis, enim ex maximus velit, id semper nisi velit eu purus.
+Στην τελευταία περίπτωση, στην παραλληλοποίηση του \eng{reference code} με διαφορετικά \eng{SSE Memory Layouts} παρατηρούμε καλύτερη απόδοση σε σύγκριση με την αρχική \eng{SSE} υλοποίηση , κάτι το οποίο περιμέναμε διότι με τη συγκεκριμένη υλοποίηση αποφεύγουμε τα \eng{cache misses}. Όσον αφορά τα 3 \eng{Memory Layouts}, δεν παρατηρούμε κάποια σημαντική διαφορά στην απόδοση τους. Στο γράφημα που ακολουθεί, καλύτερη απόδοση φαίνεται να έχει η υλοποίηση με τα 2 \eng{vectors}, συμπέρασμα βέβαια το οποίο αλλάζει απο εκτέλεση σε εκτέλεση του κώδικα.\\
 
+Πιο συγκεκριμένα, στην περίπτωση των 3 \eng{vectors} έχουμε $Speedup = 1.031$, στην περίπτωση των 2 \eng{vectors} $Speedup = 1.033$ και όταν έχουμε 1 \eng{vector} $Speedup = 1.032$, σε σχέση πάντα με την αρχική υλοποίηση του \eng{SSE}.\\
+\vspace{12mm}
 \begin{figure}[h!]
 \centering 
   \includegraphics[width=0.8\linewidth]{BONUS.jpeg}
   \caption{\eng{Comparing different SSE Memory Layouts} }
 \end{figure}
 
-In malesuada ullamcorper urna, sed dapibus diam sollicitudin non. Donec elit odio, accumsan ac nisl a, tempor imperdiet eros. Donec porta tortor eu risus consequat, a pharetra tortor tristique. Morbi sit amet laoreet erat. Morbi et luctus diam, quis porta ipsum. Quisque libero dolor, suscipit id facilisis eget, sodales volutpat dolor. Nullam vulputate interdum aliquam. Mauris id convallis erat, ut vehicula neque. Sed auctor nibh et elit fringilla, nec ultricies dui sollicitudin. Vestibulum vestibulum luctus metus venenatis facilisis. Suspendisse iaculis augue at vehicula ornare. Sed vel eros ut velit fermentum porttitor sed sed massa. Fusce venenatis, metus a rutrum sagittis, enim ex maximus velit, id semper nisi velit eu purus.
 
 \end{document}
