@@ -3,75 +3,77 @@
 
 echo  "\n\n"
 echo  "---------------------- Building everything ------------------------------"
-cmake --build ./Serial/cmake-build-debug --target Serial -- -j 2
-cmake --build ./SSE/cmake-build-debug --target SSE -- -j 2
-cmake --build ./SSE-MEM-LAYOUT/cmake-build-debug --target SSE_MEM_LAYOUT -- -j 2
-cmake --build ./SSE-MEM-LAYOUT-3/cmake-build-debug --target SSE_MEM_LAYOUT_3 -- -j 2
-cmake --build ./SSE-PTHREADS/cmake-build-debug --target SSE_PTHREADS -- -j 2
-cmake --build ./SSE-PTHREADS-MPI/cmake-build-debug --target SSE_PTHREADS_MPI -- -j 2
-cmake --build ./SSE_MEMORY_LAYOUT_6/cmake-build-debug --target SSE_MEMORY_LAYOUT_6 -- -j 2
+
+gcc ./Serial/main.c -o ./Serial/Serial
+gcc ./SSE/main.c -o ./SSE/SSE
+gcc ./SSE-MEM-LAYOUT/main.c -o ./SSE-MEM-LAYOUT/SSE-MEM-LAYOUT
+gcc ./SSE-MEM-LAYOUT-3/main.c -o ./SSE-MEM-LAYOUT-3/SSE-MEM-LAYOUT-3
+gcc ./SSE-PTHREADS/main.c -o ./SSE-PTHREADS/SSE-PTHREADS -lpthread 
+gcc ./SSE_MEMORY_LAYOUT_6/main.c -o ./SSE_MEMORY_LAYOUT_6/SSE_MEMORY_LAYOUT_6
+mpicc ./SSE-PTHREADS-MPI/main.c -o ./SSE-PTHREADS-MPI/SSE-PTHREADS-MPI
+
 
 echo  "\n"
 echo  "---------------------- Giving permissions -------------------------------"
-chmod 755 ./Serial/cmake-build-debug/Serial
-chmod 755 ./SSE/cmake-build-debug/SSE
-chmod 755 ./SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT
-chmod 755 ./SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3
-chmod 755 ./SSE-PTHREADS/cmake-build-debug/SSE_PTHREADS
-chmod 755 ./SSE-PTHREADS-MPI/cmake-build-debug/SSE_PTHREADS_MPI
-chmod 755 ./SSE_MEMORY_LAYOUT_6/cmake-build-debug/SSE_MEMORY_LAYOUT_6
+chmod 755 ./Serial/Serial
+chmod 755 ./SSE/SSE
+chmod 755 ./SSE-MEM-LAYOUT/SSE-MEM-LAYOUT
+chmod 755 ./SSE-MEM-LAYOUT-3/SSE-MEM-LAYOUT-3
+chmod 755 ./SSE-PTHREADS/SSE-PTHREADS
+chmod 755 ./SSE-PTHREADS-MPI/SSE-PTHREADS-MPI
+chmod 755 ./SSE_MEMORY_LAYOUT_6/SSE_MEMORY_LAYOUT_6
 
 
 echo  "\n"
 echo  "---------------------- Reference Code Ν:10000000-------------------------"
-./Serial/cmake-build-debug/Serial 10000000
+./Serial/Serial 10000000
 
 
 echo  "\n\n"
 echo  "---------------------- SSE Ν:10000000------------------------------------"
-./SSE/cmake-build-debug/SSE 10000000
+./SSE/SSE 10000000
 
 echo  "\n\n"
 echo  "-------------- SSE-PTHREADS Ν:10000000, PTHREADS:2-----------------------"
-./SSE-PTHREADS/cmake-build-debug/SSE_PTHREADS 10000000 2
+./SSE-PTHREADS/SSE-PTHREADS 10000000 2
 
 echo  "\n"
 echo  "--------------- SSE-PTHREADS Ν:10000000, PTHREADS:4----------------------"
-./SSE-PTHREADS/cmake-build-debug/SSE_PTHREADS 10000000 4
+./SSE-PTHREADS/SSE-PTHREADS 10000000 4
+
+lamboot -v hostfile
 
 echo  "\n\n"
 echo  "-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:2, PROCESSES:2------------"
-mpiexec -n 2 ./SSE-PTHREADS-MPI/cmake-build-debug/SSE_PTHREADS_MPI 10000000 2
+mpiexec -n 2 ./SSE-PTHREADS-MPI/SSE-PTHREADS-MPI 10000000 2
 
 echo  "\n"
 echo  "-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:4, PROCESSES:2------------"
-mpiexec -n 2 ./SSE-PTHREADS-MPI/cmake-build-debug/SSE_PTHREADS_MPI 10000000 4
+mpiexec -n 2 ./SSE-PTHREADS-MPI/SSE-PTHREADS-MPI 10000000 4
 
 echo  "\n"
 echo  "-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:2, PROCESSES:4------------"
-mpiexec -n 4 ./SSE-PTHREADS-MPI/cmake-build-debug/SSE_PTHREADS_MPI 10000000 2
+mpiexec -n 4 ./SSE-PTHREADS-MPI/SSE-PTHREADS-MPI 10000000 2
 
 echo  "\n"
 echo  "-------- SSE-PTHREADS-MPI Ν:10000000, PTHREADS:4, PROCESSES:4------------"
-mpiexec -n 4 ./SSE-PTHREADS-MPI/cmake-build-debug/SSE_PTHREADS_MPI 10000000 4
+mpiexec -n 4 ./SSE-PTHREADS-MPI/SSE-PTHREADS-MPI 10000000 4
+
+lamclean -v
 
 echo  "\n\n"
 echo  "----------------------- Bonus -------------------------------------------"
 
 echo  "\n"
-echo  "---------------------- SSE Ν:10000000(AGAIN)-----------------------------"
-./SSE/cmake-build-debug/SSE 10000000
-
-echo  "\n"
 echo  "------------ SSE Ν:10000000, SSE_MEM_LAYOUT 3 vectors--------------------"
-./SSE-MEM-LAYOUT/cmake-build-debug/SSE_MEM_LAYOUT 10000000
+./SSE-MEM-LAYOUT/SSE-MEM-LAYOUT 10000000
 
 echo  "\n"
 echo  "------------ SSE Ν:10000000, SSE_MEM_LAYOUT 2 vectors--------------------"
-./SSE-MEM-LAYOUT-3/cmake-build-debug/SSE_MEM_LAYOUT_3 10000000
+./SSE-MEM-LAYOUT-3/SSE-MEM-LAYOUT-3 10000000
 
 echo  "\n"
 echo  "------------ SSE Ν:10000000, SSE_MEM_LAYOUT 1 vector --------------------"
-./SSE_MEMORY_LAYOUT_6/cmake-build-debug/SSE_MEMORY_LAYOUT_6 10000000
+./SSE_MEMORY_LAYOUT_6/SSE_MEMORY_LAYOUT_6 10000000
 
 echo  "\n"
